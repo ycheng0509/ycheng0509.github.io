@@ -2,7 +2,7 @@ export const homeContent = {
   hero: {
     eyebrow: "Portfolio 2026",
     name: "Yusi Cheng",
-    intro: "Digital product work, front-end prototyping, and game systems.",
+    intro: "Digital product work, technical support/community operations, and game systems.",
     links: [
       { label: "View Projects", href: "#digital-product", variant: "primary" },
       { label: "Legacy Projects", href: "legacy.html" },
@@ -15,7 +15,7 @@ export const homeContent = {
     meta: [
       {
         title: "Focus",
-        body: "Digital product strategy, UX, prototyping, and game systems."
+        body: "Digital product strategy, support/community operations, prototyping, and game systems."
       },
       {
         title: "Format",
@@ -39,10 +39,18 @@ export const homeContent = {
           cta: "Read project"
         },
         {
-          title: "Next Digital Product",
+          id: "chia-wallet",
+          title: "Chia Reference Wallet",
           body:
-            "Reserved for the next internal or external product case study you want to add here.",
-          cta: "Coming next"
+            "Wallet redesign work focused on reducing fragmentation between light wallet and full node experiences while improving clarity after client integration.",
+          cta: "Read project"
+        },
+        {
+          id: "ipersona",
+          title: "iPersona Design System",
+          body:
+            "Startup gaming privacy platform focused on account identity, onboarding, and a design system for privacy-conscious players.",
+          cta: "Read project"
         }
       ],
       highlights: [
@@ -53,8 +61,30 @@ export const homeContent = {
       ]
     },
     {
-      id: "game-design",
+      id: "support-community",
       label: "Section 02",
+      title: "Support & Community",
+      description: "Technical support, escalation, and community operations.",
+      meta: ["Tier 1/2 Support", "APAC Coverage", "Knowledge Base", "Cross-functional"],
+      projects: [
+        {
+          id: "chia-support",
+          title: "Chia Network Technical Community Manager",
+          body:
+            "Tier 1/2 technical support and APAC community operations across wallet sync, networking, account issues, escalation, and support-channel coverage.",
+          cta: "Read role"
+        }
+      ],
+      highlights: [
+        "Issue triage",
+        "Escalation quality",
+        "Support operations",
+        "Community coordination"
+      ]
+    },
+    {
+      id: "game-design",
+      label: "Section 03",
       title: "Game Design Projects",
       description: "Playable systems work.",
       highlights: ["Playtesting", "Systems design", "Player UX"],
@@ -264,6 +294,203 @@ export const operatorToolingContent = {
   ]
 };
 
+export const ipersonaContent = {
+  hero: {
+    eyebrow: "Digital Product",
+    name: "iPersona Design System",
+    intro:
+      "A startup gaming privacy platform exploring how players can protect account identity, reduce onboarding friction, and build a recognizable online persona with less personal exposure.",
+    links: [
+      { label: "Back to Homepage", href: "index.html", variant: "primary" },
+      { label: "Legacy Projects", href: "legacy.html" },
+      {
+        label: "Original case study",
+        href: "https://yusicheng.me/ipersonaonboard",
+        external: true
+      }
+    ],
+    meta: [
+      {
+        title: "Role",
+        body: "Main designer and front-end engineer for the team."
+      },
+      {
+        title: "Timeline",
+        body: "January to August 2020 for early product structure, design system, and prototyping."
+      }
+    ]
+  },
+  snapshot: [
+    { label: "Project Type", value: "Startup gaming privacy platform" },
+    { label: "Role", value: "Full Stack Designer" },
+    { label: "Methods", value: "Survey, research, competitor analysis, sketching, prototyping" }
+  ],
+  sections: [
+    {
+      title: "Background",
+      body:
+        "The project focused on a gamer privacy service platform for a Seattle startup. The work covered design system creation, early product structure, workflow iteration, and prototypes for a first version of the product."
+    },
+    {
+      title: "Problem",
+      body:
+        "Gamers increasingly treat gamertags as part of their identity and personal brand, but platform constraints and privacy concerns make account creation and identity management awkward. The product aimed to help users keep a unique online identity while collecting as little sensitive information as possible."
+    }
+  ],
+  pillars: [
+    {
+      title: "Onboarding Simplification",
+      body: "Reduced registration friction by removing demographic questions and focusing only on essential sign-up information."
+    },
+    {
+      title: "Identity and Privacy",
+      body: "Explored ways for users to claim the gamertag they want while handling identity and privacy in a more flexible way."
+    },
+    {
+      title: "Design System and Prototype",
+      body: "Established the visual system, iterated product workflows, and built working front-end prototypes with Vue."
+    }
+  ],
+  outcomes: [
+    "Defined a first-pass design system for the startup product.",
+    "Simplified the onboarding flow based on user feedback about information sensitivity.",
+    "Extended the work beyond school-project-style screens into settings, profile, and sign-in flows.",
+    "Delivered front-end design handoff and prototype work while collaborating in a small startup team."
+  ]
+};
+
+export const chiaSupportContent = {
+  hero: {
+    eyebrow: "Support & Community",
+    name: "Chia Network Technical Community Manager",
+    intro:
+      "Tier 1/2 technical support and APAC community operations work spanning wallet sync, networking, account issues, escalation quality, and Chinese-language support coverage.",
+    links: [
+      { label: "Back to Homepage", href: "index.html", variant: "primary" },
+      {
+        label: "LinkedIn",
+        href: "https://www.linkedin.com/in/justincheng0509/",
+        external: true
+      }
+    ],
+    meta: [
+      {
+        title: "Role",
+        body: "Technical Community Manager, Tier 1/2 Support, APAC."
+      },
+      {
+        title: "Timeline",
+        body: "August 2021 to May 2022 at Chia Network."
+      }
+    ]
+  },
+  snapshot: [
+    { label: "Platforms", value: "macOS, Windows, Linux" },
+    { label: "Channels", value: "GitHub, Keybase, KB/SOP documentation" },
+    { label: "Scope", value: "Wallet sync, networking, accounts, escalation, moderation" }
+  ],
+  sections: [
+    {
+      title: "Support Focus",
+      body:
+        "Provided Tier 1/2 support across operating systems, diagnosing wallet sync, networking, and account-related issues, then escalating reproducible defects with clear reproduction steps and impact context."
+    },
+    {
+      title: "Community Operations",
+      body:
+        "Built and operated APAC Chinese-language support channels and coordinated distributed moderators to maintain near 24/7 support coverage for the community."
+    }
+  ],
+  pillars: [
+    {
+      title: "Issue Triage and Escalation",
+      body: "Logged, tracked, and resolved service requests while improving the quality of escalation handoff to Engineering."
+    },
+    {
+      title: "Knowledge Base and SOPs",
+      body: "Authored and maintained support documentation that improved first-contact resolution and reduced repeat requests."
+    },
+    {
+      title: "Cross-Functional Product Feedback",
+      body: "Connected recurring user issues to Product and Engineering work, and also contributed design improvements to onboarding, settings, and wallet/NFT offer flows."
+    }
+  ],
+  outcomes: [
+    "Improved clarity of engineering escalations with reproducible steps and impact notes.",
+    "Maintained support coverage for APAC Chinese-language communities through coordinated moderation.",
+    "Reduced repeat support confusion through stronger KB and SOP documentation.",
+    "Fed support pain points back into product and design improvements during major technical changes."
+  ]
+};
+
+export const chiaWalletContent = {
+  hero: {
+    eyebrow: "Digital Product",
+    name: "Chia Reference Wallet",
+    intro:
+      "Reference wallet redesign work for Chia focused on making a newly unified wallet experience easier to understand after light wallet and full node functionality were brought together.",
+    links: [
+      { label: "Back to Homepage", href: "index.html", variant: "primary" },
+      { label: "Legacy Projects", href: "legacy.html" },
+      {
+        label: "Original case study",
+        href: "https://yusicheng.me/chia-reference-wallet",
+        external: true
+      }
+    ],
+    meta: [
+      {
+        title: "Year",
+        body: "2022"
+      },
+      {
+        title: "Duration",
+        body: "3 months, version 1.3 to 1.3.4 design work."
+      }
+    ]
+  },
+  snapshot: [
+    { label: "Project Type", value: "Reference wallet redesign" },
+    { label: "Tools", value: "Figma" },
+    { label: "Category", value: "UI/UX" }
+  ],
+  sections: [
+    {
+      title: "Problem",
+      body:
+        "Users were dealing with fragmented experiences between light wallets and full nodes across separate clients. After backend consolidation work, the product still needed a clearer interface so users could understand how to use the wallet after integration."
+    },
+    {
+      title: "Design Approach",
+      body:
+        "The work focused on unifying the client experience, streamlining interaction patterns, and making synchronization and wallet-mode behavior easier to understand in a single optimized interface."
+    }
+  ],
+  pillars: [
+    {
+      title: "Light Wallet Integration",
+      body: "Explored wallet mode selection and settings changes that helped users navigate the new integrated experience."
+    },
+    {
+      title: "Fee Estimator",
+      body: "Proposed a clearer fee estimator approach for later wallet versions when transaction timing was still difficult to measure precisely."
+    },
+    {
+      title: "Account Quick Switch",
+      body: "Improved flow clarity for moving between wallet contexts and account states inside the redesigned client."
+    }
+  ],
+  outcomes: [
+    "Reduced UX fragmentation after light wallet and full node functionality were merged.",
+    "Introduced clearer settings and mode-selection concepts for the integrated wallet experience.",
+    "Helped users understand the redesigned client before backend sync improvements were fully mature.",
+    "Contributed wallet interaction concepts such as fee estimation and quicker account switching."
+  ]
+};
+
 export const projectDetails = {
-  "operator-tooling": operatorToolingContent
+  "operator-tooling": operatorToolingContent,
+  "chia-wallet": chiaWalletContent,
+  "chia-support": chiaSupportContent,
+  ipersona: ipersonaContent
 };
