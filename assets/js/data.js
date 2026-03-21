@@ -46,11 +46,11 @@ export const homeContent = {
           cta: "Read project"
         },
         {
-          id: "ipersona",
+          href: "legacy.html#ipersona",
           title: "iPersona Design System",
           body:
             "Startup gaming privacy platform focused on account identity, onboarding, and a design system for privacy-conscious players.",
-          cta: "Read project"
+          cta: "View in Legacy"
         }
       ],
       highlights: [
@@ -167,10 +167,14 @@ export const legacyContent = {
           ]
         },
         {
+          id: "ipersona",
+          featured: true,
           type: "Identity + Onboarding",
-          title: "iPersona",
+          title: "iPersona Design System",
           body:
-            "Security for gaming identity, with emphasis on onboarding design, trust-building, and a clearer first-use experience.",
+            "A startup gaming privacy platform exploring how players can protect account identity, reduce onboarding friction, and build a recognizable online persona with less personal exposure. Work covered design system creation, product structure, workflow iteration, and Vue front-end prototypes.",
+          note:
+            "Archived here as an earlier project. Still useful as evidence of design system work, startup team collaboration, and front-end prototyping in a product context.",
           links: [
             {
               label: "Open case study",

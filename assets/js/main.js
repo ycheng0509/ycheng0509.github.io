@@ -64,7 +64,9 @@ function renderSummaryCard(section) {
                 ${
                   project.id
                     ? `<button class="summary-project-link" type="button" data-project-open="${project.id}">${project.cta}</button>`
-                    : `<span class="summary-project-muted">${project.cta}</span>`
+                    : project.href
+                      ? `<a class="summary-project-link" href="${project.href}">${project.cta}</a>`
+                      : `<span class="summary-project-muted">${project.cta}</span>`
                 }
               </article>
             `

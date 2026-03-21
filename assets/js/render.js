@@ -47,8 +47,9 @@ function renderProject(project) {
     : "";
 
   if (project.featured) {
+    const idAttr = project.id ? ` id="${project.id}"` : "";
     return `
-      <article class="project-card featured">
+      <article class="project-card featured"${idAttr}>
         <div>
           <p class="project-type">${project.type}</p>
           <h3>${project.title}</h3>
