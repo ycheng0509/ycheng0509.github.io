@@ -44,6 +44,30 @@ function renderSummaryCard(section) {
   const highlights = section.highlights
     .map((item) => `<li class="summary-chip">${item}</li>`)
     .join("");
+  const meta = section.meta?.length
+    ? `<div class="summary-meta">${section.meta
+        .map((item) => `<span class="summary-meta-item">${item}</span>`)
+        .join("")}</div>`
+    : "";
+  const projects = section.projects?.length
+    ? `
+      <div class="summary-project-list">
+        ${section.projects
+          .map(
+            (project) => `
+              <article class="summary-project-item">
+                <div class="summary-project-copy">
+                  <h3>${project.title}</h3>
+                  <p>${project.body}</p>
+                </div>
+                <a class="summary-project-link" href="${project.href}">${project.cta}</a>
+              </article>
+            `
+          )
+          .join("")}
+      </div>
+    `
+    : "";
   const secondaryLink = section.secondaryLink
     ? createLink(section.secondaryLink, "text-link")
     : "";
@@ -57,9 +81,10 @@ function renderSummaryCard(section) {
         </div>
         <p class="summary-description">${section.description}</p>
       </div>
+      ${meta}
+      ${projects}
       <ul class="summary-highlights">${highlights}</ul>
       <div class="summary-actions">
-        ${createLink(section.primaryLink, "button")}
         ${secondaryLink}
       </div>
     </section>

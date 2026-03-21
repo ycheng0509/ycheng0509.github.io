@@ -2,9 +2,9 @@ export const homeContent = {
   hero: {
     eyebrow: "Portfolio 2026",
     name: "Yusi Cheng",
-    intro: "UX design, product thinking, front-end prototyping, and game systems.",
+    intro: "Digital product work, front-end prototyping, and game systems.",
     links: [
-      { label: "View Projects", href: "#ux-design-pm", variant: "primary" },
+      { label: "View Projects", href: "#digital-product", variant: "primary" },
       { label: "Legacy Projects", href: "legacy.html" },
       {
         label: "LinkedIn",
@@ -15,7 +15,7 @@ export const homeContent = {
     meta: [
       {
         title: "Focus",
-        body: "UX, product thinking, front-end prototyping, and game systems."
+        body: "Digital product strategy, UX, prototyping, and game systems."
       },
       {
         title: "Format",
@@ -25,28 +25,40 @@ export const homeContent = {
   },
   sections: [
     {
-      id: "ux-design-pm",
+      id: "digital-product",
       label: "Section 01",
-      title: "UX Design / PM",
-      description: "Current case studies.",
-      highlights: ["Strategy", "Research synthesis", "Interaction design"],
-      primaryLink: { label: "Open archive", href: "legacy.html#ux-design-pm" }
-    },
-    {
-      id: "ux-engineer",
-      label: "Section 02",
-      title: "UX Engineer Projects",
-      description: "Design-to-code work.",
-      highlights: ["Front-end systems", "Rapid prototyping", "Interaction polish"],
-      primaryLink: { label: "Coming next", href: "#ux-engineer" }
+      title: "Digital Product",
+      description: "Internal product strategy, UX, and implementation.",
+      meta: ["Product Owner", "In Progress", "Solo build", "Internal tooling"],
+      projects: [
+        {
+          title: "Operator Tooling & Data Collection Reliability System",
+          body:
+            "Internal tooling project for operators and supervisors: one interface for pre-shift setup, task tracking, rig monitoring, and clearer operational visibility.",
+          href: "operator-tooling.html",
+          cta: "Read project"
+        },
+        {
+          title: "Next Digital Product",
+          body:
+            "Reserved for the next internal or external product case study you want to add here.",
+          href: "#",
+          cta: "Coming next"
+        }
+      ],
+      highlights: [
+        "Product thinking",
+        "Interaction design",
+        "Front-end prototyping",
+        "Systems thinking"
+      ]
     },
     {
       id: "game-design",
-      label: "Section 03",
+      label: "Section 02",
       title: "Game Design Projects",
       description: "Playable systems work.",
       highlights: ["Playtesting", "Systems design", "Player UX"],
-      primaryLink: { label: "Open archive", href: "legacy.html#game-design" },
       secondaryLink: {
         label: "Open Itch.io",
         href: "https://jcheng0509.itch.io",
@@ -186,4 +198,69 @@ export const legacyContent = {
   ],
   footer:
     "This archive preserves older work without forcing it to compete with your current portfolio direction on the homepage."
+};
+
+export const operatorToolingContent = {
+  hero: {
+    eyebrow: "Digital Product",
+    name: "Operator Tooling & Data Collection Reliability System",
+    intro:
+      "An internal product for operators and supervisors that consolidates pre-shift setup, task tracking, rig monitoring, and operational visibility into one lightweight interface.",
+    links: [
+      { label: "Back to Homepage", href: "index.html", variant: "primary" },
+      { label: "Legacy Projects", href: "legacy.html" },
+      {
+        label: "LinkedIn",
+        href: "https://www.linkedin.com/in/justincheng0509/",
+        external: true
+      }
+    ],
+    meta: [
+      {
+        title: "Role",
+        body: "Product owner, designer, developer, and tester on a solo internal build."
+      },
+      {
+        title: "Status",
+        body: "In progress. MVP targeted as a lightweight single-file tool, with modular refactor planned next."
+      }
+    ]
+  },
+  snapshot: [
+    { label: "Audience", value: "Operators, supervisors, engineering/support" },
+    { label: "Timeline", value: "2–3 week MVP, 3–6 month longer-term roadmap" },
+    { label: "Scope", value: "Internal operator tooling and monitoring layer" }
+  ],
+  sections: [
+    {
+      title: "Problem",
+      body:
+        "The operator team is scaling toward 30+ people, but current workflows depend on manually opened tools and shared spreadsheets. That creates missed recordings, limited visibility into operator activity, weak auditability, and a monitoring model that does not scale."
+    },
+    {
+      title: "Approach",
+      body:
+        "The product consolidates setup, task tracking, and rig health into a single interface. It is intentionally tool-agnostic, supports mixed rig environments during migration, and gives supervisors a clearer view of operator activity and rig status."
+    }
+  ],
+  pillars: [
+    {
+      title: "Rig Status Monitor",
+      body: "Clear online/offline/checking state, configurable endpoints, and alerting for offline rigs."
+    },
+    {
+      title: "One-Click Launcher",
+      body: "A single entry point for operator tools, plus a guided pre-shift checklist."
+    },
+    {
+      title: "Operational Visibility",
+      body: "Better shift awareness for supervisors without forcing a backend-heavy rebuild."
+    }
+  ],
+  outcomes: [
+    "Reduce missed recordings and late alert response.",
+    "Create one reliable workspace for setup, tracking, and monitoring.",
+    "Support 30+ concurrent operators without rebuilding the tool from scratch.",
+    "Prepare for tool migration without hardcoding the system to a single fleet dependency."
+  ]
 };

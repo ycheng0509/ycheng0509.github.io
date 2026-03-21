@@ -261,7 +261,7 @@ html[data-theme="light"] .button-secondary {
 
 .overview-grid {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 20px;
   margin-top: 28px;
 }
@@ -298,9 +298,72 @@ html[data-theme="light"] .button-secondary {
 
 .summary-description {
   margin-top: 10px;
-  max-width: 16rem;
+  max-width: 22rem;
   font-size: 0.98rem;
   line-height: 1.45;
+}
+
+.summary-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 16px;
+}
+
+.summary-meta-item {
+  padding: 6px 10px;
+  border-radius: 999px;
+  background: var(--accent-soft);
+  color: var(--accent);
+  font-size: 0.78rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.summary-feature {
+  margin-top: 18px;
+}
+
+.summary-feature p {
+  margin-top: 8px;
+  color: var(--muted);
+  line-height: 1.55;
+}
+
+.summary-project-list {
+  display: grid;
+  gap: 14px;
+  margin-top: 18px;
+}
+
+.summary-project-item {
+  display: grid;
+  gap: 12px;
+  padding: 18px;
+  border-radius: 18px;
+  background: linear-gradient(180deg, rgba(22, 31, 54, 0.82), rgba(11, 17, 32, 0.92));
+  border: 1px solid var(--line);
+}
+
+html[data-theme="light"] .summary-project-item {
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.78), rgba(247, 241, 232, 0.95));
+  border: 1px solid rgba(26, 24, 22, 0.08);
+}
+
+.summary-project-copy p {
+  margin-top: 8px;
+}
+
+.summary-project-item p {
+  color: var(--muted);
+  line-height: 1.55;
+}
+
+.summary-project-link {
+  justify-self: start;
+  text-decoration: none;
+  border-bottom: 1px solid currentColor;
+  padding-bottom: 2px;
 }
 
 .summary-highlights {
@@ -401,11 +464,31 @@ html[data-theme="light"] .project-card.featured {
   padding-bottom: 2px;
 }
 
+.detail-list {
+  margin: 0;
+  padding-left: 20px;
+  color: var(--muted);
+}
+
+.detail-list-item + .detail-list-item {
+  margin-top: 12px;
+}
+
 .featured-note {
   padding: 18px;
   border-radius: 18px;
   background: rgba(255, 255, 255, 0.04);
   border: 1px solid var(--line);
+}
+
+.hero-project h1 {
+  max-width: 14ch;
+  font-size: clamp(2.2rem, 5vw, 4.2rem);
+  line-height: 0.98;
+}
+
+.hero-project .intro {
+  max-width: 40rem;
 }
 
 html[data-theme="light"] .featured-note {
