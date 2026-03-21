@@ -28,6 +28,41 @@ html[data-theme="light"] {
   box-sizing: border-box;
 }
 
+/* Scrollbar */
+html {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(204, 214, 255, 0.2) transparent;
+}
+
+html[data-theme="light"] {
+  scrollbar-color: rgba(26, 24, 22, 0.2) transparent;
+}
+
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(204, 214, 255, 0.2);
+  border-radius: 999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(204, 214, 255, 0.35);
+}
+
+html[data-theme="light"] ::-webkit-scrollbar-thumb {
+  background: rgba(26, 24, 22, 0.2);
+}
+
+html[data-theme="light"] ::-webkit-scrollbar-thumb:hover {
+  background: rgba(26, 24, 22, 0.35);
+}
+
 html {
   scroll-behavior: smooth;
 }
