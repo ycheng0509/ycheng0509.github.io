@@ -1,11 +1,12 @@
 import { operatorToolingContent } from "./data.js";
 import { initThemeToggle } from "./theme.js";
 import { initPageTransitions } from "./transitions.js";
+import { esc, safeHref } from "./utils.js";
 
 function createLink(link, className = "") {
   const rel = link.external ? ' target="_blank" rel="noreferrer"' : "";
-  const classAttr = className ? ` class="${className}"` : "";
-  return `<a${classAttr} href="${link.href}"${rel}>${link.label}</a>`;
+  const classAttr = className ? ` class="${esc(className)}"` : "";
+  return `<a${classAttr} href="${safeHref(link.href)}"${rel}>${esc(link.label)}</a>`;
 }
 
 function renderHero(hero) {
@@ -19,8 +20,8 @@ function renderHero(hero) {
     .map(
       (item) => `
         <div class="meta-card">
-          <strong>${item.title}</strong>
-          <p>${item.body}</p>
+          <strong>${esc(item.title)}</strong>
+          <p>${esc(item.body)}</p>
         </div>
       `
     )
@@ -30,9 +31,9 @@ function renderHero(hero) {
     <section class="hero hero-project" id="top">
       <div class="hero-grid">
         <div>
-          <p class="eyebrow">${hero.eyebrow}</p>
-          <h1>${hero.name}</h1>
-          <p class="intro">${hero.intro}</p>
+          <p class="eyebrow">${esc(hero.eyebrow)}</p>
+          <h1>${esc(hero.name)}</h1>
+          <p class="intro">${esc(hero.intro)}</p>
           <div class="links">${heroLinks}</div>
         </div>
         <div class="hero-meta">${metaCards}</div>
@@ -46,8 +47,8 @@ function renderPage(content) {
     .map(
       (item) => `
         <article class="project-card">
-          <p class="project-type">${item.label}</p>
-          <h3>${item.value}</h3>
+          <p class="project-type">${esc(item.label)}</p>
+          <h3>${esc(item.value)}</h3>
         </article>
       `
     )
@@ -57,8 +58,8 @@ function renderPage(content) {
     .map(
       (section) => `
         <article class="project-card">
-          <p class="project-type">${section.title}</p>
-          <p>${section.body}</p>
+          <p class="project-type">${esc(section.title)}</p>
+          <p>${esc(section.body)}</p>
         </article>
       `
     )
@@ -68,15 +69,15 @@ function renderPage(content) {
     .map(
       (item) => `
         <article class="project-card">
-          <h3>${item.title}</h3>
-          <p>${item.body}</p>
+          <h3>${esc(item.title)}</h3>
+          <p>${esc(item.body)}</p>
         </article>
       `
     )
     .join("");
 
   const outcomes = content.outcomes
-    .map((item) => `<li class="detail-list-item">${item}</li>`)
+    .map((item) => `<li class="detail-list-item">${esc(item)}</li>`)
     .join("");
 
   return `

@@ -27,14 +27,38 @@ function isInternalNavigation(link) {
   return true;
 }
 
+function storageGet(storage, key) {
+  try {
+    return storage.getItem(key);
+  } catch {
+    return null;
+  }
+}
+
+function storageSet(storage, key, value) {
+  try {
+    storage.setItem(key, value);
+  } catch {
+    // ignore
+  }
+}
+
+function storageRemove(storage, key) {
+  try {
+    storage.removeItem(key);
+  } catch {
+    // ignore
+  }
+}
+
 export function initPageTransitions() {
-  if (sessionStorage.getItem(TRANSITION_KEY) === "enter") {
+  if (storageGet(sessionStorage, TRANSITION_KEY) === "enter") {
     document.documentElement.setAttribute("data-page-state", "enter");
 
     requestAnimationFrame(() => {
       requestAnimationFrame(() => {
         document.documentElement.setAttribute("data-page-state", "idle");
-        sessionStorage.removeItem(TRANSITION_KEY);
+        storageRemove(sessionStorage, TRANSITION_KEY);
       });
     });
   } else {
@@ -42,6 +66,10 @@ export function initPageTransitions() {
   }
 
   document.addEventListener("click", (event) => {
+    if (event.metaKey || event.ctrlKey || event.shiftKey || event.altKey || event.button !== 0) {
+      return;
+    }
+
     const link = event.target.closest("a");
 
     if (!isInternalNavigation(link)) {
@@ -49,7 +77,7 @@ export function initPageTransitions() {
     }
 
     event.preventDefault();
-    sessionStorage.setItem(TRANSITION_KEY, "enter");
+    storageSet(sessionStorage, TRANSITION_KEY, "enter");
     document.documentElement.setAttribute("data-page-state", "exit");
 
     requestAnimationFrame(() => {

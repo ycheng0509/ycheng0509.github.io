@@ -1,7 +1,9 @@
+import { esc, safeHref } from "./utils.js";
+
 function createLink(link, className = "") {
   const rel = link.external ? ' target="_blank" rel="noreferrer"' : "";
-  const classAttr = className ? ` class="${className}"` : "";
-  return `<a${classAttr} href="${link.href}"${rel}>${link.label}</a>`;
+  const classAttr = className ? ` class="${esc(className)}"` : "";
+  return `<a${classAttr} href="${safeHref(link.href)}"${rel}>${esc(link.label)}</a>`;
 }
 
 function renderHero(hero) {
@@ -15,8 +17,8 @@ function renderHero(hero) {
     .map(
       (item) => `
         <div class="meta-card">
-          <strong>${item.title}</strong>
-          <p>${item.body}</p>
+          <strong>${esc(item.title)}</strong>
+          <p>${esc(item.body)}</p>
         </div>
       `
     )
@@ -26,9 +28,9 @@ function renderHero(hero) {
     <section class="hero" id="top">
       <div class="hero-grid">
         <div>
-          <p class="eyebrow">${hero.eyebrow}</p>
-          <h1>${hero.name}</h1>
-          <p class="intro">${hero.intro}</p>
+          <p class="eyebrow">${esc(hero.eyebrow)}</p>
+          <h1>${esc(hero.name)}</h1>
+          <p class="intro">${esc(hero.intro)}</p>
           <div class="links">${heroLinks}</div>
         </div>
         <div class="hero-meta">${metaCards}</div>
@@ -47,25 +49,25 @@ function renderProject(project) {
     : "";
 
   if (project.featured) {
-    const idAttr = project.id ? ` id="${project.id}"` : "";
+    const idAttr = project.id ? ` id="${esc(project.id)}"` : "";
     return `
       <article class="project-card featured"${idAttr}>
         <div>
-          <p class="project-type">${project.type}</p>
-          <h3>${project.title}</h3>
-          <p>${project.body}</p>
+          <p class="project-type">${esc(project.type)}</p>
+          <h3>${esc(project.title)}</h3>
+          <p>${esc(project.body)}</p>
           ${links}
         </div>
-        <div class="featured-note">${project.note ?? ""}</div>
+        <div class="featured-note">${esc(project.note ?? "")}</div>
       </article>
     `;
   }
 
   return `
     <article class="project-card">
-      <p class="project-type">${project.type}</p>
-      <h3>${project.title}</h3>
-      <p>${project.body}</p>
+      <p class="project-type">${esc(project.type)}</p>
+      <h3>${esc(project.title)}</h3>
+      <p>${esc(project.body)}</p>
       ${links}
     </article>
   `;
@@ -73,13 +75,13 @@ function renderProject(project) {
 
 function renderSection(section) {
   return `
-    <section class="section" id="${section.id}">
+    <section class="section" id="${esc(section.id)}">
       <div class="section-header">
         <div>
-          <p class="section-label">${section.label}</p>
-          <h2>${section.title}</h2>
+          <p class="section-label">${esc(section.label)}</p>
+          <h2>${esc(section.title)}</h2>
         </div>
-        <p>${section.description}</p>
+        <p>${esc(section.description)}</p>
       </div>
       <div class="project-grid">
         ${section.projects.map(renderProject).join("")}
@@ -93,7 +95,7 @@ export function renderPage(content) {
     ${renderHero(content.hero)}
     ${content.sections.map(renderSection).join("")}
     <footer class="footer">
-      <p>${content.footer}</p>
+      <p>${esc(content.footer)}</p>
     </footer>
   `;
 }

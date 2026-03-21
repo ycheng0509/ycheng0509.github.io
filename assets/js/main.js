@@ -1,11 +1,12 @@
 import { homeContent, projectDetails } from "./data.js";
 import { initThemeToggle } from "./theme.js";
 import { initPageTransitions } from "./transitions.js";
+import { esc, safeHref } from "./utils.js";
 
 function createLink(link, className = "") {
   const rel = link.external ? ' target="_blank" rel="noreferrer"' : "";
-  const classAttr = className ? ` class="${className}"` : "";
-  return `<a${classAttr} href="${link.href}"${rel}>${link.label}</a>`;
+  const classAttr = className ? ` class="${esc(className)}"` : "";
+  return `<a${classAttr} href="${safeHref(link.href)}"${rel}>${esc(link.label)}</a>`;
 }
 
 function renderHero(hero) {
@@ -19,8 +20,8 @@ function renderHero(hero) {
     .map(
       (item) => `
         <div class="meta-card">
-          <strong>${item.title}</strong>
-          <p>${item.body}</p>
+          <strong>${esc(item.title)}</strong>
+          <p>${esc(item.body)}</p>
         </div>
       `
     )
@@ -30,9 +31,9 @@ function renderHero(hero) {
     <section class="hero" id="top">
       <div class="hero-grid">
         <div>
-          <p class="eyebrow">${hero.eyebrow}</p>
-          <h1>${hero.name}</h1>
-          <p class="intro">${hero.intro}</p>
+          <p class="eyebrow">${esc(hero.eyebrow)}</p>
+          <h1>${esc(hero.name)}</h1>
+          <p class="intro">${esc(hero.intro)}</p>
           <div class="links">${heroLinks}</div>
         </div>
         <div class="hero-meta">${metaCards}</div>
@@ -43,11 +44,11 @@ function renderHero(hero) {
 
 function renderSummaryCard(section) {
   const highlights = section.highlights
-    .map((item) => `<li class="summary-chip">${item}</li>`)
+    .map((item) => `<li class="summary-chip">${esc(item)}</li>`)
     .join("");
   const meta = section.meta?.length
     ? `<div class="summary-meta">${section.meta
-        .map((item) => `<span class="summary-meta-item">${item}</span>`)
+        .map((item) => `<span class="summary-meta-item">${esc(item)}</span>`)
         .join("")}</div>`
     : "";
   const projects = section.projects?.length
@@ -58,15 +59,15 @@ function renderSummaryCard(section) {
             (project) => `
               <article class="summary-project-item">
                 <div class="summary-project-copy">
-                  <h3>${project.title}</h3>
-                  <p>${project.body}</p>
+                  <h3>${esc(project.title)}</h3>
+                  <p>${esc(project.body)}</p>
                 </div>
                 ${
                   project.id
-                    ? `<button class="summary-project-link" type="button" data-project-open="${project.id}">${project.cta}</button>`
+                    ? `<button class="summary-project-link" type="button" data-project-open="${esc(project.id)}">${esc(project.cta)}</button>`
                     : project.href
-                      ? `<a class="summary-project-link" href="${project.href}">${project.cta}</a>`
-                      : `<span class="summary-project-muted">${project.cta}</span>`
+                      ? `<a class="summary-project-link" href="${safeHref(project.href)}">${esc(project.cta)}</a>`
+                      : `<span class="summary-project-muted">${esc(project.cta)}</span>`
                 }
               </article>
             `
@@ -80,12 +81,12 @@ function renderSummaryCard(section) {
     : "";
 
   return `
-    <section class="section summary-card" id="${section.id}">
+    <section class="section summary-card" id="${esc(section.id)}">
       <div class="summary-top">
         <div>
-          <h2>${section.title}</h2>
+          <h2>${esc(section.title)}</h2>
         </div>
-        <p class="summary-description">${section.description}</p>
+        <p class="summary-description">${esc(section.description)}</p>
       </div>
       ${meta}
       ${projects}
@@ -102,8 +103,8 @@ function renderProjectPanel(project) {
     .map(
       (item) => `
         <article class="project-card">
-          <p class="project-type">${item.label}</p>
-          <h3>${item.value}</h3>
+          <p class="project-type">${esc(item.label)}</p>
+          <h3>${esc(item.value)}</h3>
         </article>
       `
     )
@@ -113,8 +114,8 @@ function renderProjectPanel(project) {
     .map(
       (section) => `
         <article class="project-card">
-          <p class="project-type">${section.title}</p>
-          <p>${section.body}</p>
+          <p class="project-type">${esc(section.title)}</p>
+          <p>${esc(section.body)}</p>
         </article>
       `
     )
@@ -124,30 +125,30 @@ function renderProjectPanel(project) {
     .map(
       (item) => `
         <article class="project-card">
-          <h3>${item.title}</h3>
-          <p>${item.body}</p>
+          <h3>${esc(item.title)}</h3>
+          <p>${esc(item.body)}</p>
         </article>
       `
     )
     .join("");
 
   const outcomes = project.outcomes
-    .map((item) => `<li class="detail-list-item">${item}</li>`)
+    .map((item) => `<li class="detail-list-item">${esc(item)}</li>`)
     .join("");
 
   return `
     <div class="project-panel-shell">
       <div class="project-panel-top">
         <div>
-          <p class="eyebrow">${project.hero.eyebrow}</p>
-          <h2 class="project-panel-title">${project.hero.name}</h2>
-          <p class="project-panel-intro">${project.hero.intro}</p>
+          <p class="eyebrow">${esc(project.hero.eyebrow)}</p>
+          <h2 class="project-panel-title">${esc(project.hero.name)}</h2>
+          <p class="project-panel-intro">${esc(project.hero.intro)}</p>
         </div>
         <button class="project-panel-close" type="button" data-project-close aria-label="Close project detail">Close</button>
       </div>
       <div class="summary-meta">
         ${project.hero.meta
-          .map((item) => `<span class="summary-meta-item">${item.title}</span>`)
+          .map((item) => `<span class="summary-meta-item">${esc(item.title)}</span>`)
           .join("")}
       </div>
       <section class="section project-panel-section">
@@ -199,7 +200,7 @@ function renderPage(content) {
     <div class="project-panel-backdrop" data-project-backdrop hidden></div>
     <section class="project-panel" data-project-panel hidden aria-hidden="true"></section>
     <footer class="footer">
-      <p>${content.footer}</p>
+      <p>${esc(content.footer)}</p>
     </footer>
   `;
 }

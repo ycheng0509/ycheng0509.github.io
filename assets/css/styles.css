@@ -30,11 +30,17 @@ html[data-theme="light"] {
 
 /* Scrollbar */
 html {
+  background: var(--bg);
+}
+
+html,
+body {
   scrollbar-width: thin;
   scrollbar-color: rgba(204, 214, 255, 0.2) transparent;
 }
 
-html[data-theme="light"] {
+html[data-theme="light"],
+html[data-theme="light"] body {
   scrollbar-color: rgba(26, 24, 22, 0.2) transparent;
 }
 
