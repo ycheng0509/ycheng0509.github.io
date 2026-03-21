@@ -32,17 +32,16 @@ export const homeContent = {
       meta: ["Product Owner", "In Progress", "Solo build", "Internal tooling"],
       projects: [
         {
+          id: "operator-tooling",
           title: "Operator Tooling & Data Collection Reliability System",
           body:
             "Internal tooling project for operators and supervisors: one interface for pre-shift setup, task tracking, rig monitoring, and clearer operational visibility.",
-          href: "operator-tooling.html",
           cta: "Read project"
         },
         {
           title: "Next Digital Product",
           body:
             "Reserved for the next internal or external product case study you want to add here.",
-          href: "#",
           cta: "Coming next"
         }
       ],
@@ -263,4 +262,8 @@ export const operatorToolingContent = {
     "Support 30+ concurrent operators without rebuilding the tool from scratch.",
     "Prepare for tool migration without hardcoding the system to a single fleet dependency."
   ]
+};
+
+export const projectDetails = {
+  "operator-tooling": operatorToolingContent
 };

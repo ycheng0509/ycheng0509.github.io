@@ -1,5 +1,6 @@
 import { operatorToolingContent } from "./data.js";
 import { initThemeToggle } from "./theme.js";
+import { initPageTransitions } from "./transitions.js";
 
 function createLink(link, className = "") {
   const rel = link.external ? ' target="_blank" rel="noreferrer"' : "";
@@ -124,3 +125,4 @@ function renderPage(content) {
 
 document.querySelector("#app").innerHTML = renderPage(operatorToolingContent);
 initThemeToggle();
+initPageTransitions();
