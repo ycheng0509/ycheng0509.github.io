@@ -3,9 +3,461 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>ycheng0509</title>
+  <title>Yusi Cheng | Portfolio</title>
+  <meta name="description" content="Yusi Cheng portfolio featuring UX design, product management, UX engineering, and game design projects.">
+  <style>
+    :root {
+      --bg: #f4efe6;
+      --paper: rgba(255, 250, 242, 0.88);
+      --ink: #1a1816;
+      --muted: #665f56;
+      --line: rgba(26, 24, 22, 0.12);
+      --accent: #0d6b5d;
+      --accent-soft: #dbeee8;
+      --highlight: #bf5b3d;
+      --shadow: 0 24px 60px rgba(50, 38, 23, 0.12);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      font-family: Georgia, "Times New Roman", serif;
+      color: var(--ink);
+      background:
+        radial-gradient(circle at top left, rgba(191, 91, 61, 0.18), transparent 30%),
+        radial-gradient(circle at top right, rgba(13, 107, 93, 0.2), transparent 28%),
+        linear-gradient(180deg, #f7f2eb 0%, #efe5d7 48%, #f7f0e7 100%);
+      min-height: 100vh;
+    }
+
+    a {
+      color: inherit;
+    }
+
+    .page {
+      width: min(1120px, calc(100% - 40px));
+      margin: 0 auto;
+      padding: 28px 0 72px;
+    }
+
+    .hero {
+      position: relative;
+      overflow: hidden;
+      padding: 32px;
+      border: 1px solid var(--line);
+      border-radius: 28px;
+      background: var(--paper);
+      box-shadow: var(--shadow);
+    }
+
+    .hero::before {
+      content: "";
+      position: absolute;
+      inset: auto -4% -24% auto;
+      width: 280px;
+      height: 280px;
+      border-radius: 50%;
+      background: rgba(13, 107, 93, 0.09);
+      filter: blur(2px);
+    }
+
+    .eyebrow,
+    .section-label {
+      display: inline-block;
+      margin: 0 0 14px;
+      font-size: 0.8rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--highlight);
+    }
+
+    h1,
+    h2,
+    h3,
+    p {
+      margin: 0;
+    }
+
+    h1 {
+      max-width: 9ch;
+      font-size: clamp(3rem, 9vw, 6.6rem);
+      line-height: 0.9;
+      letter-spacing: -0.05em;
+    }
+
+    .hero-grid {
+      position: relative;
+      display: grid;
+      grid-template-columns: 1.3fr 0.9fr;
+      gap: 28px;
+      align-items: end;
+      z-index: 1;
+    }
+
+    .intro {
+      margin-top: 18px;
+      max-width: 38rem;
+      font-size: 1.15rem;
+      line-height: 1.7;
+      color: var(--muted);
+    }
+
+    .hero-meta {
+      display: grid;
+      gap: 18px;
+      justify-items: start;
+    }
+
+    .meta-card {
+      width: 100%;
+      padding: 20px;
+      border-radius: 20px;
+      background: rgba(255, 255, 255, 0.55);
+      border: 1px solid rgba(26, 24, 22, 0.08);
+    }
+
+    .meta-card strong {
+      display: block;
+      margin-bottom: 8px;
+      font-size: 1rem;
+    }
+
+    .meta-card p {
+      color: var(--muted);
+      line-height: 1.6;
+    }
+
+    .links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 26px;
+    }
+
+    .button,
+    .button-secondary {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 44px;
+      padding: 0 18px;
+      border-radius: 999px;
+      border: 1px solid var(--ink);
+      text-decoration: none;
+      font-size: 0.95rem;
+      transition: transform 180ms ease, background-color 180ms ease, color 180ms ease;
+    }
+
+    .button {
+      background: var(--ink);
+      color: #f8f3ea;
+    }
+
+    .button-secondary {
+      background: transparent;
+    }
+
+    .button:hover,
+    .button-secondary:hover,
+    .button:focus-visible,
+    .button-secondary:focus-visible {
+      transform: translateY(-2px);
+      outline: none;
+    }
+
+    .section {
+      margin-top: 28px;
+      padding: 28px;
+      border-radius: 28px;
+      border: 1px solid var(--line);
+      background: rgba(255, 251, 246, 0.82);
+      box-shadow: var(--shadow);
+    }
+
+    .section-header {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 18px;
+      align-items: end;
+      margin-bottom: 24px;
+    }
+
+    .section-header p {
+      max-width: 44rem;
+      color: var(--muted);
+      line-height: 1.65;
+    }
+
+    .project-grid {
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap: 18px;
+    }
+
+    .project-card {
+      grid-column: span 6;
+      padding: 22px;
+      border-radius: 22px;
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0.78), rgba(247, 241, 232, 0.95));
+      border: 1px solid rgba(26, 24, 22, 0.08);
+    }
+
+    .project-card.featured {
+      grid-column: span 12;
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      gap: 18px;
+      align-items: end;
+      background: linear-gradient(135deg, rgba(13, 107, 93, 0.12), rgba(255, 255, 255, 0.9));
+    }
+
+    .project-type {
+      display: inline-block;
+      margin-bottom: 10px;
+      padding: 6px 10px;
+      border-radius: 999px;
+      background: var(--accent-soft);
+      color: var(--accent);
+      font-size: 0.8rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    h2 {
+      font-size: clamp(2rem, 4vw, 3.2rem);
+      line-height: 1;
+      letter-spacing: -0.04em;
+    }
+
+    h3 {
+      font-size: 1.55rem;
+      line-height: 1.1;
+      margin-bottom: 10px;
+    }
+
+    .project-card p,
+    .featured-note,
+    .section-note,
+    .footer p {
+      color: var(--muted);
+      line-height: 1.65;
+    }
+
+    .project-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 18px;
+    }
+
+    .project-links a {
+      text-decoration: none;
+      border-bottom: 1px solid currentColor;
+      padding-bottom: 2px;
+    }
+
+    .featured-note {
+      padding: 18px;
+      border-radius: 18px;
+      background: rgba(255, 255, 255, 0.62);
+      border: 1px solid rgba(26, 24, 22, 0.08);
+    }
+
+    .footer {
+      margin-top: 28px;
+      padding: 24px 28px 12px;
+      text-align: center;
+    }
+
+    @media (max-width: 900px) {
+      .hero-grid,
+      .project-card.featured,
+      .section-header {
+        grid-template-columns: 1fr;
+      }
+
+      .project-card,
+      .project-card.featured {
+        grid-column: span 12;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .page {
+        width: min(100% - 24px, 1120px);
+        padding-top: 12px;
+      }
+
+      .hero,
+      .section {
+        padding: 22px;
+        border-radius: 24px;
+      }
+
+      h1 {
+        max-width: none;
+      }
+    }
+  </style>
 </head>
 <body>
-  <p>hello world</p>
+  <main class="page">
+    <section class="hero" id="top">
+      <div class="hero-grid">
+        <div>
+          <p class="eyebrow">Portfolio 2026</p>
+          <h1>Yusi Cheng</h1>
+          <p class="intro">
+            UX designer, product-minded builder, UX engineer, and game designer creating digital
+            products that feel usable, expressive, and alive.
+          </p>
+          <div class="links">
+            <a class="button" href="#ux-design-pm">View Projects</a>
+            <a class="button-secondary" href="https://www.linkedin.com/in/justincheng0509/" target="_blank" rel="noreferrer">LinkedIn</a>
+            <a class="button-secondary" href="https://jcheng0509.itch.io" target="_blank" rel="noreferrer">Itch.io</a>
+          </div>
+        </div>
+        <div class="hero-meta">
+          <div class="meta-card">
+            <strong>Focus</strong>
+            <p>Experience strategy, interface systems, prototyping, and cross-functional delivery.</p>
+          </div>
+          <div class="meta-card">
+            <strong>Current Structure</strong>
+            <p>This portfolio is organized into three tracks: UX Design and PM, UX Engineering, and Game Design.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="ux-design-pm">
+      <div class="section-header">
+        <div>
+          <p class="section-label">Section 01</p>
+          <h2>UX Design / PM Projects</h2>
+        </div>
+        <p>Case studies focused on product thinking, research synthesis, interaction design, prioritization, and shipping clearer experiences.</p>
+      </div>
+      <div class="project-grid">
+        <article class="project-card featured">
+          <div>
+            <p class="project-type">UX Design + Product Strategy</p>
+            <h3>Chia Network</h3>
+            <p>Reference wallet redesign work centered on simplifying critical flows, clarifying trust and security cues, and improving usability for a technically complex product.</p>
+            <div class="project-links">
+              <a href="https://yusicheng.me/chia-reference-wallet" target="_blank" rel="noreferrer">Legacy case study</a>
+            </div>
+          </div>
+          <div class="featured-note">
+            A strong anchor project for the new site because it signals both systems thinking and practical product design.
+          </div>
+        </article>
+
+        <article class="project-card">
+          <p class="project-type">UX Design + Research</p>
+          <h3>Travel Mate</h3>
+          <p>Your smart travel assistant redesigned, with a focus on reducing planning friction and making trip support feel more intuitive and proactive.</p>
+          <div class="project-links">
+            <a href="https://yusicheng.me/travelmate" target="_blank" rel="noreferrer">Legacy case study</a>
+          </div>
+        </article>
+
+        <article class="project-card">
+          <p class="project-type">Identity + Onboarding</p>
+          <h3>iPersona</h3>
+          <p>Security for your gaming identity. This project suggests a blend of onboarding design, trust-building, and a clearer first-use experience.</p>
+          <div class="project-links">
+            <a href="https://yusicheng.me/ipersonaonboard" target="_blank" rel="noreferrer">Legacy case study</a>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="section" id="ux-engineer">
+      <div class="section-header">
+        <div>
+          <p class="section-label">Section 02</p>
+          <h2>UX Engineer Projects</h2>
+        </div>
+        <p>Projects where design intent and implementation meet: rapid prototyping, front-end interaction work, and building polished interfaces that communicate clearly.</p>
+      </div>
+      <div class="project-grid">
+        <article class="project-card featured">
+          <div>
+            <p class="project-type">Prototype + Interface Build</p>
+            <h3>Interactive Product Prototypes</h3>
+            <p>This section is set up as the engineering bridge in the portfolio: coded prototypes, design-system implementation, and front-end work that turns concepts into testable experiences.</p>
+          </div>
+          <div class="featured-note">
+            Add production examples here next: web apps, design systems, coded prototypes, or shipped UI components.
+          </div>
+        </article>
+
+        <article class="project-card">
+          <p class="project-type">Front-End Systems</p>
+          <h3>Design-to-Code Work</h3>
+          <p>Space reserved for projects that demonstrate how you translate flows, visual hierarchy, and interaction patterns into responsive interfaces.</p>
+        </article>
+
+        <article class="project-card">
+          <p class="project-type">Rapid Prototyping</p>
+          <h3>Experimentation Lab</h3>
+          <p>Use this area for small builds that show technical range: motion studies, interface explorations, or tools created to validate UX ideas quickly.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section" id="game-design">
+      <div class="section-header">
+        <div>
+          <p class="section-label">Section 03</p>
+          <h2>Game Design Projects</h2>
+        </div>
+        <p>Projects centered on player experience, systems, iteration, and the craft of making mechanics readable, engaging, and worth returning to.</p>
+      </div>
+      <div class="project-grid">
+        <article class="project-card featured">
+          <div>
+            <p class="project-type">Game Design + Playtesting</p>
+            <h3>Captain Crimson’s Journey</h3>
+            <p>A Northeastern game design project involving playtesting with children, likely highlighting level readability, engagement, and iterative design decisions informed by observation.</p>
+            <div class="project-links">
+              <a href="https://yusicheng.me/captain-crimson" target="_blank" rel="noreferrer">Legacy case study</a>
+              <a href="https://jcheng0509.itch.io" target="_blank" rel="noreferrer">Itch.io profile</a>
+            </div>
+          </div>
+          <div class="featured-note">
+            This is the clearest recovered game project from the old site and should likely remain the lead case study in this section.
+          </div>
+        </article>
+
+        <article class="project-card">
+          <p class="project-type">Playable Builds</p>
+          <h3>Published Game Experiments</h3>
+          <p>Your Itch.io page can serve as the public hub for prototypes, playable demos, and smaller releases that complement the deeper case studies.</p>
+          <div class="project-links">
+            <a href="https://jcheng0509.itch.io" target="_blank" rel="noreferrer">Open Itch.io</a>
+          </div>
+        </article>
+
+        <article class="project-card">
+          <p class="project-type">Future Case Studies</p>
+          <h3>Systems, Levels, and Player UX</h3>
+          <p>Reserve this slot for additional game projects that emphasize mechanics design, feedback loops, onboarding, and moment-to-moment player understanding.</p>
+        </article>
+      </div>
+    </section>
+
+    <footer class="footer">
+      <p>Built as a lightweight GitHub Pages portfolio. More detailed case studies and visuals can be migrated from the legacy Squarespace site next.</p>
+    </footer>
+  </main>
 </body>
 </html>
