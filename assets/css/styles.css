@@ -12,16 +12,16 @@
 }
 
 html[data-theme="light"] {
-  --bg: #f4efe6;
-  --paper: rgba(255, 250, 242, 0.88);
-  --paper-strong: rgba(255, 252, 247, 0.96);
+  --bg: #c9c2b8;
+  --paper: rgba(210, 204, 196, 0.92);
+  --paper-strong: rgba(206, 200, 192, 0.97);
   --ink: #1a1816;
-  --muted: #665f56;
-  --line: rgba(26, 24, 22, 0.12);
+  --muted: #565049;
+  --line: rgba(26, 24, 22, 0.15);
   --accent: #0d6b5d;
-  --accent-soft: #dbeee8;
+  --accent-soft: #c4d8d4;
   --highlight: #bf5b3d;
-  --shadow: 0 24px 60px rgba(50, 38, 23, 0.12);
+  --shadow: 0 24px 60px rgba(50, 38, 23, 0.2);
 }
 
 * {
@@ -64,9 +64,9 @@ html[data-page-state="exit"] .page {
 
 html[data-theme="light"] body {
   background:
-    radial-gradient(circle at top left, rgba(191, 91, 61, 0.18), transparent 30%),
-    radial-gradient(circle at top right, rgba(13, 107, 93, 0.2), transparent 28%),
-    linear-gradient(180deg, #f7f2eb 0%, #efe5d7 48%, #f7f0e7 100%);
+    radial-gradient(circle at top left, rgba(191, 91, 61, 0.1), transparent 30%),
+    radial-gradient(circle at top right, rgba(13, 107, 93, 0.1), transparent 28%),
+    linear-gradient(180deg, #c1bab0 0%, #cac3b9 48%, #c6bfb5 100%);
 }
 
 a {
@@ -269,8 +269,8 @@ html[data-theme="light"] .button-secondary {
 }
 
 .section {
-  margin-top: 28px;
-  padding: 28px;
+  margin-top: 48px;
+  padding: 36px;
   border-radius: 28px;
   border: 1px solid var(--line);
   background: var(--paper);
@@ -290,7 +290,7 @@ html[data-theme="light"] .button-secondary {
   grid-template-columns: 1fr auto;
   gap: 18px;
   align-items: end;
-  margin-bottom: 24px;
+  margin-bottom: 32px;
 }
 
 .section-header p {
@@ -358,15 +358,15 @@ html[data-theme="light"] .button-secondary {
 .summary-project-item {
   display: grid;
   gap: 12px;
-  padding: 18px;
+  padding: 20px;
   border-radius: 18px;
-  background: linear-gradient(180deg, rgba(22, 31, 54, 0.82), rgba(11, 17, 32, 0.92));
+  background: rgba(255, 255, 255, 0.04);
   border: 1px solid var(--line);
 }
 
 html[data-theme="light"] .summary-project-item {
-  background: linear-gradient(180deg, rgba(255, 255, 255, 0.78), rgba(247, 241, 232, 0.95));
-  border: 1px solid rgba(26, 24, 22, 0.08);
+  background: rgba(255, 255, 255, 0.42);
+  border: 1px solid rgba(26, 24, 22, 0.09);
 }
 
 .summary-project-copy p {
@@ -456,12 +456,12 @@ html[data-theme="light"] .summary-chip {
 }
 
 html[data-theme="light"] .project-card {
-  background: linear-gradient(180deg, rgba(255, 255, 255, 0.78), rgba(247, 241, 232, 0.95));
-  border: 1px solid rgba(26, 24, 22, 0.08);
+  background: rgba(255, 255, 255, 0.42);
+  border: 1px solid rgba(26, 24, 22, 0.09);
 }
 
 html[data-theme="light"] .project-card.featured {
-  background: linear-gradient(135deg, rgba(13, 107, 93, 0.12), rgba(255, 255, 255, 0.9));
+  background: linear-gradient(135deg, rgba(13, 107, 93, 0.1), rgba(255, 255, 255, 0.42));
 }
 
 .project-type {
