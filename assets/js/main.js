@@ -83,7 +83,6 @@ function renderSummaryCard(section) {
     <section class="section summary-card" id="${section.id}">
       <div class="summary-top">
         <div>
-          <p class="section-label">${section.label}</p>
           <h2>${section.title}</h2>
         </div>
         <p class="summary-description">${section.description}</p>

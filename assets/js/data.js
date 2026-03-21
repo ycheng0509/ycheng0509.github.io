@@ -24,8 +24,34 @@ export const homeContent = {
   },
   sections: [
     {
-      id: "digital-product",
+      id: "embodied-interaction",
       label: "Section 01",
+      title: "Embodied Interaction",
+      description: "VR development and physical systems design — work focused on presence, spatial feedback, and how people move through interactive environments.",
+      projects: [
+        {
+          title: "1X Technologies — Data Collection Operator",
+          body:
+            "Operating humanoid robots in R&D environments using VR headsets — performing designated movements, staging tasks, and annotating sessions to train AI models. Work involves extended VR use, fine motor precision, and close observation of how robots interpret and execute real-world actions.",
+          cta: "Current role"
+        },
+        {
+          title: "Cast Away — VR Survival Game",
+          body:
+            "Capstone VR project built in Unity for Meta Quest 3. A first-person survival experience designed around physical presence: real-world weapon handling, haptic feedback, resource gathering, and AI encounters — all built to make virtual action feel grounded.",
+          cta: "Case study coming"
+        }
+      ],
+      highlights: ["VR / XR development", "Spatial interaction design", "Haptic feedback systems", "Unity", "Playtesting"],
+      secondaryLink: {
+        label: "Open Itch.io",
+        href: "https://jcheng0509.itch.io",
+        external: true
+      }
+    },
+    {
+      id: "digital-product",
+      label: "Section 02",
       title: "Digital Product",
       description: "Internal product strategy, UX, and implementation.",
       meta: ["Product Owner", "In Progress", "Solo build", "Internal tooling"],
@@ -60,7 +86,7 @@ export const homeContent = {
     },
     {
       id: "support-community",
-      label: "Section 02",
+      label: "Section 03",
       title: "Support & Community",
       description: "Technical support, escalation, and community operations.",
       meta: ["Tier 1/2 Support", "APAC Coverage", "Knowledge Base", "Cross-functional"],
@@ -79,18 +105,6 @@ export const homeContent = {
         "Support operations",
         "Community coordination"
       ]
-    },
-    {
-      id: "game-design",
-      label: "Section 03",
-      title: "Game Design Projects",
-      description: "Playable systems work.",
-      highlights: ["Playtesting", "Systems design", "Player UX"],
-      secondaryLink: {
-        label: "Open Itch.io",
-        href: "https://jcheng0509.itch.io",
-        external: true
-      }
     }
   ],
   footer:
