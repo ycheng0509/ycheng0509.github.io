@@ -185,9 +185,6 @@ function renderProjectPanel(project) {
         </div>
         <ul class="detail-list">${outcomes}</ul>
       </section>
-      <div class="project-panel-actions">
-        <a class="button-secondary" href="operator-tooling.html">Open standalone page</a>
-      </div>
     </div>
   `;
 }
