@@ -5,7 +5,6 @@ export const homeContent = {
     intro: "Digital product work, technical support/community operations, and game systems.",
     links: [
       { label: "View Projects", href: "#digital-product", variant: "primary" },
-      { label: "Legacy Projects", href: "legacy.html" },
       {
         label: "LinkedIn",
         href: "https://www.linkedin.com/in/justincheng0509/",
@@ -46,11 +45,10 @@ export const homeContent = {
           cta: "Read project"
         },
         {
-          href: "legacy.html#ipersona",
-          title: "iPersona Design System",
-          body:
-            "Startup gaming privacy platform focused on account identity, onboarding, and a design system for privacy-conscious players.",
-          cta: "View in Legacy"
+          href: "legacy.html",
+          title: "Older Projects",
+          body: "Earlier case studies covering UX design, product strategy, and game design work.",
+          cta: "View archive"
         }
       ],
       highlights: [
@@ -241,7 +239,6 @@ export const operatorToolingContent = {
       "An internal product for operators and supervisors that consolidates pre-shift setup, task tracking, rig monitoring, and operational visibility into one lightweight interface.",
     links: [
       { label: "Back to Homepage", href: "index.html", variant: "primary" },
-      { label: "Legacy Projects", href: "legacy.html" },
       {
         label: "LinkedIn",
         href: "https://www.linkedin.com/in/justincheng0509/",
@@ -306,7 +303,6 @@ export const ipersonaContent = {
       "A startup gaming privacy platform exploring how players can protect account identity, reduce onboarding friction, and build a recognizable online persona with less personal exposure.",
     links: [
       { label: "Back to Homepage", href: "index.html", variant: "primary" },
-      { label: "Legacy Projects", href: "legacy.html" },
       {
         label: "Original case study",
         href: "https://yusicheng.me/ipersonaonboard",
@@ -435,7 +431,6 @@ export const chiaWalletContent = {
       "Reference wallet redesign work for Chia focused on making a newly unified wallet experience easier to understand after light wallet and full node functionality were brought together.",
     links: [
       { label: "Back to Homepage", href: "index.html", variant: "primary" },
-      { label: "Legacy Projects", href: "legacy.html" },
       {
         label: "Original case study",
         href: "https://yusicheng.me/chia-reference-wallet",
