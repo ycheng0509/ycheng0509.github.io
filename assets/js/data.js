@@ -3,7 +3,7 @@ export const homeContent = {
     eyebrow: "Portfolio 2026",
     name: "Yusi Cheng",
     intro:
-      "UX designer, product-minded builder, UX engineer, and game designer creating digital products that feel usable, expressive, and alive.",
+      "UX designer, product-minded builder, UX engineer, and game designer creating digital products that feel usable and alive.",
     links: [
       { label: "View Projects", href: "#ux-design-pm", variant: "primary" },
       { label: "Legacy Projects", href: "legacy.html" },
@@ -16,11 +16,11 @@ export const homeContent = {
     meta: [
       {
         title: "Focus",
-        body: "Experience strategy, interface systems, prototyping, and cross-functional delivery."
+        body: "UX, product thinking, front-end prototyping, and game systems."
       },
       {
-        title: "Current Structure",
-        body: "The homepage highlights current portfolio directions. Older case studies live in a separate legacy archive."
+        title: "Format",
+        body: "Homepage for current work. Archive page for older case studies."
       }
     ]
   },
@@ -29,107 +29,37 @@ export const homeContent = {
       id: "ux-design-pm",
       label: "Section 01",
       title: "UX Design / PM",
-      description:
-        "Current and in-progress case study direction for product thinking, research synthesis, interaction design, prioritization, and shipping clearer experiences.",
-      projects: [
-        {
-          featured: true,
-          type: "Flagship Direction",
-          title: "Product Strategy and UX Case Studies",
-          body:
-            "Use this section for the strongest work you want recruiters to see first: deep product framing, clear problem definition, sharper interaction decisions, and measurable outcomes.",
-          note:
-            "Older UX case studies are still preserved, but they no longer need to dominate the first screen of the portfolio.",
-          links: [{ label: "View legacy UX work", href: "legacy.html#ux-design-pm" }]
-        },
-        {
-          type: "Next Addition",
-          title: "Current Case Study Slot",
-          body:
-            "Reserve this card for the most representative design or PM project you want to feature next."
-        },
-        {
-          type: "Next Addition",
-          title: "Research or Systems Project",
-          body:
-            "Use this slot for another current project that shows decision-making, process clarity, and execution range."
-        }
-      ]
+      description: "Current product and UX case studies.",
+      summary:
+        "Lead with your strongest product-thinking work here rather than several older case studies at once.",
+      highlights: ["Strategy", "Research synthesis", "Interaction design"],
+      primaryLink: { label: "View legacy UX work", href: "legacy.html#ux-design-pm" },
+      secondaryLink: { label: "Jump to section", href: "#ux-design-pm" }
     },
     {
       id: "ux-engineer",
       label: "Section 02",
       title: "UX Engineer Projects",
-      description:
-        "Projects where design intent and implementation meet: rapid prototyping, front-end interaction work, and building polished interfaces that communicate clearly.",
-      projects: [
-        {
-          featured: true,
-          type: "Prototype + Interface Build",
-          title: "Interactive Product Prototypes",
-          body:
-            "This section is set up as the engineering bridge in the portfolio: coded prototypes, design-system implementation, and front-end work that turns concepts into testable experiences.",
-          note:
-            "Add production examples here next: web apps, design systems, coded prototypes, or shipped UI components."
-        },
-        {
-          type: "Front-End Systems",
-          title: "Design-to-Code Work",
-          body:
-            "Space reserved for projects that demonstrate how you translate flows, visual hierarchy, and interaction patterns into responsive interfaces."
-        },
-        {
-          type: "Rapid Prototyping",
-          title: "Experimentation Lab",
-          body:
-            "Use this area for small builds that show technical range: motion studies, interface explorations, or tools created to validate UX ideas quickly."
-        }
-      ]
+      description: "Design-to-code and prototype work.",
+      summary:
+        "Use this track for polished builds, design systems, and prototypes that show how you execute interaction ideas in code.",
+      highlights: ["Front-end systems", "Rapid prototyping", "Interaction polish"],
+      primaryLink: { label: "Feature current build", href: "#ux-engineer" }
     },
     {
       id: "game-design",
       label: "Section 03",
       title: "Game Design Projects",
-      description:
-        "Projects centered on player experience, systems, iteration, and the craft of making mechanics readable, engaging, and worth returning to.",
-      projects: [
-        {
-          featured: true,
-          type: "Game Design + Playtesting",
-          title: "Current and Featured Play Projects",
-          body:
-            "Use this section for the strongest playable or systems-heavy work you want to represent your game design practice now.",
-          note:
-            "Older recovered game case studies remain accessible in the archive so the homepage can stay focused.",
-          links: [
-            { label: "View legacy game work", href: "legacy.html#game-design" },
-            {
-              label: "Itch.io profile",
-              href: "https://jcheng0509.itch.io",
-              external: true
-            }
-          ]
-        },
-        {
-          type: "Playable Builds",
-          title: "Published Game Experiments",
-          body:
-            "Your Itch.io page can serve as the public hub for prototypes, playable demos, and smaller releases that complement the deeper case studies.",
-          links: [
-            {
-              label: "Open Itch.io",
-              href: "https://jcheng0509.itch.io",
-              external: true
-            }
-          ]
-        },
-        {
-          type: "Future Case Studies",
-          title: "Systems, Levels, and Player UX",
-          body:
-            "Reserve this slot for additional game projects that emphasize mechanics design, feedback loops, onboarding, and moment-to-moment player understanding."
-        }
-      ]
+      description: "Playable systems and player experience work.",
+      summary:
+        "Keep one or two strong playable projects here and push the rest to archive or Itch.io.",
+      highlights: ["Playtesting", "Systems design", "Player UX"],
+      primaryLink: { label: "View legacy game work", href: "legacy.html#game-design" },
+      secondaryLink: {
+        label: "Open Itch.io",
+        href: "https://jcheng0509.itch.io",
+        external: true
+      }
     }
   ],
   footer:
