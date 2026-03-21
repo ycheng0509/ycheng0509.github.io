@@ -2,8 +2,7 @@ export const homeContent = {
   hero: {
     eyebrow: "Portfolio 2026",
     name: "Yusi Cheng",
-    intro:
-      "UX designer, product-minded builder, UX engineer, and game designer creating digital products that feel usable and alive.",
+    intro: "UX design, product thinking, front-end prototyping, and game systems.",
     links: [
       { label: "View Projects", href: "#ux-design-pm", variant: "primary" },
       { label: "Legacy Projects", href: "legacy.html" },
@@ -29,32 +28,25 @@ export const homeContent = {
       id: "ux-design-pm",
       label: "Section 01",
       title: "UX Design / PM",
-      description: "Current product and UX case studies.",
-      summary:
-        "Lead with your strongest product-thinking work here rather than several older case studies at once.",
+      description: "Current case studies.",
       highlights: ["Strategy", "Research synthesis", "Interaction design"],
-      primaryLink: { label: "View legacy UX work", href: "legacy.html#ux-design-pm" },
-      secondaryLink: { label: "Jump to section", href: "#ux-design-pm" }
+      primaryLink: { label: "Open archive", href: "legacy.html#ux-design-pm" }
     },
     {
       id: "ux-engineer",
       label: "Section 02",
       title: "UX Engineer Projects",
-      description: "Design-to-code and prototype work.",
-      summary:
-        "Use this track for polished builds, design systems, and prototypes that show how you execute interaction ideas in code.",
+      description: "Design-to-code work.",
       highlights: ["Front-end systems", "Rapid prototyping", "Interaction polish"],
-      primaryLink: { label: "Feature current build", href: "#ux-engineer" }
+      primaryLink: { label: "Coming next", href: "#ux-engineer" }
     },
     {
       id: "game-design",
       label: "Section 03",
       title: "Game Design Projects",
-      description: "Playable systems and player experience work.",
-      summary:
-        "Keep one or two strong playable projects here and push the rest to archive or Itch.io.",
+      description: "Playable systems work.",
       highlights: ["Playtesting", "Systems design", "Player UX"],
-      primaryLink: { label: "View legacy game work", href: "legacy.html#game-design" },
+      primaryLink: { label: "Open archive", href: "legacy.html#game-design" },
       secondaryLink: {
         label: "Open Itch.io",
         href: "https://jcheng0509.itch.io",

@@ -1,4 +1,5 @@
 import { homeContent } from "./data.js";
+import { initThemeToggle } from "./theme.js";
 
 function createLink(link, className = "") {
   const rel = link.external ? ' target="_blank" rel="noreferrer"' : "";
@@ -56,7 +57,6 @@ function renderSummaryCard(section) {
         </div>
         <p class="summary-description">${section.description}</p>
       </div>
-      <p class="summary-copy">${section.summary}</p>
       <ul class="summary-highlights">${highlights}</ul>
       <div class="summary-actions">
         ${createLink(section.primaryLink, "button")}
@@ -69,7 +69,7 @@ function renderSummaryCard(section) {
 function renderPage(content) {
   return `
     ${renderHero(content.hero)}
-    <div class="section-list">
+    <div class="overview-grid">
       ${content.sections.map(renderSummaryCard).join("")}
     </div>
     <footer class="footer">
@@ -79,3 +79,4 @@ function renderPage(content) {
 }
 
 document.querySelector("#app").innerHTML = renderPage(homeContent);
+initThemeToggle();
