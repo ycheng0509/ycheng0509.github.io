@@ -1,4 +1,4 @@
-export const siteContent = {
+export const homeContent = {
   hero: {
     eyebrow: "Portfolio 2026",
     name: "Yusi Cheng",
@@ -6,14 +6,10 @@ export const siteContent = {
       "UX designer, product-minded builder, UX engineer, and game designer creating digital products that feel usable, expressive, and alive.",
     links: [
       { label: "View Projects", href: "#ux-design-pm", variant: "primary" },
+      { label: "Legacy Projects", href: "legacy.html" },
       {
         label: "LinkedIn",
         href: "https://www.linkedin.com/in/justincheng0509/",
-        external: true
-      },
-      {
-        label: "Itch.io",
-        href: "https://jcheng0509.itch.io",
         external: true
       }
     ],
@@ -24,7 +20,7 @@ export const siteContent = {
       },
       {
         title: "Current Structure",
-        body: "This portfolio is organized into three tracks: UX Design and PM, UX Engineering, and Game Design."
+        body: "The homepage highlights current portfolio directions. Older case studies live in a separate legacy archive."
       }
     ]
   },
@@ -32,51 +28,31 @@ export const siteContent = {
     {
       id: "ux-design-pm",
       label: "Section 01",
-      title: "UX Design / PM Projects",
+      title: "UX Design / PM",
       description:
-        "Case studies focused on product thinking, research synthesis, interaction design, prioritization, and shipping clearer experiences.",
+        "Current and in-progress case study direction for product thinking, research synthesis, interaction design, prioritization, and shipping clearer experiences.",
       projects: [
         {
           featured: true,
-          type: "UX Design + Product Strategy",
-          title: "Chia Network",
+          type: "Flagship Direction",
+          title: "Product Strategy and UX Case Studies",
           body:
-            "Reference wallet redesign work centered on simplifying critical flows, clarifying trust and security cues, and improving usability for a technically complex product.",
+            "Use this section for the strongest work you want recruiters to see first: deep product framing, clear problem definition, sharper interaction decisions, and measurable outcomes.",
           note:
-            "A strong anchor project for the new site because it signals both systems thinking and practical product design.",
-          links: [
-            {
-              label: "Legacy case study",
-              href: "https://yusicheng.me/chia-reference-wallet",
-              external: true
-            }
-          ]
+            "Older UX case studies are still preserved, but they no longer need to dominate the first screen of the portfolio.",
+          links: [{ label: "View legacy UX work", href: "legacy.html#ux-design-pm" }]
         },
         {
-          type: "UX Design + Research",
-          title: "Travel Mate",
+          type: "Next Addition",
+          title: "Current Case Study Slot",
           body:
-            "Your smart travel assistant redesigned, with a focus on reducing planning friction and making trip support feel more intuitive and proactive.",
-          links: [
-            {
-              label: "Legacy case study",
-              href: "https://yusicheng.me/travelmate",
-              external: true
-            }
-          ]
+            "Reserve this card for the most representative design or PM project you want to feature next."
         },
         {
-          type: "Identity + Onboarding",
-          title: "iPersona",
+          type: "Next Addition",
+          title: "Research or Systems Project",
           body:
-            "Security for your gaming identity. This project suggests a blend of onboarding design, trust-building, and a clearer first-use experience.",
-          links: [
-            {
-              label: "Legacy case study",
-              href: "https://yusicheng.me/ipersonaonboard",
-              external: true
-            }
-          ]
+            "Use this slot for another current project that shows decision-making, process clarity, and execution range."
         }
       ]
     },
@@ -120,17 +96,13 @@ export const siteContent = {
         {
           featured: true,
           type: "Game Design + Playtesting",
-          title: "Captain Crimson's Journey",
+          title: "Current and Featured Play Projects",
           body:
-            "A Northeastern game design project involving playtesting with children, likely highlighting level readability, engagement, and iterative design decisions informed by observation.",
+            "Use this section for the strongest playable or systems-heavy work you want to represent your game design practice now.",
           note:
-            "This is the clearest recovered game project from the old site and should likely remain the lead case study in this section.",
+            "Older recovered game case studies remain accessible in the archive so the homepage can stay focused.",
           links: [
-            {
-              label: "Legacy case study",
-              href: "https://yusicheng.me/captain-crimson",
-              external: true
-            },
+            { label: "View legacy game work", href: "legacy.html#game-design" },
             {
               label: "Itch.io profile",
               href: "https://jcheng0509.itch.io",
@@ -161,5 +133,135 @@ export const siteContent = {
     }
   ],
   footer:
-    "Built as a lightweight GitHub Pages portfolio. More detailed case studies and visuals can be migrated from the legacy Squarespace site next."
+    "Built as a lightweight GitHub Pages portfolio. Homepage content is modular, and older work now lives in a dedicated archive page."
+};
+
+export const legacyContent = {
+  hero: {
+    eyebrow: "Archive",
+    name: "Legacy Projects",
+    intro:
+      "Earlier case studies still worth keeping as evidence of range, process, and growth. This page is the archive, not the main portfolio signal.",
+    links: [
+      { label: "Back to Homepage", href: "index.html", variant: "primary" },
+      {
+        label: "Itch.io",
+        href: "https://jcheng0509.itch.io",
+        external: true
+      },
+      {
+        label: "LinkedIn",
+        href: "https://www.linkedin.com/in/justincheng0509/",
+        external: true
+      }
+    ],
+    meta: [
+      {
+        title: "Why Keep This",
+        body: "Archived work still shows breadth, craft, and how your thinking has evolved across product, UX, and games."
+      },
+      {
+        title: "How To Use It",
+        body: "Keep the homepage current. Move anything older, less representative, or more exploratory here instead of deleting it immediately."
+      }
+    ]
+  },
+  sections: [
+    {
+      id: "ux-design-pm",
+      label: "Legacy 01",
+      title: "Legacy UX Design / PM Projects",
+      description:
+        "Earlier UX and product projects kept as archive material.",
+      projects: [
+        {
+          featured: true,
+          type: "UX Design + Product Strategy",
+          title: "Chia Network",
+          body:
+            "Reference wallet redesign work centered on simplifying critical flows, clarifying trust and security cues, and improving usability for a technically complex product.",
+          note:
+            "Still a useful archive project because it shows systems thinking and practical product design in a complex domain.",
+          links: [
+            {
+              label: "Open case study",
+              href: "https://yusicheng.me/chia-reference-wallet",
+              external: true
+            }
+          ]
+        },
+        {
+          type: "UX Design + Research",
+          title: "Travel Mate",
+          body:
+            "A smart travel assistant redesign focused on reducing planning friction and making trip support feel more intuitive and proactive.",
+          links: [
+            {
+              label: "Open case study",
+              href: "https://yusicheng.me/travelmate",
+              external: true
+            }
+          ]
+        },
+        {
+          type: "Identity + Onboarding",
+          title: "iPersona",
+          body:
+            "Security for gaming identity, with emphasis on onboarding design, trust-building, and a clearer first-use experience.",
+          links: [
+            {
+              label: "Open case study",
+              href: "https://yusicheng.me/ipersonaonboard",
+              external: true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      id: "game-design",
+      label: "Legacy 02",
+      title: "Legacy Game Design Projects",
+      description:
+        "Recovered game design work and public builds preserved as archive material.",
+      projects: [
+        {
+          featured: true,
+          type: "Game Design + Playtesting",
+          title: "Captain Crimson's Journey",
+          body:
+            "A Northeastern game design project involving playtesting with children, highlighting level readability, engagement, and iterative design decisions informed by observation.",
+          note:
+            "This remains a solid archive lead because it clearly communicates player-centered iteration and playtest-informed design.",
+          links: [
+            {
+              label: "Open case study",
+              href: "https://yusicheng.me/captain-crimson",
+              external: true
+            },
+            {
+              label: "Itch.io profile",
+              href: "https://jcheng0509.itch.io",
+              external: true
+            }
+          ]
+        },
+        {
+          type: "Playable Builds",
+          title: "Published Game Experiments",
+          body:
+            "Public prototypes, playable demos, and smaller releases that complement the deeper case studies.",
+          links: [
+            {
+              label: "Open Itch.io",
+              href: "https://jcheng0509.itch.io",
+              external: true
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  footer:
+    "This archive preserves older work without forcing it to compete with your current portfolio direction on the homepage."
 };
