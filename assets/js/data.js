@@ -2,9 +2,9 @@ export const homeContent = {
   hero: {
     eyebrow: "Portfolio 2026",
     name: "Yusi Cheng",
-    intro: "Digital product work, technical support/community operations, and game systems.",
+    intro: "VR, robotics, digital product, and community operations.",
     links: [
-      { label: "View Projects", href: "#digital-product", variant: "primary" },
+      { label: "View Projects", href: "#embodied-interaction", variant: "primary" },
       {
         label: "LinkedIn",
         href: "https://www.linkedin.com/in/justincheng0509/",
@@ -14,7 +14,7 @@ export const homeContent = {
     meta: [
       {
         title: "Focus",
-        body: "Digital product strategy, support/community operations, prototyping, and game systems."
+        body: "Embodied interaction, product strategy, and support operations."
       },
       {
         title: "Format",
@@ -27,18 +27,18 @@ export const homeContent = {
       id: "embodied-interaction",
       label: "Section 01",
       title: "Embodied Interaction",
-      description: "VR development and physical systems design — work focused on presence, spatial feedback, and how people move through interactive environments.",
+      description: "VR development and physical systems — presence, spatial feedback, and real-world action.",
       projects: [
         {
           title: "1X Technologies — Data Collection Operator",
           body:
-            "Operating humanoid robots in R&D environments using VR headsets — performing designated movements, staging tasks, and annotating sessions to train AI models. Work involves extended VR use, fine motor precision, and close observation of how robots interpret and execute real-world actions.",
+            "Operating humanoid robots in R&D environments via VR headset — performing movements, staging tasks, and annotating sessions to train AI models.",
           cta: "Current role"
         },
         {
           title: "Cast Away — VR Survival Game",
           body:
-            "Capstone VR project built in Unity for Meta Quest 3. A first-person survival experience designed around physical presence: real-world weapon handling, haptic feedback, resource gathering, and AI encounters — all built to make virtual action feel grounded.",
+            "Capstone VR project built in Unity for Meta Quest 3. Designed around physical presence: weapon handling, haptic feedback, resource gathering, and AI encounters.",
           cta: "Case study coming"
         }
       ],
@@ -60,20 +60,20 @@ export const homeContent = {
           id: "operator-tooling",
           title: "Operator Tooling & Data Collection Reliability System",
           body:
-            "Internal tooling project for operators and supervisors: one interface for pre-shift setup, task tracking, rig monitoring, and clearer operational visibility.",
+            "Internal tooling for operators and supervisors: pre-shift setup, task tracking, rig monitoring, and operational visibility in one interface.",
           cta: "Read project"
         },
         {
           id: "chia-wallet",
           title: "Chia Reference Wallet",
           body:
-            "Wallet redesign work focused on reducing fragmentation between light wallet and full node experiences while improving clarity after client integration.",
+            "Wallet redesign focused on reducing fragmentation between light wallet and full node after client integration.",
           cta: "Read project"
         },
         {
           href: "legacy.html",
           title: "Older Projects",
-          body: "Earlier case studies covering UX design, product strategy, and game design work.",
+          body: "Earlier case studies in UX design, product strategy, and game design.",
           cta: "View archive"
         }
       ],
@@ -95,7 +95,7 @@ export const homeContent = {
           id: "chia-support",
           title: "Chia Network Technical Community Manager",
           body:
-            "Tier 1/2 technical support and APAC community operations across wallet sync, networking, account issues, escalation, and support-channel coverage.",
+            "Tier 1/2 technical support and APAC community operations across wallet sync, networking, account issues, and escalation.",
           cta: "Read role"
         }
       ],
@@ -108,7 +108,7 @@ export const homeContent = {
     }
   ],
   footer:
-    "Built as a lightweight GitHub Pages portfolio. Homepage content is modular, and older work now lives in a dedicated archive page."
+    "Built as a lightweight GitHub Pages portfolio. Older work lives in the archive page."
 };
 
 export const legacyContent = {
@@ -116,7 +116,7 @@ export const legacyContent = {
     eyebrow: "Archive",
     name: "Legacy Projects",
     intro:
-      "Earlier case studies still worth keeping as evidence of range, process, and growth. This page is the archive, not the main portfolio signal.",
+      "Earlier case studies kept as evidence of range, process, and growth. This is the archive, not the main portfolio signal.",
     links: [
       { label: "Back to Homepage", href: "index.html", variant: "primary" },
       {
@@ -133,11 +133,11 @@ export const legacyContent = {
     meta: [
       {
         title: "Why Keep This",
-        body: "Archived work still shows breadth, craft, and how your thinking has evolved across product, UX, and games."
+        body: "Archived work shows breadth and how thinking has evolved across product, UX, and games."
       },
       {
         title: "How To Use It",
-        body: "Keep the homepage current. Move anything older, less representative, or more exploratory here instead of deleting it immediately."
+        body: "Keep the homepage current. Move older or exploratory work here rather than deleting it."
       }
     ]
   },
@@ -154,9 +154,9 @@ export const legacyContent = {
           type: "UX Design + Product Strategy",
           title: "Chia Network",
           body:
-            "Reference wallet redesign work centered on simplifying critical flows, clarifying trust and security cues, and improving usability for a technically complex product.",
+            "Reference wallet redesign centered on simplifying critical flows and improving usability for a technically complex product.",
           note:
-            "Still a useful archive project because it shows systems thinking and practical product design in a complex domain.",
+            "Shows systems thinking and practical product design in a complex domain.",
           links: [
             {
               label: "Open case study",
@@ -169,7 +169,7 @@ export const legacyContent = {
           type: "UX Design + Research",
           title: "Travel Mate",
           body:
-            "A smart travel assistant redesign focused on reducing planning friction and making trip support feel more intuitive and proactive.",
+            "A smart travel assistant redesign focused on reducing planning friction and making trip support feel more intuitive.",
           links: [
             {
               label: "Open case study",
@@ -184,9 +184,9 @@ export const legacyContent = {
           type: "Identity + Onboarding",
           title: "iPersona Design System",
           body:
-            "A startup gaming privacy platform exploring how players can protect account identity, reduce onboarding friction, and build a recognizable online persona with less personal exposure. Work covered design system creation, product structure, workflow iteration, and Vue front-end prototypes.",
+            "A startup gaming privacy platform for protecting account identity and reducing onboarding friction. Covered design system creation, product structure, and Vue front-end prototypes.",
           note:
-            "Archived here as an earlier project. Still useful as evidence of design system work, startup team collaboration, and front-end prototyping in a product context.",
+            "Evidence of design system work, startup collaboration, and front-end prototyping in a product context.",
           links: [
             {
               label: "Open case study",
@@ -209,9 +209,9 @@ export const legacyContent = {
           type: "Game Design + Playtesting",
           title: "Captain Crimson's Journey",
           body:
-            "A Northeastern game design project involving playtesting with children, highlighting level readability, engagement, and iterative design decisions informed by observation.",
+            "A Northeastern game design project involving playtesting with children. Focused on level readability, engagement, and iteration informed by observation.",
           note:
-            "This remains a solid archive lead because it clearly communicates player-centered iteration and playtest-informed design.",
+            "Communicates player-centered iteration and playtest-informed design clearly.",
           links: [
             {
               label: "Open case study",
@@ -242,7 +242,7 @@ export const legacyContent = {
     }
   ],
   footer:
-    "This archive preserves older work without forcing it to compete with your current portfolio direction on the homepage."
+    "This archive preserves older work without forcing it to compete with the current portfolio."
 };
 
 export const operatorToolingContent = {
@@ -250,7 +250,7 @@ export const operatorToolingContent = {
     eyebrow: "Digital Product",
     name: "Operator Tooling & Data Collection Reliability System",
     intro:
-      "An internal product for operators and supervisors that consolidates pre-shift setup, task tracking, rig monitoring, and operational visibility into one lightweight interface.",
+      "An internal product that consolidates pre-shift setup, task tracking, rig monitoring, and operational visibility into one lightweight interface.",
     links: [
       { label: "Back to Homepage", href: "index.html", variant: "primary" },
       {
@@ -266,7 +266,7 @@ export const operatorToolingContent = {
       },
       {
         title: "Status",
-        body: "In progress. MVP targeted as a lightweight single-file tool, with modular refactor planned next."
+        body: "In progress. MVP is a lightweight single-file tool with a modular refactor planned next."
       }
     ]
   },
@@ -279,12 +279,12 @@ export const operatorToolingContent = {
     {
       title: "Problem",
       body:
-        "The operator team is scaling toward 30+ people, but current workflows depend on manually opened tools and shared spreadsheets. That creates missed recordings, limited visibility into operator activity, weak auditability, and a monitoring model that does not scale."
+        "The operator team is scaling toward 30+ people but workflows still rely on manually opened tools and shared spreadsheets. This creates missed recordings, weak auditability, and limited visibility that won't scale."
     },
     {
       title: "Approach",
       body:
-        "The product consolidates setup, task tracking, and rig health into a single interface. It is intentionally tool-agnostic, supports mixed rig environments during migration, and gives supervisors a clearer view of operator activity and rig status."
+        "The product consolidates setup, task tracking, and rig health into a single interface. It is tool-agnostic and gives supervisors clearer visibility without a backend-heavy rebuild."
     }
   ],
   pillars: [
@@ -294,7 +294,7 @@ export const operatorToolingContent = {
     },
     {
       title: "One-Click Launcher",
-      body: "A single entry point for operator tools, plus a guided pre-shift checklist."
+      body: "A single entry point for operator tools with a guided pre-shift checklist."
     },
     {
       title: "Operational Visibility",
@@ -304,8 +304,8 @@ export const operatorToolingContent = {
   outcomes: [
     "Reduce missed recordings and late alert response.",
     "Create one reliable workspace for setup, tracking, and monitoring.",
-    "Support 30+ concurrent operators without rebuilding the tool from scratch.",
-    "Prepare for tool migration without hardcoding the system to a single fleet dependency."
+    "Support 30+ concurrent operators without rebuilding from scratch.",
+    "Prepare for tool migration without hardcoding to a single fleet dependency."
   ]
 };
 
@@ -314,7 +314,7 @@ export const ipersonaContent = {
     eyebrow: "Digital Product",
     name: "iPersona Design System",
     intro:
-      "A startup gaming privacy platform exploring how players can protect account identity, reduce onboarding friction, and build a recognizable online persona with less personal exposure.",
+      "A startup gaming privacy platform for protecting account identity and reducing onboarding friction with less personal exposure.",
     links: [
       { label: "Back to Homepage", href: "index.html", variant: "primary" },
       {
@@ -330,7 +330,7 @@ export const ipersonaContent = {
       },
       {
         title: "Timeline",
-        body: "January to August 2020 for early product structure, design system, and prototyping."
+        body: "January to August 2020 — design system, product structure, and prototyping."
       }
     ]
   },
@@ -343,12 +343,12 @@ export const ipersonaContent = {
     {
       title: "Background",
       body:
-        "The project focused on a gamer privacy service platform for a Seattle startup. The work covered design system creation, early product structure, workflow iteration, and prototypes for a first version of the product."
+        "A gamer privacy service platform for a Seattle startup. Work covered design system creation, early product structure, and front-end prototypes."
     },
     {
       title: "Problem",
       body:
-        "Gamers increasingly treat gamertags as part of their identity and personal brand, but platform constraints and privacy concerns make account creation and identity management awkward. The product aimed to help users keep a unique online identity while collecting as little sensitive information as possible."
+        "Gamers treat gamertags as personal identity but platform constraints make account creation awkward. The product aimed to let users keep a unique online identity while collecting minimal personal information."
     }
   ],
   pillars: [
@@ -358,18 +358,18 @@ export const ipersonaContent = {
     },
     {
       title: "Identity and Privacy",
-      body: "Explored ways for users to claim the gamertag they want while handling identity and privacy in a more flexible way."
+      body: "Explored ways for users to claim their gamertag while handling identity and privacy more flexibly."
     },
     {
       title: "Design System and Prototype",
-      body: "Established the visual system, iterated product workflows, and built working front-end prototypes with Vue."
+      body: "Established the visual system and built working front-end prototypes with Vue."
     }
   ],
   outcomes: [
     "Defined a first-pass design system for the startup product.",
     "Simplified the onboarding flow based on user feedback about information sensitivity.",
-    "Extended the work beyond school-project-style screens into settings, profile, and sign-in flows.",
-    "Delivered front-end design handoff and prototype work while collaborating in a small startup team."
+    "Extended work beyond initial screens into settings, profile, and sign-in flows.",
+    "Delivered front-end handoff and prototype work in a small startup team."
   ]
 };
 
@@ -378,7 +378,7 @@ export const chiaSupportContent = {
     eyebrow: "Support & Community",
     name: "Chia Network Technical Community Manager",
     intro:
-      "Tier 1/2 technical support and APAC community operations work spanning wallet sync, networking, account issues, escalation quality, and Chinese-language support coverage.",
+      "Tier 1/2 technical support and APAC community operations across wallet sync, networking, account issues, and Chinese-language coverage.",
     links: [
       { label: "Back to Homepage", href: "index.html", variant: "primary" },
       {
@@ -407,33 +407,33 @@ export const chiaSupportContent = {
     {
       title: "Support Focus",
       body:
-        "Provided Tier 1/2 support across operating systems, diagnosing wallet sync, networking, and account-related issues, then escalating reproducible defects with clear reproduction steps and impact context."
+        "Provided Tier 1/2 support across operating systems, diagnosing wallet sync, networking, and account issues. Escalated reproducible defects with clear reproduction steps and impact context."
     },
     {
       title: "Community Operations",
       body:
-        "Built and operated APAC Chinese-language support channels and coordinated distributed moderators to maintain near 24/7 support coverage for the community."
+        "Built and operated APAC Chinese-language support channels. Coordinated distributed moderators to maintain near 24/7 coverage."
     }
   ],
   pillars: [
     {
       title: "Issue Triage and Escalation",
-      body: "Logged, tracked, and resolved service requests while improving the quality of escalation handoff to Engineering."
+      body: "Logged, tracked, and resolved service requests while improving escalation handoff quality to Engineering."
     },
     {
       title: "Knowledge Base and SOPs",
-      body: "Authored and maintained support documentation that improved first-contact resolution and reduced repeat requests."
+      body: "Authored support documentation that improved first-contact resolution and reduced repeat requests."
     },
     {
       title: "Cross-Functional Product Feedback",
-      body: "Connected recurring user issues to Product and Engineering work, and also contributed design improvements to onboarding, settings, and wallet/NFT offer flows."
+      body: "Connected recurring user issues to Product and Engineering, and contributed design improvements to onboarding and wallet flows."
     }
   ],
   outcomes: [
     "Improved clarity of engineering escalations with reproducible steps and impact notes.",
-    "Maintained support coverage for APAC Chinese-language communities through coordinated moderation.",
+    "Maintained APAC Chinese-language support coverage through coordinated moderation.",
     "Reduced repeat support confusion through stronger KB and SOP documentation.",
-    "Fed support pain points back into product and design improvements during major technical changes."
+    "Fed support pain points back into product and design improvements."
   ]
 };
 
@@ -442,7 +442,7 @@ export const chiaWalletContent = {
     eyebrow: "Digital Product",
     name: "Chia Reference Wallet",
     intro:
-      "Reference wallet redesign work for Chia focused on making a newly unified wallet experience easier to understand after light wallet and full node functionality were brought together.",
+      "Reference wallet redesign for Chia focused on making a newly unified experience easier to understand after light wallet and full node were merged.",
     links: [
       { label: "Back to Homepage", href: "index.html", variant: "primary" },
       {
@@ -471,33 +471,33 @@ export const chiaWalletContent = {
     {
       title: "Problem",
       body:
-        "Users were dealing with fragmented experiences between light wallets and full nodes across separate clients. After backend consolidation work, the product still needed a clearer interface so users could understand how to use the wallet after integration."
+        "Users dealt with fragmented experiences between light wallets and full nodes across separate clients. After backend consolidation, the product still needed a clearer interface to make the integrated wallet understandable."
     },
     {
       title: "Design Approach",
       body:
-        "The work focused on unifying the client experience, streamlining interaction patterns, and making synchronization and wallet-mode behavior easier to understand in a single optimized interface."
+        "The work unified the client experience and made synchronization and wallet-mode behavior easier to understand. Interaction patterns were streamlined into a single optimized interface."
     }
   ],
   pillars: [
     {
       title: "Light Wallet Integration",
-      body: "Explored wallet mode selection and settings changes that helped users navigate the new integrated experience."
+      body: "Wallet mode selection and settings changes that helped users navigate the new integrated experience."
     },
     {
       title: "Fee Estimator",
-      body: "Proposed a clearer fee estimator approach for later wallet versions when transaction timing was still difficult to measure precisely."
+      body: "A clearer fee estimator approach for wallet versions where transaction timing was hard to measure precisely."
     },
     {
       title: "Account Quick Switch",
-      body: "Improved flow clarity for moving between wallet contexts and account states inside the redesigned client."
+      body: "Improved flow clarity for moving between wallet contexts inside the redesigned client."
     }
   ],
   outcomes: [
-    "Reduced UX fragmentation after light wallet and full node functionality were merged.",
-    "Introduced clearer settings and mode-selection concepts for the integrated wallet experience.",
-    "Helped users understand the redesigned client before backend sync improvements were fully mature.",
-    "Contributed wallet interaction concepts such as fee estimation and quicker account switching."
+    "Reduced UX fragmentation after light wallet and full node were merged.",
+    "Introduced clearer settings and mode-selection concepts for the integrated wallet.",
+    "Helped users understand the redesigned client before sync improvements were fully mature.",
+    "Contributed wallet interaction concepts including fee estimation and account switching."
   ]
 };
 
