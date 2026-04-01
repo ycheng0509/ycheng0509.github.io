@@ -213,6 +213,8 @@ function initProjectPanel() {
     return;
   }
 
+  let lastFocusedTrigger = null;
+
   function closePanel() {
     document.body.classList.remove("project-panel-open");
     panel.classList.remove("is-visible");
@@ -223,25 +225,37 @@ function initProjectPanel() {
       backdrop.hidden = true;
       panel.setAttribute("aria-hidden", "true");
       panel.innerHTML = "";
+
+      if (lastFocusedTrigger) {
+        lastFocusedTrigger.focus();
+        lastFocusedTrigger = null;
+      }
     }, 260);
   }
 
-  function openPanel(projectId) {
+  function openPanel(projectId, trigger) {
     const project = projectDetails[projectId];
 
     if (!project) {
       return;
     }
 
+    lastFocusedTrigger = trigger || null;
     panel.innerHTML = renderProjectPanel(project);
     panel.hidden = false;
     backdrop.hidden = false;
     panel.setAttribute("aria-hidden", "false");
+    panel.scrollTop = 0;
 
     requestAnimationFrame(() => {
       document.body.classList.add("project-panel-open");
       panel.classList.add("is-visible");
       backdrop.classList.add("is-visible");
+
+      const closeBtn = panel.querySelector("[data-project-close]");
+      if (closeBtn) {
+        closeBtn.focus();
+      }
     });
   }
 
@@ -249,7 +263,7 @@ function initProjectPanel() {
     const opener = event.target.closest("[data-project-open]");
 
     if (opener) {
-      openPanel(opener.getAttribute("data-project-open"));
+      openPanel(opener.getAttribute("data-project-open"), opener);
       return;
     }
 

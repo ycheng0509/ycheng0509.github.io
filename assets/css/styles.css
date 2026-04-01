@@ -70,7 +70,7 @@ html[data-theme="light"] ::-webkit-scrollbar-thumb:hover {
 }
 
 html {
-  font-size: 90%;
+  font-size: 100%;
   scroll-behavior: smooth;
 }
 
@@ -82,7 +82,7 @@ body {
     radial-gradient(circle at top left, rgba(255, 173, 135, 0.16), transparent 24%),
     radial-gradient(circle at top right, rgba(123, 224, 195, 0.16), transparent 24%),
     linear-gradient(180deg, #070b16 0%, #0b1020 48%, #121a2f 100%);
-  min-height: 100vh;
+  min-height: 100dvh;
 }
 
 body {
@@ -143,10 +143,14 @@ html[data-theme="light"] .theme-toggle {
   background: rgba(255, 252, 247, 0.88);
 }
 
-.theme-toggle:hover,
+.theme-toggle:hover {
+  transform: translateY(-2px);
+}
+
 .theme-toggle:focus-visible {
   transform: translateY(-2px);
-  outline: none;
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
 }
 
 .hero {
@@ -200,15 +204,15 @@ h1 {
 h2 {
   font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Helvetica Neue", sans-serif;
   font-size: clamp(1.2rem, 2vw, 1.6rem);
-  font-weight: 650;
-  line-height: 1;
+  font-weight: 700;
+  line-height: 1.1;
   letter-spacing: -0.045em;
 }
 
 h3 {
   font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Helvetica Neue", sans-serif;
   font-size: 1.05rem;
-  font-weight: 650;
+  font-weight: 600;
   line-height: 1.15;
   margin-bottom: 10px;
 }
@@ -303,11 +307,15 @@ html[data-theme="light"] .button-secondary {
 }
 
 .button:hover,
-.button-secondary:hover,
+.button-secondary:hover {
+  transform: translateY(-2px);
+}
+
 .button:focus-visible,
 .button-secondary:focus-visible {
   transform: translateY(-2px);
-  outline: none;
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
 }
 
 .section {
@@ -615,6 +623,17 @@ html[data-theme="light"] .project-card.featured {
   color: var(--ink);
   font: inherit;
   cursor: pointer;
+  transition: transform 180ms ease, background-color 180ms ease;
+}
+
+.project-panel-close:hover {
+  transform: translateY(-2px);
+}
+
+.project-panel-close:focus-visible {
+  transform: translateY(-2px);
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
 }
 
 .project-panel-section {
@@ -677,6 +696,23 @@ html[data-theme="light"] .featured-note {
   .project-card,
   .project-card.featured {
     grid-column: span 12;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  body,
+  .page,
+  .theme-toggle,
+  .button,
+  .button-secondary,
+  .project-panel-close,
+  .project-panel-backdrop,
+  .project-panel {
+    transition: none;
+  }
+
+  html {
+    scroll-behavior: auto;
   }
 }
 
