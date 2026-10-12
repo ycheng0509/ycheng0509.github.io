@@ -4,61 +4,19 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="description" content="CS6290 sample test 可作答版本，带判分和解析。">
-<style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#faf9f5;color:#141413}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}
-nav.toc .switch{flex:none;display:inline-flex;border:1px solid var(--line);border-radius:5px;overflow:hidden;background:var(--surface);margin-right:6px}
-nav.toc .switch a{font-family:var(--cond);font-weight:700;font-size:14px;padding:3px 12px;border:0;border-radius:0;background:transparent;color:var(--muted)}
-nav.toc .switch a+a{border-left:1px solid var(--line)}
-nav.toc .switch a[aria-current="page"]{background:var(--accent);color:var(--surface)}
-nav.toc .switch a:not([aria-current]):hover{color:var(--accent)}
-</style>
 <title>CS6290 Sample Test</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600&family=IBM+Plex+Sans+Condensed:wght@500;700&family=IBM+Plex+Sans:wght@400;600&family=Noto+Sans+SC:wght@400;600;700&display=swap">
+<link rel="stylesheet" href="../common.css">
 <style>
-:root{
-  --bg:#f3f5f2; --surface:#ffffff; --ink:#18232f; --muted:#5b6774; --line:#d6ddd8;
-  --accent:#1d6a86; --accent-soft:#e2eff3; --good:#2c7a4b; --good-soft:#e3f2e8;
-  --bad:#b0393a; --bad-soft:#f8e5e4; --code:#eef1ee;
-  --sans:"IBM Plex Sans","Noto Sans SC",system-ui,sans-serif;
-  --cond:"IBM Plex Sans Condensed","Noto Sans SC",system-ui,sans-serif;
-  --mono:"IBM Plex Mono",ui-monospace,Menlo,Consolas,monospace;
-}
-@media (prefers-color-scheme: dark){
-  :root:not([data-theme="light"]){
-    color-scheme:dark;
-    --bg:#11171d; --surface:#18212a; --ink:#e3e9ee; --muted:#93a1ad; --line:#2b3742;
-    --accent:#5fb4d3; --accent-soft:#1a3442; --good:#6cc690; --good-soft:#173527;
-    --bad:#ec7b7a; --bad-soft:#3d1f20; --code:#1f2a34;
-  }
-}
-:root[data-theme="dark"]{
-  color-scheme:dark;
-  --bg:#11171d; --surface:#18212a; --ink:#e3e9ee; --muted:#93a1ad; --line:#2b3742;
-  --accent:#5fb4d3; --accent-soft:#1a3442; --good:#6cc690; --good-soft:#173527;
-  --bad:#ec7b7a; --bad-soft:#3d1f20; --code:#1f2a34;
-}
-*{box-sizing:border-box}
-body{background:var(--bg);color:var(--ink);font-family:var(--sans);font-size:15px;line-height:1.65;padding-inline:16px;padding-block:0 64px}
-.wrap{max-width:880px;margin:0 auto}
-header.top{padding-block:36px 18px}
-.eyebrow{font-family:var(--mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--accent)}
-h1{font-family:var(--cond);font-weight:700;font-size:clamp(28px,5vw,40px);line-height:1.15;margin:6px 0 10px;text-wrap:balance}
-h2{font-family:var(--cond);font-weight:700;font-size:24px;margin:0;text-wrap:balance}
-h3{font-family:var(--cond);font-weight:500;font-size:17px;margin:0}
-p{margin:0}
-.lede{color:var(--muted);max-width:65ch}
-nav.toc{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--bg);border-bottom:1px solid var(--line);padding-block:10px;display:flex;gap:8px;align-items:center;overflow-x:auto}
-nav.toc a{flex:none;font-family:var(--mono);font-size:12.5px;color:var(--ink);text-decoration:none;border:1px solid var(--line);border-radius:4px;padding:3px 9px;background:var(--surface)}
-nav.toc a:hover,nav.toc a:focus-visible{border-color:var(--accent);color:var(--accent);outline:none}
-.score{margin-left:auto;flex:none;font-family:var(--mono);font-size:12.5px;color:var(--muted);padding-left:8px}
-.score b{color:var(--ink);font-variant-numeric:tabular-nums}
 section.topic{padding-block:34px 6px;border-bottom:1px solid var(--line);display:grid;gap:18px}
 .topic-head{display:flex;gap:12px;align-items:baseline;flex-wrap:wrap}
+.topic-head h2{font-size:19px;line-height:1.3}
 .wk{font-family:var(--mono);font-size:12px;color:var(--muted)}
 .notes{background:var(--surface);border:1px solid var(--line);border-radius:6px;padding:16px 18px;display:grid;gap:8px}
 .notes h3{color:var(--accent);font-size:13px;font-family:var(--mono);letter-spacing:.06em;text-transform:uppercase}
 .notes ul{margin:0;padding-left:20px;display:grid;gap:4px}
-.f{font-family:var(--mono);font-size:13.5px;background:var(--code);padding:1px 5px;border-radius:3px;white-space:nowrap}
+.f{font-family:var(--mono);font-size:13.5px;background:var(--code);padding:1px 5px;border-radius:3px}
 .q{display:grid;gap:12px;padding:18px;border:1px solid var(--line);border-radius:6px;background:var(--surface)}
 .qhead{display:flex;justify-content:space-between;gap:10px;align-items:baseline;flex-wrap:wrap}
 .qid{font-family:var(--mono);font-size:12px;color:var(--muted)}
@@ -75,7 +33,7 @@ th,td{border:1px solid var(--line);padding:5px 9px;text-align:left;white-space:n
 th{font-family:var(--mono);font-size:12px;color:var(--muted);font-weight:600;background:var(--code)}
 td input.ans{width:58px}
 td.given{color:var(--muted)}
-code,.mono{font-family:var(--mono);font-size:13.5px}
+code{font-family:var(--mono);font-size:13.5px}
 pre{font-family:var(--mono);font-size:13px;background:var(--code);padding:10px 12px;border-radius:4px;overflow-x:auto;margin:0;line-height:1.5}
 .actions{display:flex;gap:10px;align-items:center;flex-wrap:wrap}
 button{font-family:var(--sans);font-size:13.5px;padding:5px 14px;border-radius:4px;border:1px solid var(--accent);background:var(--accent);color:var(--surface);cursor:pointer}
@@ -88,34 +46,27 @@ details.sol summary{cursor:pointer;color:var(--accent);font-size:14px}
 details.sol .body{display:grid;gap:8px;padding-top:8px}
 .rules{font-size:14px;color:var(--muted)}
 .callout{border-left:3px solid var(--accent);padding:8px 12px;background:var(--accent-soft);border-radius:0 4px 4px 0;font-size:14px}
-footer{padding-block:28px;color:var(--muted);font-size:13px}
-@media (prefers-reduced-motion:reduce){*{scroll-behavior:auto!important}}
-html{scroll-behavior:smooth}
 section.topic{scroll-margin-top:56px}
-.dayhead{padding-block:44px 4px;display:grid;gap:6px;scroll-margin-top:56px}
+.dayhead{padding-block:36px 4px;display:grid;gap:6px;scroll-margin-top:56px}
 .dayhead .when{font-family:var(--mono);font-size:12px;color:var(--accent);letter-spacing:.06em;text-transform:uppercase}
-.dayhead h2{font-size:30px}
 .dayhead p{color:var(--muted);font-size:14px;max-width:68ch}
 .dayhead a{color:var(--accent)}
 .daybar{border-bottom:2px solid var(--ink);padding-bottom:12px}
 button.reset{background:transparent;color:var(--accent)}
-
 </style>
 </head>
 <body>
 <div class="wrap">
+<nav class="toc" aria-label="题目">
+  <div class="switch" role="group" aria-label="页面"><a href="../notes/">学习</a><a href="../">题目</a><a href="./" aria-current="page">Sample Test</a></div>
+  <a href="#q2">Q2 · Amdahl (8)</a><a href="#q3">Q3 · 分支预测 (15)</a><a href="#q4">Q4 · ROB (25)</a>
+  <span class="end"><span class="result" id="resetMsg"></span><button class="reset" id="resetAll" type="button">清空所有答案</button><span class="score">已答对 <b id="sc">0</b> / <b id="st">0</b></span></span>
+</nav>
 <header class="top">
   <div class="eyebrow">CS6290 · HPCA · Sample Test</div>
   <h1>CS6290 Sample Test</h1>
   <p class="lede">官方 sample test 的 Q2–Q4，可以直接作答、判分。建议 Day 2 学完 ROB 后做一次，Day 5 闭卷再做一次，两次都要全对。答题规则：没特别说明就精确到两位小数（多写几位也可以，但要对到两位）；想补充说明的话，先写答案再用方括号，例如 <span class="mono">2 [1+1]</span>。</p>
 </header>
-
-<nav class="toc" aria-label="题目">
-  <div class="switch" role="group" aria-label="页面"><a href="../notes/">学习</a><a href="../">题目</a><a href="./" aria-current="page">Sample Test</a></div>
-  <a href="#q2">Q2 · Amdahl (8)</a><a href="#q3">Q3 · 分支预测 (15)</a><a href="#q4">Q4 · ROB (25)</a>
-  <button class="reset" id="resetAll" type="button">清空所有答案</button><span class="result" id="resetMsg"></span>
-  <span class="score">已答对 <b id="sc">0</b> / <b id="st">0</b></span>
-</nav>
 
 <section class="topic" id="q2">
   <div class="q" data-q>
