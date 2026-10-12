@@ -86,22 +86,41 @@ footer{padding-block:28px;color:var(--muted);font-size:13px}
 @media (prefers-reduced-motion:reduce){*{scroll-behavior:auto!important}}
 html{scroll-behavior:smooth}
 section.topic{scroll-margin-top:56px}
+.dayhead{padding-block:44px 4px;display:grid;gap:6px;scroll-margin-top:56px}
+.dayhead .when{font-family:var(--mono);font-size:12px;color:var(--accent);letter-spacing:.06em;text-transform:uppercase}
+.dayhead h2{font-size:30px}
+.dayhead p{color:var(--muted);font-size:14px;max-width:68ch}
+.dayhead a{color:var(--accent)}
+.daybar{border-bottom:2px solid var(--ink);padding-bottom:12px}
+button.reset{background:transparent;color:var(--accent)}
+.switch{margin-bottom:12px;display:inline-flex;border:1px solid var(--line);border-radius:6px;overflow:hidden;background:var(--surface);width:max-content}
+.switch a{font-family:var(--cond);font-weight:700;font-size:15px;padding:6px 18px;text-decoration:none;color:var(--muted)}
+.switch a+a{border-left:1px solid var(--line)}
+.switch a[aria-current="page"]{background:var(--accent);color:var(--surface)}
+.switch a:not([aria-current]):hover{color:var(--accent)}
+
 </style>
 </head>
 <body>
 <div class="wrap">
 <header class="top">
-  <div class="eyebrow">CS6290 · HPCA · Weeks 1–8</div>
+  <nav class="switch" aria-label="页面"><a href="notes/">学习</a><a href="./" aria-current="page">题目</a></nav>
+  <div class="eyebrow">CS6290 · HPCA · 题目</div>
   <h1>CS6290 期中练习册</h1>
-  <p class="lede">按 sample test 的题型出的新题，数字都换过。规则和考试一样：没特别说明就精确到两位小数，T/F 题填 T 或 F。每题点「检查」判分，再展开「解析」看推导。知识点总结和 5 天复习计划见<a href="notes/" style="color:var(--accent)">复习笔记</a>。答案都用模拟器核对过，模拟器本身先用 sample test 的答案验证过。</p>
+  <p class="lede">按 5 天复习计划分组，每天先在<a href="notes/" style="color:var(--accent)">学习页</a>读完当天的笔记，再来做当天的题。规则和考试一样：没特别说明就精确到两位小数，T/F 题填 T 或 F。每题点「检查」判分，再展开「解析」看推导。答案都用模拟器核对过。</p>
 </header>
 
-<nav class="toc" aria-label="章节">
-  <a href="#metrics">指标</a><a href="#pipe">流水线</a><a href="#bp">分支预测</a><a href="#ilp">ILP</a><a href="#rob">ROB</a><a href="#mem">访存顺序</a><a href="#vliw">编译器/VLIW</a><a href="#cache">Cache/VM</a><a href="#adv">高级 Cache</a><a href="#tf">判断题</a><a href="notes/">复习笔记 →</a>
+<nav class="toc" aria-label="按天跳转">
+  <a href="#day1">Day 1</a><a href="#day2">Day 2</a><a href="#day3">Day 3</a><a href="#day4">Day 4</a><a href="#day5">Day 5</a>
   <span class="score">已答对 <b id="sc">0</b> / <b id="st">0</b></span>
 </nav>
 
 <!-- ============ METRICS ============ -->
+<div class="dayhead daybar" id="day1">
+  <span class="when">Day 1 · 10/12 周一</span>
+  <h2>指标、流水线、分支预测</h2>
+  <p>M1–M4 · P1–P2 · B1–B3。分支预测 B1、B2 要能不看解析全对。 <a href="notes/#d1">先读 Day 1 笔记 →</a></p>
+</div>
 <section class="topic" id="metrics">
   <div class="topic-head"><h2>性能指标与 Amdahl 定律</h2><span class="wk">Week 1 · 对应 sample Q2</span></div>
   <div class="notes">
@@ -308,6 +327,11 @@ pred   : T  T  T  T  T   → 3/5</pre>
 </section>
 
 <!-- ============ ILP ============ -->
+<div class="dayhead daybar" id="day2">
+  <span class="when">Day 2 · 10/13 周二</span>
+  <h2>ILP、Tomasulo、ROB</h2>
+  <p>I1 · R1 · R2。ROB 表每张限时 15 分钟，做完再闭卷重做 sample 的 ROB 题。 <a href="notes/#d2">先读 Day 2 笔记 →</a></p>
+</div>
 <section class="topic" id="ilp">
   <div class="topic-head"><h2>ILP、依赖与重命名</h2><span class="wk">Week 3</span></div>
   <div class="notes">
@@ -417,6 +441,11 @@ I6: ADD R8, R2, R2</pre>
 </section>
 
 <!-- ============ MEMORY ORDERING ============ -->
+<div class="dayhead daybar" id="day3">
+  <span class="when">Day 3 · 10/14 周三</span>
+  <h2>访存顺序、编译器 ILP、VLIW</h2>
+  <p>L1 · V1。题量少，剩下的时间把 R1、R2 清空再填一遍。 <a href="notes/#d3">先读 Day 3 笔记 →</a></p>
+</div>
 <section class="topic" id="mem">
   <div class="topic-head"><h2>访存顺序（LSQ）</h2><span class="wk">Week 5</span></div>
   <div class="notes">
@@ -497,6 +526,11 @@ I7: LW  <- addr 104</pre>
 </section>
 
 <!-- ============ CACHE & VM ============ -->
+<div class="dayhead daybar" id="day4">
+  <span class="when">Day 4 · 10/15 周四</span>
+  <h2>Cache、虚拟内存、高级 Cache</h2>
+  <p>C1–C4 · A1。 <a href="notes/#d4">先读 Day 4 笔记 →</a></p>
+</div>
 <section class="topic" id="cache">
   <div class="topic-head"><h2>Cache 复习与虚拟内存</h2><span class="wk">Week 7</span></div>
   <div class="notes">
@@ -593,6 +627,12 @@ C miss 踢 D [E B A C]     → 7 miss</pre>
 </section>
 
 <!-- ============ TRUE / FALSE ============ -->
+<div class="dayhead daybar" id="day5">
+  <span class="when">Day 5 · 10/16 周五</span>
+  <h2>模拟考 + 概念判断</h2>
+  <p>先做下面的判断题，再点「清空所有答案」，从 Day 1 开始限时把整套重做一遍，中间不看解析。 <a href="notes/#d5">先读 Day 5 笔记 →</a></p>
+  <div class="actions"><button class="reset" id="resetAll" type="button">清空所有答案</button><span class="result" id="resetMsg"></span></div>
+</div>
 <section class="topic" id="tf">
   <div class="topic-head"><h2>概念判断题</h2><span class="wk">全范围 · 填 T 或 F</span></div>
   <div class="q" data-q>
@@ -622,7 +662,7 @@ C miss 踢 D [E B A C]     → 7 miss</pre>
 </section>
 
 <footer>
-  <p>做完后再闭卷把 sample test 的 Q3、Q4 重做一遍。考前要能在 15 分钟内填完一张 ROB 表。</p>
+  <p>每天做完回到<a href="notes/" style="color:var(--accent)">学习页</a>把当天勾掉。考前要能在 15 分钟内填完一张 ROB 表。</p>
 </footer>
 </div>
 
@@ -659,6 +699,15 @@ C miss 踢 D [E B A C]     → 7 miss</pre>
       document.getElementById('sc').textContent=solved.size;
     });
     inputs.forEach(i=>i.addEventListener('input',()=>i.classList.remove('ok','no')));
+  });
+  const rb=document.getElementById('resetAll'), rm=document.getElementById('resetMsg');
+  rb.addEventListener('click',()=>{
+    if(rb.dataset.armed!=='1'){rb.dataset.armed='1';rb.textContent='再点一次确认清空';return;}
+    document.querySelectorAll('input.ans').forEach(i=>{i.value='';i.classList.remove('ok','no');});
+    document.querySelectorAll('.result').forEach(r=>{if(r!==rm){r.textContent='';r.className='result';}});
+    document.querySelectorAll('details.sol').forEach(d=>d.open=false);
+    solved.clear();document.getElementById('sc').textContent='0';
+    rb.dataset.armed='';rb.textContent='清空所有答案';rm.textContent='已清空，可以从 Day 1 开始计时';
   });
 })();
 </script>
