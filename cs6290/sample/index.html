@@ -1,0 +1,263 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="CS6290 sample test 可作答版本，带判分和解析。">
+<style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#faf9f5;color:#141413}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}
+nav.toc .switch{flex:none;display:inline-flex;border:1px solid var(--line);border-radius:5px;overflow:hidden;background:var(--surface);margin-right:6px}
+nav.toc .switch a{font-family:var(--cond);font-weight:700;font-size:14px;padding:3px 12px;border:0;border-radius:0;background:transparent;color:var(--muted)}
+nav.toc .switch a+a{border-left:1px solid var(--line)}
+nav.toc .switch a[aria-current="page"]{background:var(--accent);color:var(--surface)}
+nav.toc .switch a:not([aria-current]):hover{color:var(--accent)}
+</style>
+<title>CS6290 Sample Test</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600&family=IBM+Plex+Sans+Condensed:wght@500;700&family=IBM+Plex+Sans:wght@400;600&family=Noto+Sans+SC:wght@400;600;700&display=swap">
+<style>
+:root{
+  --bg:#f3f5f2; --surface:#ffffff; --ink:#18232f; --muted:#5b6774; --line:#d6ddd8;
+  --accent:#1d6a86; --accent-soft:#e2eff3; --good:#2c7a4b; --good-soft:#e3f2e8;
+  --bad:#b0393a; --bad-soft:#f8e5e4; --code:#eef1ee;
+  --sans:"IBM Plex Sans","Noto Sans SC",system-ui,sans-serif;
+  --cond:"IBM Plex Sans Condensed","Noto Sans SC",system-ui,sans-serif;
+  --mono:"IBM Plex Mono",ui-monospace,Menlo,Consolas,monospace;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    color-scheme:dark;
+    --bg:#11171d; --surface:#18212a; --ink:#e3e9ee; --muted:#93a1ad; --line:#2b3742;
+    --accent:#5fb4d3; --accent-soft:#1a3442; --good:#6cc690; --good-soft:#173527;
+    --bad:#ec7b7a; --bad-soft:#3d1f20; --code:#1f2a34;
+  }
+}
+:root[data-theme="dark"]{
+  color-scheme:dark;
+  --bg:#11171d; --surface:#18212a; --ink:#e3e9ee; --muted:#93a1ad; --line:#2b3742;
+  --accent:#5fb4d3; --accent-soft:#1a3442; --good:#6cc690; --good-soft:#173527;
+  --bad:#ec7b7a; --bad-soft:#3d1f20; --code:#1f2a34;
+}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font-family:var(--sans);font-size:15px;line-height:1.65;padding-inline:16px;padding-block:0 64px}
+.wrap{max-width:880px;margin:0 auto}
+header.top{padding-block:36px 18px}
+.eyebrow{font-family:var(--mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--accent)}
+h1{font-family:var(--cond);font-weight:700;font-size:clamp(28px,5vw,40px);line-height:1.15;margin:6px 0 10px;text-wrap:balance}
+h2{font-family:var(--cond);font-weight:700;font-size:24px;margin:0;text-wrap:balance}
+h3{font-family:var(--cond);font-weight:500;font-size:17px;margin:0}
+p{margin:0}
+.lede{color:var(--muted);max-width:65ch}
+nav.toc{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--bg);border-bottom:1px solid var(--line);padding-block:10px;display:flex;gap:8px;align-items:center;overflow-x:auto}
+nav.toc a{flex:none;font-family:var(--mono);font-size:12.5px;color:var(--ink);text-decoration:none;border:1px solid var(--line);border-radius:4px;padding:3px 9px;background:var(--surface)}
+nav.toc a:hover,nav.toc a:focus-visible{border-color:var(--accent);color:var(--accent);outline:none}
+.score{margin-left:auto;flex:none;font-family:var(--mono);font-size:12.5px;color:var(--muted);padding-left:8px}
+.score b{color:var(--ink);font-variant-numeric:tabular-nums}
+section.topic{padding-block:34px 6px;border-bottom:1px solid var(--line);display:grid;gap:18px}
+.topic-head{display:flex;gap:12px;align-items:baseline;flex-wrap:wrap}
+.wk{font-family:var(--mono);font-size:12px;color:var(--muted)}
+.notes{background:var(--surface);border:1px solid var(--line);border-radius:6px;padding:16px 18px;display:grid;gap:8px}
+.notes h3{color:var(--accent);font-size:13px;font-family:var(--mono);letter-spacing:.06em;text-transform:uppercase}
+.notes ul{margin:0;padding-left:20px;display:grid;gap:4px}
+.f{font-family:var(--mono);font-size:13.5px;background:var(--code);padding:1px 5px;border-radius:3px;white-space:nowrap}
+.q{display:grid;gap:12px;padding:18px;border:1px solid var(--line);border-radius:6px;background:var(--surface)}
+.qhead{display:flex;justify-content:space-between;gap:10px;align-items:baseline;flex-wrap:wrap}
+.qid{font-family:var(--mono);font-size:12px;color:var(--muted)}
+.tag{font-family:var(--mono);font-size:11px;padding:1px 7px;border-radius:3px;background:var(--accent-soft);color:var(--accent)}
+.blanks{display:grid;gap:8px}
+.blank{display:flex;flex-wrap:wrap;gap:6px 10px;align-items:center}
+input.ans{font-family:var(--mono);font-size:14px;width:96px;padding:4px 8px;border:1px solid var(--line);border-radius:4px;background:var(--bg);color:var(--ink)}
+input.ans:focus-visible{outline:2px solid var(--accent);outline-offset:1px}
+input.ans.ok{border-color:var(--good);background:var(--good-soft)}
+input.ans.no{border-color:var(--bad);background:var(--bad-soft)}
+.tw{overflow-x:auto}
+table{border-collapse:collapse;font-size:14px;font-variant-numeric:tabular-nums}
+th,td{border:1px solid var(--line);padding:5px 9px;text-align:left;white-space:nowrap}
+th{font-family:var(--mono);font-size:12px;color:var(--muted);font-weight:600;background:var(--code)}
+td input.ans{width:58px}
+td.given{color:var(--muted)}
+code,.mono{font-family:var(--mono);font-size:13.5px}
+pre{font-family:var(--mono);font-size:13px;background:var(--code);padding:10px 12px;border-radius:4px;overflow-x:auto;margin:0;line-height:1.5}
+.actions{display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+button{font-family:var(--sans);font-size:13.5px;padding:5px 14px;border-radius:4px;border:1px solid var(--accent);background:var(--accent);color:var(--surface);cursor:pointer}
+button.ghost{background:transparent;color:var(--accent)}
+button:focus-visible{outline:2px solid var(--ink);outline-offset:2px}
+.result{font-family:var(--mono);font-size:13px}
+.result.allok{color:var(--good)} .result.some{color:var(--bad)}
+details.sol{border-top:1px dashed var(--line);padding-top:10px}
+details.sol summary{cursor:pointer;color:var(--accent);font-size:14px}
+details.sol .body{display:grid;gap:8px;padding-top:8px}
+.rules{font-size:14px;color:var(--muted)}
+.callout{border-left:3px solid var(--accent);padding:8px 12px;background:var(--accent-soft);border-radius:0 4px 4px 0;font-size:14px}
+footer{padding-block:28px;color:var(--muted);font-size:13px}
+@media (prefers-reduced-motion:reduce){*{scroll-behavior:auto!important}}
+html{scroll-behavior:smooth}
+section.topic{scroll-margin-top:56px}
+.dayhead{padding-block:44px 4px;display:grid;gap:6px;scroll-margin-top:56px}
+.dayhead .when{font-family:var(--mono);font-size:12px;color:var(--accent);letter-spacing:.06em;text-transform:uppercase}
+.dayhead h2{font-size:30px}
+.dayhead p{color:var(--muted);font-size:14px;max-width:68ch}
+.dayhead a{color:var(--accent)}
+.daybar{border-bottom:2px solid var(--ink);padding-bottom:12px}
+button.reset{background:transparent;color:var(--accent)}
+
+</style>
+</head>
+<body>
+<div class="wrap">
+<header class="top">
+  <div class="eyebrow">CS6290 · HPCA · Sample Test</div>
+  <h1>CS6290 Sample Test</h1>
+  <p class="lede">官方 sample test 的 Q2–Q4，可以直接作答、判分。建议 Day 2 学完 ROB 后做一次，Day 5 闭卷再做一次，两次都要全对。答题规则：没特别说明就精确到两位小数（多写几位也可以，但要对到两位）；想补充说明的话，先写答案再用方括号，例如 <span class="mono">2 [1+1]</span>。</p>
+</header>
+
+<nav class="toc" aria-label="题目">
+  <div class="switch" role="group" aria-label="页面"><a href="../notes/">学习</a><a href="../">题目</a><a href="./" aria-current="page">Sample Test</a></div>
+  <a href="#q2">Q2 · Amdahl (8)</a><a href="#q3">Q3 · 分支预测 (15)</a><a href="#q4">Q4 · ROB (25)</a>
+  <button class="reset" id="resetAll" type="button">清空所有答案</button><span class="result" id="resetMsg"></span>
+  <span class="score">已答对 <b id="sc">0</b> / <b id="st">0</b></span>
+</nav>
+
+<section class="topic" id="q2">
+  <div class="q" data-q>
+    <div class="qhead"><span class="qid">Question 2 · 8 pts</span><span class="tag">Amdahl</span></div>
+    <p>We are (manually) optimizing a program that spends 2 % (percent) of its execution time on disk accesses. We are optimizing the processor, so we cannot apply any optimizations to disk accesses.</p>
+    <p>Complete the following statements (your answers should be numbers):</p>
+    <div class="blanks">
+      <div class="blank">To get a speedup of 25 on the entire program we need our optimizations to produce a speedup of at least <input class="ans" id="s2a" data-ans="49" aria-label="Q2 answer 1"> on the source code we do have.</div>
+      <div class="blank">No matter how good our optimizations are, the overall speedup we can achieve can never exceed <input class="ans" id="s2b" data-ans="50" aria-label="Q2 answer 2">.</div>
+    </div>
+    <div class="actions"><button data-check>检查</button><span class="result"></span></div>
+    <details class="sol"><summary>解析</summary><div class="body">
+      <p>25 = 1/(0.02 + 0.98/S) → 0.02 + 0.98/S = 0.04 → 0.98/S = 0.02 → <b>S = 49</b>。</p>
+      <p>上限：S→∞ 时 1/0.02 = <b>50</b>。</p>
+    </div></details>
+  </div>
+</section>
+
+<section class="topic" id="q3">
+  <div class="q" data-q>
+    <div class="qhead"><span class="qid">Question 3 · 15 pts</span><span class="tag">分支预测</span></div>
+    <p>A processor is executing a long-running program, in which the most frequently executed branch instruction is encountered 7 million times per second. This branch has the following sequence of outcomes (where N stands for not-taken and T stands for taken):</p>
+    <p class="mono">N, N, N, N, T, T, T, N, N, N, N, T, T, T, N, N, N, N, T, T, T, etc.</p>
+    <p>In other words, this branch has a repeating pattern where it is not taken four times then taken three times.</p>
+    <p>For the first seven occurrences of this branch instruction, the following table shows the counter values for the one-bit counter predictor, along with its predictions, and the actual branch outcomes. Note that the counter starts out with an initial value of 0. Fill out the missing entries in the table:</p>
+    <div class="tw"><table>
+      <thead><tr><th>Occurrence #</th><th>Counter Value</th><th>Predicted Outcome</th><th>Actual Outcome</th></tr></thead>
+      <tbody>
+        <tr><td>1st</td><td class="given">0</td><td class="given">N</td><td>N</td></tr>
+        <tr><td>2nd</td><td><input class="ans" id="s3c2" data-ans="0" aria-label="2nd counter"></td><td><input class="ans" id="s3p2" data-ans="N" aria-label="2nd prediction"></td><td>N</td></tr>
+        <tr><td>3rd</td><td><input class="ans" id="s3c3" data-ans="0" aria-label="3rd counter"></td><td><input class="ans" id="s3p3" data-ans="N" aria-label="3rd prediction"></td><td>N</td></tr>
+        <tr><td>4th</td><td><input class="ans" id="s3c4" data-ans="0" aria-label="4th counter"></td><td><input class="ans" id="s3p4" data-ans="N" aria-label="4th prediction"></td><td>N</td></tr>
+        <tr><td>5th</td><td><input class="ans" id="s3c5" data-ans="0" aria-label="5th counter"></td><td><input class="ans" id="s3p5" data-ans="N" aria-label="5th prediction"></td><td>T</td></tr>
+        <tr><td>6th</td><td><input class="ans" id="s3c6" data-ans="1" aria-label="6th counter"></td><td><input class="ans" id="s3p6" data-ans="T" aria-label="6th prediction"></td><td>T</td></tr>
+        <tr><td>7th</td><td><input class="ans" id="s3c7" data-ans="1" aria-label="7th counter"></td><td><input class="ans" id="s3p7" data-ans="T" aria-label="7th prediction"></td><td>T</td></tr>
+      </tbody>
+    </table></div>
+    <p>Now suppose that we are measuring the accuracy of this branch during the third second of execution, i.e. after the predictor has already been trained by the first 14 million occurrences of this branch. To simplify things, you should assume that the predictor entries that are used for predicting this branch are only used for this branch, i.e. no other branches are interfering with the prediction, and that the initial values of all bits in the predictor were zeroes - but note that these values have been updated during the first two seconds of execution.</p>
+    <p>Based on this, complete the following statements (your answers should be numbers):</p>
+    <div class="blanks">
+      <div class="blank">If we use a 1-bit counter predictor we get a third-second accuracy of <input class="ans" id="s3a" data-ans="71.4286" aria-label="1-bit accuracy"> percent.</div>
+      <div class="blank">If we use a 2-bit counter we get a third-second accuracy of <input class="ans" id="s3b" data-ans="42.8571" aria-label="2-bit accuracy"> percent.</div>
+      <div class="blank">If we use a global history predictor with one-bit history and 1-bit counters, we get a third-second accuracy of <input class="ans" id="s3d" data-ans="42.8571" aria-label="history accuracy"> percent.</div>
+      <div class="blank">The cheapest global-history predictor (with 1-bit counters) that achieves perfect third-second accuracy has (how many?) <input class="ans" id="s3e" data-ans="4" aria-label="history bits"> bits of history.</div>
+    </div>
+    <div class="actions"><button data-check>检查</button><span class="result"></span></div>
+    <details class="sol"><summary>解析</summary><div class="body">
+      <p><b>表格</b>：1-bit counter 就是记住上一次的结果。前 4 次都是 N，counter 一直是 0；第 5 次是 T，所以第 6 次开始 counter = 1，预测 T。</p>
+      <p><b>1-bit 准确率</b>：一个周期（7 次）里结果变化 2 次（N→T、T→N），各错 1 次 → 5/7 = <b>71.43%</b>。</p>
+      <p><b>2-bit</b>：稳态下每个周期开始时 counter = 3（刚经历了 3 个 T）。</p>
+<pre>actual : N  N  N  N  T  T  T
+counter: 3  2  1  0  0  1  2   → 周期结束变回 3
+pred   : T  T  N  N  N  N  T
+correct: ✗  ✗  ✓  ✓  ✗  ✗  ✓   → 3/7 = 42.86%</pre>
+      <p><b>1 位历史 + 1-bit counter</b>：两个 counter，按上一次结果选，每个 counter 预测“上次遇到同样历史时的结果”。</p>
+<pre>上次=N 的情况：第 2,3,4,5 次（结果 N,N,N,T）
+  ctrN 预测: T(上周期第5次留下) N  N  N   → 对 2 次
+上次=T 的情况：第 6,7 次和下周期第 1 次（结果 T,T,N）
+  ctrT 预测: N(上周期第1次留下) T  T      → 对 1 次
+共 3/7 = 42.86%</pre>
+      <p><b>最少历史位</b>：3 位时 NNN 后面有时是 N（第 1–3 次之后）、有时是 T（第 2–4 次之后），冲突。4 位窗口：NNNN→T，NNNT→T，NNTT→T，NTTT→N，TTTN→N，TTNN→N，TNNN→N，全部唯一 → <b>4</b>。</p>
+    </div></details>
+  </div>
+</section>
+
+<section class="topic" id="q4">
+  <div class="q" data-q>
+    <div class="qhead"><span class="qid">Question 4 · 25 pts</span><span class="tag">ROB</span></div>
+    <p class="rules">A one-issue processor uses out-of order execution with a Reorder Buffer (ROB). The processor has four unified reservation stations (RS0 through RS3) and eight ROB entries (ROB0 through ROB7). There are two execution units. One unit can only do MUL instructions, has a 6-cycle latency, and is NOT pipelined. The other unit can do all other (non-MUL) instructions, has a 2-cycle latency, and IS pipelined. The result can be broadcast in the cycle after the execution is complete. Only one result can be broadcast in each cycle. A reservation station that has been used by an instruction is freed when the instruction is selected for execution, and another instruction can be issued into that RS during the first execution cycle of the original instruction. A ROB entry can be reused in the cycle after the one in which it was freed (you should know when that is). An instruction that is waiting for a result to be produced can begin execution in the cycle after the one in which its last missing operand is broadcast. All conflicts for resources are resolved in favor of the older instruction, i.e. the instruction that comes earlier in the program.</p>
+    <p class="rules">Assume that reservation stations and the ROB are all empty at the beginning of the starting cycle (Cycle 1), and that the processor has already fetched and decoded the following instructions, so they are all waiting to be issued at the beginning of the starting cycle (Cycle 1). We have filled out the first row of the execution timing table below. You need to fill the rest of it.</p>
+    <div class="tw"><table>
+      <thead><tr><th>Instruction</th><th></th><th>Issue</th><th>Exe</th><th>BCast</th><th>Commit</th></tr></thead>
+      <tbody>
+        <tr><td>I1</td><td class="mono">MUL R2, R1, R0</td><td class="given">1</td><td class="given">2</td><td class="given">8</td><td class="given">9</td></tr>
+        <tr><td>I2</td><td class="mono">MUL R2, R2, R2</td><td><input class="ans" id="s4_2i" data-ans="2" aria-label="I2 issue"></td><td><input class="ans" id="s4_2e" data-ans="9" aria-label="I2 exe"></td><td><input class="ans" id="s4_2b" data-ans="15" aria-label="I2 bcast"></td><td><input class="ans" id="s4_2c" data-ans="16" aria-label="I2 commit"></td></tr>
+        <tr><td>I3</td><td class="mono">ADD R3, R0, R4</td><td><input class="ans" id="s4_3i" data-ans="3" aria-label="I3 issue"></td><td><input class="ans" id="s4_3e" data-ans="4" aria-label="I3 exe"></td><td><input class="ans" id="s4_3b" data-ans="6" aria-label="I3 bcast"></td><td><input class="ans" id="s4_3c" data-ans="17" aria-label="I3 commit"></td></tr>
+        <tr><td>I4</td><td class="mono">ADD R4, R3, R2</td><td><input class="ans" id="s4_4i" data-ans="4" aria-label="I4 issue"></td><td><input class="ans" id="s4_4e" data-ans="16" aria-label="I4 exe"></td><td><input class="ans" id="s4_4b" data-ans="18" aria-label="I4 bcast"></td><td><input class="ans" id="s4_4c" data-ans="19" aria-label="I4 commit"></td></tr>
+        <tr><td>I5</td><td class="mono">ADD R1, R1, R1</td><td><input class="ans" id="s4_5i" data-ans="5" aria-label="I5 issue"></td><td><input class="ans" id="s4_5e" data-ans="6" aria-label="I5 exe"></td><td><input class="ans" id="s4_5b" data-ans="9" aria-label="I5 bcast"></td><td><input class="ans" id="s4_5c" data-ans="20" aria-label="I5 commit"></td></tr>
+        <tr><td>I6</td><td class="mono">ADD R3, R3, R3</td><td><input class="ans" id="s4_6i" data-ans="6" aria-label="I6 issue"></td><td><input class="ans" id="s4_6e" data-ans="7" aria-label="I6 exe"></td><td><input class="ans" id="s4_6b" data-ans="10" aria-label="I6 bcast"></td><td><input class="ans" id="s4_6c" data-ans="21" aria-label="I6 commit"></td></tr>
+      </tbody>
+    </table></div>
+    <div class="actions"><button data-check>检查</button><span class="result"></span></div>
+    <details class="sol"><summary>解析</summary><div class="body">
+      <p><b>I2</b>：Issue 2。要等 I1 的 R2（第 8 周期广播）→ Exe 9；MUL 单元第 2–7 周期被 I1 占用，第 8 周期起空闲，不冲突。9 + 6 → BCast 15，Commit 16。</p>
+      <p><b>I3</b>：Issue 3，没有依赖 → Exe 4，BCast 6。Commit 要排在 I2 后面 → 17。</p>
+      <p><b>I4</b>：Issue 4。R3 来自 I3（6），R2 来自 I2（15），最晚的是 15 → Exe 16，BCast 18，Commit 19。</p>
+      <p><b>I5</b>：第 5 周期 RS 里只有 I2、I4（I1、I3 开始执行时已释放），ROB 8 项也够 → Issue 5。Exe 6，第 7 周期算完，最早第 8 周期广播，但第 8 周期给了更老的 I1 → BCast 9。Commit 20。</p>
+      <p><b>I6</b>：Issue 6。R3 来自 I3，I3 在第 6 周期广播，同一周期 issue 的 I6 也能拿到值 → Exe 7，最早第 9 周期广播，但第 9 周期给了更老的 I5 → BCast 10。Commit 21。</p>
+      <p>这题里 RS 和 ROB 都没有卡住 issue，考点是<b>广播冲突</b>（I5、I6 各被推后一拍）和<b>按序 commit</b>（I3 早就做完了，也要等到 17）。题目页的 R1、R2 加上了 RS 满、ROB 满的情况。</p>
+    </div></details>
+  </div>
+</section>
+
+<footer>
+  <p>做完回到<a href="../notes/" style="color:var(--accent)">学习页</a>查看对应知识点，或去<a href="../" style="color:var(--accent)">题目页</a>做同类型的新题。</p>
+</footer>
+</div>
+
+<script>
+(function(){
+  const qs=[...document.querySelectorAll('[data-q]')];
+  const total=document.querySelectorAll('input.ans').length;
+  document.getElementById('st').textContent=total;
+  const solved=new Set();
+  function norm(v){return v.replace(/\[.*$/,'').trim();}
+  function correct(inp){
+    const want=inp.dataset.ans, got=norm(inp.value);
+    if(!got) return false;
+    const wn=parseFloat(want);
+    if(!isNaN(wn) && /^-?\d/.test(want)){
+      const gn=parseFloat(got.replace(/%$/,''));
+      if(isNaN(gn)) return false;
+      return Math.abs(gn-wn) <= 0.0051 + Math.abs(wn)*1e-6;
+    }
+    return got.toUpperCase()===want.toUpperCase();
+  }
+  qs.forEach(q=>{
+    const btn=q.querySelector('[data-check]'), res=q.querySelector('.result');
+    const inputs=[...q.querySelectorAll('input.ans')];
+    btn.addEventListener('click',()=>{
+      let ok=0;
+      inputs.forEach(i=>{
+        const c=correct(i);
+        i.classList.toggle('ok',c); i.classList.toggle('no',!c);
+        if(c){ok++;solved.add(i.id);} else solved.delete(i.id);
+      });
+      res.textContent=ok===inputs.length?`全对 ${ok}/${inputs.length}`:`${ok}/${inputs.length} 正确，红框的再想想`;
+      res.className='result '+(ok===inputs.length?'allok':'some');
+      document.getElementById('sc').textContent=solved.size;
+    });
+    inputs.forEach(i=>i.addEventListener('input',()=>i.classList.remove('ok','no')));
+  });
+  const rb=document.getElementById('resetAll'), rm=document.getElementById('resetMsg');
+  rb.addEventListener('click',()=>{
+    if(rb.dataset.armed!=='1'){rb.dataset.armed='1';rb.textContent='再点一次确认清空';return;}
+    document.querySelectorAll('input.ans').forEach(i=>{i.value='';i.classList.remove('ok','no');});
+    document.querySelectorAll('.result').forEach(r=>{if(r!==rm){r.textContent='';r.className='result';}});
+    document.querySelectorAll('details.sol').forEach(d=>d.open=false);
+    solved.clear();document.getElementById('sc').textContent='0';
+    rb.dataset.armed='';rb.textContent='清空所有答案';rm.textContent='已清空';
+  });
+})();
+</script>
+</body>
+</html>

@@ -4,7 +4,13 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="description" content="CS6290 第 1–8 周期中复习：要点速查和可自动判分的练习题。">
-<style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#faf9f5;color:#141413}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style>
+<style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#faf9f5;color:#141413}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}
+nav.toc .switch{flex:none;display:inline-flex;border:1px solid var(--line);border-radius:5px;overflow:hidden;background:var(--surface);margin-right:6px}
+nav.toc .switch a{font-family:var(--cond);font-weight:700;font-size:14px;padding:3px 12px;border:0;border-radius:0;background:transparent;color:var(--muted)}
+nav.toc .switch a+a{border-left:1px solid var(--line)}
+nav.toc .switch a[aria-current="page"]{background:var(--accent);color:var(--surface)}
+nav.toc .switch a:not([aria-current]):hover{color:var(--accent)}
+</style>
 <title>CS6290 期中练习册</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600&family=IBM+Plex+Sans+Condensed:wght@500;700&family=IBM+Plex+Sans:wght@400;600&family=Noto+Sans+SC:wght@400;600;700&display=swap">
@@ -93,24 +99,19 @@ section.topic{scroll-margin-top:56px}
 .dayhead a{color:var(--accent)}
 .daybar{border-bottom:2px solid var(--ink);padding-bottom:12px}
 button.reset{background:transparent;color:var(--accent)}
-.switch{margin-bottom:12px;display:inline-flex;border:1px solid var(--line);border-radius:6px;overflow:hidden;background:var(--surface);width:max-content}
-.switch a{font-family:var(--cond);font-weight:700;font-size:15px;padding:6px 18px;text-decoration:none;color:var(--muted)}
-.switch a+a{border-left:1px solid var(--line)}
-.switch a[aria-current="page"]{background:var(--accent);color:var(--surface)}
-.switch a:not([aria-current]):hover{color:var(--accent)}
 
 </style>
 </head>
 <body>
 <div class="wrap">
 <header class="top">
-  <nav class="switch" aria-label="页面"><a href="notes/">学习</a><a href="./" aria-current="page">题目</a></nav>
   <div class="eyebrow">CS6290 · HPCA · 题目</div>
   <h1>CS6290 期中练习册</h1>
   <p class="lede">按 5 天复习计划分组，每天先在<a href="notes/" style="color:var(--accent)">学习页</a>读完当天的笔记，再来做当天的题。规则和考试一样：没特别说明就精确到两位小数，T/F 题填 T 或 F。每题点「检查」判分，再展开「解析」看推导。答案都用模拟器核对过。</p>
 </header>
 
 <nav class="toc" aria-label="按天跳转">
+  <div class="switch" role="group" aria-label="页面"><a href="notes/">学习</a><a href="./" aria-current="page">题目</a><a href="sample/">Sample Test</a></div>
   <a href="#day1">Day 1</a><a href="#day2">Day 2</a><a href="#day3">Day 3</a><a href="#day4">Day 4</a><a href="#day5">Day 5</a>
   <span class="score">已答对 <b id="sc">0</b> / <b id="st">0</b></span>
 </nav>
