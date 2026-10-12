@@ -58,7 +58,7 @@ th{font-family:var(--mono);font-size:12px;color:var(--muted);background:var(--co
 <body>
 <div class="wrap">
 <nav class="toc" aria-label="跳转">
-  <div class="switch" role="group" aria-label="页面"><a href="./" aria-current="page">学习</a><a href="../">题目</a><a href="../sample/">Sample Test</a></div>
+  <a class="home" href="../">CS6290</a><div class="switch" role="group" aria-label="页面"><a href="./" aria-current="page">学习</a><a href="../questions/">题目</a><a href="../sample/">Sample Test</a></div>
   <a href="#d1">Day 1</a><a href="#d2">Day 2</a><a href="#d3">Day 3</a><a href="#d4">Day 4</a><a href="#d5">Day 5</a><a href="#sheet">公式速查</a>
   
 </nav>
@@ -66,7 +66,7 @@ th{font-family:var(--mono);font-size:12px;color:var(--muted);background:var(--co
 <header class="top">
   <div class="eyebrow">CS6290 · HPCA · 学习</div>
   <h1>CS6290 五天复习笔记</h1>
-  <p class="lede">把第 1–8 周的内容压成 5 天。每天先读当天的笔记（约 1 小时），再去<a href="../">题目页</a>做同一天的题（约 1 小时）。最后一天做整套模拟。读完一天就勾掉，勾选记录只保存在你这个浏览器里。</p>
+  <p class="lede">把第 1–8 周的内容压成 5 天。每天先读当天的笔记（约 1 小时），再去<a href="../questions/">题目页</a>做同一天的题（约 1 小时）。最后一天做整套模拟。读完一天就勾掉，勾选记录只保存在你这个浏览器里。</p>
 </header>
 
 <div class="plan" id="plan">
@@ -145,7 +145,7 @@ th{font-family:var(--mono);font-size:12px;color:var(--muted);background:var(--co
         </ul>
       </div>
     </div>
-    <div class="drill">练习：<a href="../#metrics">M1–M4</a><a href="../#pipe">P1–P2</a></div>
+    <div class="drill">练习：<a href="../questions/#metrics">M1–M4</a><a href="../questions/#pipe">P1–P2</a></div>
   </div>
 
   <div class="lesson">
@@ -189,9 +189,9 @@ th{font-family:var(--mono);font-size:12px;color:var(--muted);background:var(--co
       <span>2-bit counter 的初值和阈值要看题目（通常初值 0 = strong not-taken）。T、N 段都很短时，2-bit 可能比 1-bit 还差。</span>
       <span>历史位要包括周期边界，例如 …N N | T T… 这个窗口也要算进去。</span>
     </div>
-    <div class="drill">练习：<a href="../#bp">B1–B3</a></div>
+    <div class="drill">练习：<a href="../questions/#bp">B1–B3</a></div>
   </div>
-  <a class="go" href="../#day1">读完了，去做 Day 1 的题 →</a>
+  <a class="go" href="../questions/#day1">读完了，去做 Day 1 的题 →</a>
 </section>
 
 <!-- ================= DAY 2 ================= -->
@@ -236,7 +236,7 @@ th{font-family:var(--mono);font-size:12px;color:var(--muted);background:var(--co
         </ul>
       </div>
     </div>
-    <div class="drill">练习：<a href="../#ilp">I1</a></div>
+    <div class="drill">练习：<a href="../questions/#ilp">I1</a></div>
   </div>
 
   <div class="lesson">
@@ -296,9 +296,9 @@ th{font-family:var(--mono);font-size:12px;color:var(--muted);background:var(--co
       <span>WAR 的源（读的是旧值）不用等后面写它的那条指令。</span>
       <span>在某条指令广播的同一拍 issue 的指令能不能拿到值，以题干为准（sample 的规则是能拿到）。</span>
     </div>
-    <div class="drill">练习：<a href="../#rob">R1、R2</a>，然后闭卷重做 sample 的 ROB 题</div>
+    <div class="drill">练习：<a href="../questions/#rob">R1、R2</a>，然后闭卷重做 sample 的 ROB 题</div>
   </div>
-  <a class="go" href="../#day2">读完了，去做 Day 2 的题 →</a>
+  <a class="go" href="../questions/#day2">读完了，去做 Day 2 的题 →</a>
 </section>
 
 <!-- ================= DAY 3 ================= -->
@@ -329,7 +329,7 @@ th{font-family:var(--mono);font-size:12px;color:var(--muted);background:var(--co
         </ul>
       </div>
     </div>
-    <div class="drill">练习：<a href="../#mem">L1</a></div>
+    <div class="drill">练习：<a href="../questions/#mem">L1</a></div>
   </div>
 
   <div class="lesson">
@@ -352,7 +352,7 @@ th{font-family:var(--mono);font-size:12px;color:var(--muted);background:var(--co
         </ul>
       </div>
     </div>
-    <div class="drill">练习：<a href="../#vliw">V1</a></div>
+    <div class="drill">练习：<a href="../questions/#vliw">V1</a></div>
   </div>
 
   <div class="lesson">
@@ -375,7 +375,7 @@ th{font-family:var(--mono);font-size:12px;color:var(--muted);background:var(--co
       </ul>
     </div>
   </div>
-  <a class="go" href="../#day3">读完了，去做 Day 3 的题 →</a>
+  <a class="go" href="../questions/#day3">读完了，去做 Day 3 的题 →</a>
 </section>
 
 <!-- ================= DAY 4 ================= -->
@@ -472,9 +472,9 @@ th{font-family:var(--mono);font-size:12px;color:var(--muted);background:var(--co
       <span>两级 AMAT 里，括号内乘的是 L2 的 <b>local</b> miss rate；题目给的是 global 的话，要先除以 MR₁。</span>
       <span>LRU 模拟题要同时追踪“谁在 cache 里”和“使用的先后顺序”，命中也会改变顺序。</span>
     </div>
-    <div class="drill">练习：<a href="../#cache">C1–C4</a><a href="../#adv">A1</a><a href="../#tf">判断题</a></div>
+    <div class="drill">练习：<a href="../questions/#cache">C1–C4</a><a href="../questions/#adv">A1</a><a href="../questions/#tf">判断题</a></div>
   </div>
-  <a class="go" href="../#day4">读完了，去做 Day 4 的题 →</a>
+  <a class="go" href="../questions/#day4">读完了，去做 Day 4 的题 →</a>
 </section>
 
 <!-- ================= DAY 5 ================= -->
@@ -514,7 +514,7 @@ th{font-family:var(--mono);font-size:12px;color:var(--muted);background:var(--co
       </ul>
     </div>
   </div>
-  <a class="go" href="../#day5">去做 Day 5 模拟考 →</a>
+  <a class="go" href="../questions/#day5">去做 Day 5 模拟考 →</a>
 </section>
 
 <!-- ================= CHEAT SHEET ================= -->
@@ -546,7 +546,7 @@ th{font-family:var(--mono);font-size:12px;color:var(--muted);background:var(--co
   </div>
 </section>
 
-<footer><p>配套题目：<a href="../">CS6290 期中练习册</a>。</p></footer>
+<footer><p>配套题目：<a href="../questions/">CS6290 期中练习册</a>。</p></footer>
 </div>
 
 <script>

@@ -3,665 +3,136 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<meta name="description" content="CS6290 第 1–8 周期中复习：要点速查和可自动判分的练习题。">
-<title>CS6290 期中练习册</title>
+<meta name="description" content="CS6290 期中复习：5 天学习笔记、按天分组的练习题和 sample test。">
+<title>CS6290 期中复习</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600&family=IBM+Plex+Sans+Condensed:wght@500;700&family=IBM+Plex+Sans:wght@400;600&family=Noto+Sans+SC:wght@400;600;700&display=swap">
 <link rel="stylesheet" href="common.css">
 <style>
-section.topic{padding-block:34px 6px;border-bottom:1px solid var(--line);display:grid;gap:18px}
-.topic-head{display:flex;gap:12px;align-items:baseline;flex-wrap:wrap}
-.topic-head h2{font-size:19px;line-height:1.3}
-.wk{font-family:var(--mono);font-size:12px;color:var(--muted)}
-.notes{background:var(--surface);border:1px solid var(--line);border-radius:6px;padding:16px 18px;display:grid;gap:8px}
-.notes h3{color:var(--accent);font-size:13px;font-family:var(--mono);letter-spacing:.06em;text-transform:uppercase}
-.notes ul{margin:0;padding-left:20px;display:grid;gap:4px}
-.f{font-family:var(--mono);font-size:13.5px;background:var(--code);padding:1px 5px;border-radius:3px}
-.q{display:grid;gap:12px;padding:18px;border:1px solid var(--line);border-radius:6px;background:var(--surface)}
-.qhead{display:flex;justify-content:space-between;gap:10px;align-items:baseline;flex-wrap:wrap}
-.qid{font-family:var(--mono);font-size:12px;color:var(--muted)}
-.tag{font-family:var(--mono);font-size:11px;padding:1px 7px;border-radius:3px;background:var(--accent-soft);color:var(--accent)}
-.blanks{display:grid;gap:8px}
-.blank{display:flex;flex-wrap:wrap;gap:6px 10px;align-items:center}
-input.ans{font-family:var(--mono);font-size:14px;width:96px;padding:4px 8px;border:1px solid var(--line);border-radius:4px;background:var(--bg);color:var(--ink)}
-input.ans:focus-visible{outline:2px solid var(--accent);outline-offset:1px}
-input.ans.ok{border-color:var(--good);background:var(--good-soft)}
-input.ans.no{border-color:var(--bad);background:var(--bad-soft)}
+section.block{padding-block:28px 8px;display:grid;gap:14px}
+.today{background:var(--accent-soft);border:1px solid var(--accent);border-radius:6px;padding:16px 18px;display:grid;gap:8px}
+.today .when{font-family:var(--mono);font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--accent)}
+.today h2{font-size:22px}
+.today p{color:var(--muted);font-size:14px}
+.today .go{display:flex;gap:10px;flex-wrap:wrap}
+.btn{font-family:var(--cond);font-weight:700;font-size:15px;text-decoration:none;border:1px solid var(--accent);border-radius:5px;padding:6px 14px;color:var(--accent);background:var(--surface)}
+.btn.primary{background:var(--accent);color:var(--surface)}
+.btn:hover,.btn:focus-visible{outline:2px solid var(--accent);outline-offset:1px}
+.entries{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+@media (max-width:720px){.entries{grid-template-columns:1fr}}
+a.entry{display:grid;gap:8px;align-content:start;text-decoration:none;color:var(--ink);background:var(--surface);border:1px solid var(--line);border-radius:6px;padding:16px 18px}
+a.entry:hover,a.entry:focus-visible{border-color:var(--accent);outline:none}
+a.entry .k{font-family:var(--mono);font-size:12px;color:var(--muted);letter-spacing:.06em;text-transform:uppercase}
+a.entry h3{font-size:22px}
+a.entry p{font-size:14px;color:var(--muted)}
+a.entry .stat{font-family:var(--mono);font-size:13px;color:var(--accent);font-variant-numeric:tabular-nums}
+h2.sec{font-size:19px;line-height:1.3}
 .tw{overflow-x:auto}
-table{border-collapse:collapse;font-size:14px;font-variant-numeric:tabular-nums}
-th,td{border:1px solid var(--line);padding:5px 9px;text-align:left;white-space:nowrap}
-th{font-family:var(--mono);font-size:12px;color:var(--muted);font-weight:600;background:var(--code)}
-td input.ans{width:58px}
-td.given{color:var(--muted)}
-code{font-family:var(--mono);font-size:13.5px}
-pre{font-family:var(--mono);font-size:13px;background:var(--code);padding:10px 12px;border-radius:4px;overflow-x:auto;margin:0;line-height:1.5}
-.actions{display:flex;gap:10px;align-items:center;flex-wrap:wrap}
-button{font-family:var(--sans);font-size:13.5px;padding:5px 14px;border-radius:4px;border:1px solid var(--accent);background:var(--accent);color:var(--surface);cursor:pointer}
-button.ghost{background:transparent;color:var(--accent)}
-button:focus-visible{outline:2px solid var(--ink);outline-offset:2px}
-.result{font-family:var(--mono);font-size:13px}
-.result.allok{color:var(--good)} .result.some{color:var(--bad)}
-details.sol{border-top:1px dashed var(--line);padding-top:10px}
-details.sol summary{cursor:pointer;color:var(--accent);font-size:14px}
-details.sol .body{display:grid;gap:8px;padding-top:8px}
-.rules{font-size:14px;color:var(--muted)}
-.callout{border-left:3px solid var(--accent);padding:8px 12px;background:var(--accent-soft);border-radius:0 4px 4px 0;font-size:14px}
-section.topic{scroll-margin-top:56px}
-.dayhead{padding-block:36px 4px;display:grid;gap:6px;scroll-margin-top:56px}
-.dayhead .when{font-family:var(--mono);font-size:12px;color:var(--accent);letter-spacing:.06em;text-transform:uppercase}
-.dayhead p{color:var(--muted);font-size:14px;max-width:68ch}
-.dayhead a{color:var(--accent)}
-.daybar{border-bottom:2px solid var(--ink);padding-bottom:12px}
-button.reset{background:transparent;color:var(--accent)}
+table{border-collapse:collapse;font-size:14px;width:100%;font-variant-numeric:tabular-nums}
+th,td{border-bottom:1px solid var(--line);padding:8px 10px;text-align:left;vertical-align:top}
+th{font-family:var(--mono);font-size:12px;color:var(--muted);font-weight:600;white-space:nowrap}
+td.d{font-family:var(--mono);font-size:13px;white-space:nowrap}
+td a{text-decoration:none}
+tr.now td{background:var(--accent-soft)}
+.pill{font-family:var(--mono);font-size:11.5px;padding:1px 8px;border-radius:999px;border:1px solid var(--line);color:var(--muted);white-space:nowrap}
+.pill.done{border-color:var(--good);color:var(--good);background:var(--good-soft)}
+.scope{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}
+@media (max-width:720px){.scope{grid-template-columns:1fr 1fr}}
+.scope div{background:var(--surface);border:1px solid var(--line);border-radius:6px;padding:10px 12px;display:grid;gap:2px}
+.scope .w{font-family:var(--mono);font-size:12px;color:var(--muted)}
+.scope .t{font-size:14px;line-height:1.45}
 </style>
 </head>
 <body>
 <div class="wrap">
-<nav class="toc" aria-label="按天跳转">
-  <div class="switch" role="group" aria-label="页面"><a href="notes/">学习</a><a href="./" aria-current="page">题目</a><a href="sample/">Sample Test</a></div>
-  <a href="#day1">Day 1</a><a href="#day2">Day 2</a><a href="#day3">Day 3</a><a href="#day4">Day 4</a><a href="#day5">Day 5</a>
-  <span class="end"><span class="score">已答对 <b id="sc">0</b> / <b id="st">0</b></span></span>
+<nav class="toc" aria-label="页面">
+  <a class="home" href="./" aria-current="page">CS6290</a><div class="switch" role="group" aria-label="页面"><a href="notes/">学习</a><a href="questions/">题目</a><a href="sample/">Sample Test</a></div>
 </nav>
+
 <header class="top">
-  <div class="eyebrow">CS6290 · HPCA · 题目</div>
-  <h1>CS6290 期中练习册</h1>
-  <p class="lede">按 5 天复习计划分组，每天先在<a href="notes/" style="color:var(--accent)">学习页</a>读完当天的笔记，再来做当天的题。规则和考试一样：没特别说明就精确到两位小数，T/F 题填 T 或 F。每题点「检查」判分，再展开「解析」看推导。答案都用模拟器核对过。</p>
+  <div class="eyebrow">CS6290 · HPCA · 第 1–8 周</div>
+  <h1>CS6290 期中复习</h1>
+  <p class="lede">10/12 到 10/16 五天复习完第 1–8 周的内容。每天先读学习页当天的笔记，再做题目页同一天的题。Sample Test 留到 Day 2 和 Day 5 各做一次。</p>
 </header>
 
-<!-- ============ METRICS ============ -->
-<div class="dayhead daybar" id="day1">
-  <span class="when">Day 1 · 10/12 周一</span>
-  <h2>指标、流水线、分支预测</h2>
-  <p>M1–M4 · P1–P2 · B1–B3。分支预测 B1、B2 要能不看解析全对。 <a href="notes/#d1">先读 Day 1 笔记 →</a></p>
-</div>
-<section class="topic" id="metrics">
-  <div class="topic-head"><h2>性能指标与 Amdahl 定律</h2><span class="wk">Week 1 · 对应 sample Q2</span></div>
-  <div class="notes">
-    <h3>要点</h3>
-    <ul>
-      <li>Amdahl：<span class="f">Speedup = 1 / ((1−F) + F/S)</span>，F 是<b>原来</b>执行时间中被加速部分的比例。</li>
-      <li>上限：S→∞ 时 <span class="f">Speedup_max = 1/(1−F)</span>。sample 里 2% 不能优化，上限就是 1/0.02 = 50。</li>
-      <li>反解 S：<span class="f">S = F / (1/Speedup − (1−F))</span>。</li>
-      <li>Iron Law：<span class="f">CPU time = IC × CPI × T_clk = IC × CPI / f</span>。</li>
-      <li>指令混合：<span class="f">CPI = Σ (比例ᵢ × CPIᵢ)</span>。</li>
-      <li>多个 benchmark 的平均 speedup 用<b>几何平均</b>（换参照机器结论不变）。不要直接对 speedup 做算术平均。</li>
-      <li>Lhadma 定律（Amdahl 的反面）：别为了加速罕见情况而让常见情况变慢。</li>
-    </ul>
-  </div>
-
-  <div class="q" data-q>
-    <div class="qhead"><span class="qid">M1</span><span class="tag">Amdahl 反解</span></div>
-    <p>一个程序有 15% 的执行时间在做网络 I/O，我们只能优化 CPU 部分。</p>
-    <div class="blanks">
-      <div class="blank">要让整个程序加速 4 倍，CPU 部分至少要加速 <input class="ans" id="m1a" data-ans="8.5" aria-label="M1 第1空"> 倍。</div>
-      <div class="blank">不管 CPU 部分优化得多好，整体加速比永远不会超过 <input class="ans" id="m1b" data-ans="6.6667" aria-label="M1 第2空">。</div>
-    </div>
-    <div class="actions"><button data-check>检查</button><span class="result"></span></div>
-    <details class="sol"><summary>解析</summary><div class="body">
-      <p>4 = 1/(0.15 + 0.85/S) → 0.15 + 0.85/S = 0.25 → 0.85/S = 0.10 → <b>S = 8.5</b>。</p>
-      <p>上限 1/0.15 = <b>6.67</b>。只要目标加速比 ≥ 6.67，就是无解。</p>
-    </div></details>
-  </div>
-
-  <div class="q" data-q>
-    <div class="qhead"><span class="qid">M2</span><span class="tag">两种改进比较</span></div>
-    <p>程序 40% 时间在浮点运算，25% 时间在访存，其余是别的。方案 A 让浮点快 2 倍；方案 B 让访存快 3 倍。</p>
-    <div class="blanks">
-      <div class="blank">只用 A 的整体加速比：<input class="ans" id="m2a" data-ans="1.25" aria-label="M2 A"></div>
-      <div class="blank">只用 B 的整体加速比：<input class="ans" id="m2b" data-ans="1.2" aria-label="M2 B"></div>
-      <div class="blank">A 和 B 同时用：<input class="ans" id="m2c" data-ans="1.5789" aria-label="M2 A+B"></div>
-    </div>
-    <div class="actions"><button data-check>检查</button><span class="result"></span></div>
-    <details class="sol"><summary>解析</summary><div class="body">
-      <p>A：1/(0.6 + 0.4/2) = 1/0.8 = <b>1.25</b></p>
-      <p>B：1/(0.75 + 0.25/3) = 1/0.8333 = <b>1.20</b></p>
-      <p>A+B：两部分互不重叠，新时间 = 0.35 + 0.20 + 0.0833 = 0.6333 → <b>1.58</b>。注意不是 1.25×1.2。</p>
-    </div></details>
-  </div>
-
-  <div class="q" data-q>
-    <div class="qhead"><span class="qid">M3</span><span class="tag">Iron Law</span></div>
-    <p>程序有 10⁹ 条指令，在 2 GHz 处理器上 CPI = 1.5。新设计把 CPI 降到 1.2，但时钟降到 1.8 GHz。</p>
-    <div class="blanks">
-      <div class="blank">旧执行时间（秒）：<input class="ans" id="m3a" data-ans="0.75" aria-label="M3 旧时间"></div>
-      <div class="blank">新执行时间（秒）：<input class="ans" id="m3b" data-ans="0.6667" aria-label="M3 新时间"></div>
-      <div class="blank">新设计的加速比：<input class="ans" id="m3c" data-ans="1.125" aria-label="M3 加速比"></div>
-    </div>
-    <div class="actions"><button data-check>检查</button><span class="result"></span></div>
-    <details class="sol"><summary>解析</summary><div class="body">
-      <p>旧：10⁹ × 1.5 / 2×10⁹ = <b>0.75 s</b>；新：10⁹ × 1.2 / 1.8×10⁹ = <b>0.667 s</b>；加速比 0.75/0.6667 = <b>1.125</b>（四舍五入成 1.13 也对）。</p>
-    </div></details>
-  </div>
-
-  <div class="q" data-q>
-    <div class="qhead"><span class="qid">M4</span><span class="tag">CPI 混合 · 几何平均</span></div>
-    <p>指令构成：50% ALU（CPI 1），30% load（CPI 3），20% branch（CPI 2）。</p>
-    <div class="blanks">
-      <div class="blank">平均 CPI：<input class="ans" id="m4a" data-ans="1.8" aria-label="M4 CPI"></div>
-      <div class="blank">若 load 的 CPI 降到 2（时钟不变），新 CPI：<input class="ans" id="m4b" data-ans="1.5" aria-label="M4 新CPI">，加速比：<input class="ans" id="m4c" data-ans="1.2" aria-label="M4 加速比"></div>
-      <div class="blank">另一个问题：三个 benchmark 的加速比分别是 2、0.5、4，几何平均加速比：<input class="ans" id="m4d" data-ans="1.5874" aria-label="M4 几何平均"></div>
-    </div>
-    <div class="actions"><button data-check>检查</button><span class="result"></span></div>
-    <details class="sol"><summary>解析</summary><div class="body">
-      <p>0.5×1 + 0.3×3 + 0.2×2 = <b>1.8</b>；改进后 0.5 + 0.6 + 0.4 = <b>1.5</b>；1.8/1.5 = <b>1.2</b>。</p>
-      <p>几何平均 = (2 × 0.5 × 4)^(1/3) = 4^(1/3) = <b>1.59</b>。</p>
-    </div></details>
+<section class="block">
+  <div class="today" id="today">
+    <span class="when" id="todayWhen">Day 1 · 10/12 周一</span>
+    <h2 id="todayTitle">指标、流水线、分支预测</h2>
+    <p id="todayDesc">Amdahl · Iron Law · 功耗 · hazard · 2-bit counter · 历史预测器 · predication</p>
+    <div class="go"><a class="btn primary" id="todayStudy" href="notes/#d1">读 Day 1 笔记</a><a class="btn" id="todayQ" href="questions/#day1">做 Day 1 的题</a></div>
   </div>
 </section>
 
-<!-- ============ PIPELINE ============ -->
-<section class="topic" id="pipe">
-  <div class="topic-head"><h2>流水线复习</h2><span class="wk">Week 1</span></div>
-  <div class="notes">
-    <h3>要点</h3>
-    <ul>
-      <li>理想流水线 CPI = 1；实际 <span class="f">CPI = 1 + 每条指令平均 stall 周期</span>。</li>
-      <li>分支预测错误的代价 = 分支在第几级被 resolve 减 1（第 3 级 resolve → 惩罚 2 个周期）。</li>
-      <li>控制冒险的 CPI 增量：<span class="f">分支比例 × 预测错误率 × 惩罚</span>。</li>
-      <li>数据冒险：forwarding 能解决大部分 RAW；load-use 一般仍需要 stall 1 个周期。</li>
-      <li>流水线更深 → 时钟更快，但分支惩罚更大。比较时用 <span class="f">CPI / f</span>，也就是每条指令的时间。</li>
-    </ul>
-  </div>
-
-  <div class="q" data-q>
-    <div class="qhead"><span class="qid">P1</span><span class="tag">分支惩罚 · 深流水线</span></div>
-    <p>处理器 A：5 级流水线，1 GHz，分支在第 3 级 resolve。处理器 B：10 级流水线，1.8 GHz，分支在第 7 级 resolve。两者都是 25% 的指令为分支，预测准确率 90%，没有其他 stall。</p>
-    <div class="blanks">
-      <div class="blank">A 的 CPI：<input class="ans" id="p1a" data-ans="1.05" aria-label="P1 A CPI"></div>
-      <div class="blank">B 的 CPI：<input class="ans" id="p1b" data-ans="1.15" aria-label="P1 B CPI"></div>
-      <div class="blank">B 相对 A 的加速比：<input class="ans" id="p1c" data-ans="1.6435" aria-label="P1 加速比"></div>
-    </div>
-    <div class="actions"><button data-check>检查</button><span class="result"></span></div>
-    <details class="sol"><summary>解析</summary><div class="body">
-      <p>A：惩罚 2，CPI = 1 + 0.25×0.1×2 = <b>1.05</b>。B：惩罚 6，CPI = 1 + 0.25×0.1×6 = <b>1.15</b>。</p>
-      <p>每条指令时间：A = 1.05 ns，B = 1.15/1.8 = 0.639 ns → 加速比 <b>1.64</b>。</p>
-    </div></details>
-  </div>
-
-  <div class="q" data-q>
-    <div class="qhead"><span class="qid">P2</span><span class="tag">load-use</span></div>
-    <p>5 级流水线，有完整 forwarding。30% 的指令是 load，其中 40% 的 load 紧跟着一条用它结果的指令，这种情况要 stall 1 个周期。没有其他 stall。</p>
-    <div class="blanks"><div class="blank">CPI = <input class="ans" id="p2a" data-ans="1.12" aria-label="P2 CPI"></div></div>
-    <div class="actions"><button data-check>检查</button><span class="result"></span></div>
-    <details class="sol"><summary>解析</summary><div class="body"><p>1 + 0.3 × 0.4 × 1 = <b>1.12</b></p></div></details>
+<section class="block">
+  <div class="entries">
+    <a class="entry" href="notes/"><span class="k">学习</span><h3>五天复习笔记</h3><p>按天整理的知识点、对比表和易错提示，最后附公式速查表。</p><span class="stat">5 天 · 12 课 · 22 条公式</span></a>
+    <a class="entry" href="questions/"><span class="k">题目</span><h3>期中练习册</h3><p>按 sample test 题型出的新题，按天分组，可以自动判分，带解析。</p><span class="stat">20 题 · 126 个空</span></a>
+    <a class="entry" href="sample/"><span class="k">Sample Test</span><h3>官方 Sample Test</h3><p>Q2 Amdahl、Q3 分支预测、Q4 ROB 原题，可以作答、判分，带中文解析。</p><span class="stat">3 题 · 48 分 · 38 个空</span></a>
   </div>
 </section>
 
-<!-- ============ BRANCH PREDICTION ============ -->
-<section class="topic" id="bp">
-  <div class="topic-head"><h2>分支预测与 Predication</h2><span class="wk">Week 2 · 对应 sample Q3</span></div>
-  <div class="notes">
-    <h3>要点</h3>
-    <ul>
-      <li><b>1-bit counter</b>：预测上一次的结果。在一个周期性 pattern 里，每次结果改变（T→N 或 N→T）都错一次，所以每个周期错 2 次。</li>
-      <li><b>2-bit counter</b>（0、1 预测 N；2、3 预测 T，初值 0）：要连续错两次才改变预测。T/N 段很短时可能比 1-bit 还差（sample 里就是 42.86% &lt; 71.43%）。</li>
-      <li><b>History predictor</b>（n 位历史 + 2ⁿ 个 counter）：用最近 n 次结果作为索引选 counter。</li>
-      <li><b>求最少历史位数</b>：在一个周期里写出所有长度为 n 的窗口，看每个窗口后面跟的结果是否唯一。都唯一时，n 就够了。</li>
-      <li><b>做稳态题的方法</b>：先模拟两三个周期，直到状态开始重复，再数一个周期里错几次。第三秒的准确率就是稳态准确率。</li>
-      <li>BTB 预测目标地址，BHT/PHT 预测方向，RAS 预测函数返回地址。Tournament 预测器用一个 meta-predictor 在两个预测器间选择。</li>
-      <li><b>Predication / if-conversion</b>：两条路径都执行，用 predicate 或 MOVZ/MOVN 丢掉不需要的结果。不会再预测错，但要多执行指令。分支难预测、两条路径都短时最划算。</li>
-    </ul>
-  </div>
+<section class="block">
+  <h2 class="sec">五天计划</h2>
+  <div class="tw"><table>
+    <thead><tr><th>日期</th><th>内容</th><th>学习</th><th>题目</th><th>进度</th></tr></thead>
+    <tbody id="planRows">
+      <tr data-day="1"><td class="d">Day 1 · 10/12 周一</td><td>指标、流水线、分支预测</td><td><a href="notes/#d1">笔记</a></td><td><a href="questions/#day1">M · P · B</a></td><td><span class="pill">未完成</span></td></tr>
+      <tr data-day="2"><td class="d">Day 2 · 10/13 周二</td><td>ILP、Tomasulo、ROB；做一遍 Sample Test</td><td><a href="notes/#d2">笔记</a></td><td><a href="questions/#day2">I · R</a> · <a href="sample/">Sample</a></td><td><span class="pill">未完成</span></td></tr>
+      <tr data-day="3"><td class="d">Day 3 · 10/14 周三</td><td>访存顺序、编译器 ILP、VLIW</td><td><a href="notes/#d3">笔记</a></td><td><a href="questions/#day3">L · V</a></td><td><span class="pill">未完成</span></td></tr>
+      <tr data-day="4"><td class="d">Day 4 · 10/15 周四</td><td>Cache、虚拟内存、高级 Cache</td><td><a href="notes/#d4">笔记</a></td><td><a href="questions/#day4">C · A</a></td><td><span class="pill">未完成</span></td></tr>
+      <tr data-day="5"><td class="d">Day 5 · 10/16 周五</td><td>判断题、整套限时模拟、闭卷重做 Sample Test</td><td><a href="notes/#d5">笔记</a> · <a href="notes/#sheet">速查</a></td><td><a href="questions/#day5">T</a> · <a href="sample/">Sample</a></td><td><span class="pill">未完成</span></td></tr>
+    </tbody>
+  </table></div>
+  <p class="lede" style="font-size:13px">进度来自学习页每天的勾选框，只保存在当前浏览器里。</p>
+</section>
 
-  <div class="q" data-q>
-    <div class="qhead"><span class="qid">B1</span><span class="tag">与 sample 同题型</span></div>
-    <p>一个分支的结果按 <span class="mono">T, T, T, N, N</span> 循环（每 5 次重复一次），每秒执行 5 百万次。下表是 1-bit counter predictor 的前 7 次，counter 初值 0。</p>
-    <div class="tw"><table>
-      <thead><tr><th>Occurrence</th><th>Counter</th><th>Predicted</th><th>Actual</th></tr></thead>
-      <tbody>
-        <tr><td>1st</td><td class="given">0</td><td class="given">N</td><td>T</td></tr>
-        <tr><td>2nd</td><td><input class="ans" id="b1c2" data-ans="1" aria-label="2nd counter"></td><td><input class="ans" id="b1p2" data-ans="T" aria-label="2nd pred"></td><td>T</td></tr>
-        <tr><td>3rd</td><td><input class="ans" id="b1c3" data-ans="1" aria-label="3rd counter"></td><td><input class="ans" id="b1p3" data-ans="T" aria-label="3rd pred"></td><td>T</td></tr>
-        <tr><td>4th</td><td><input class="ans" id="b1c4" data-ans="1" aria-label="4th counter"></td><td><input class="ans" id="b1p4" data-ans="T" aria-label="4th pred"></td><td>N</td></tr>
-        <tr><td>5th</td><td><input class="ans" id="b1c5" data-ans="0" aria-label="5th counter"></td><td><input class="ans" id="b1p5" data-ans="N" aria-label="5th pred"></td><td>N</td></tr>
-        <tr><td>6th</td><td><input class="ans" id="b1c6" data-ans="0" aria-label="6th counter"></td><td><input class="ans" id="b1p6" data-ans="N" aria-label="6th pred"></td><td>T</td></tr>
-        <tr><td>7th</td><td><input class="ans" id="b1c7" data-ans="1" aria-label="7th counter"></td><td><input class="ans" id="b1p7" data-ans="T" aria-label="7th pred"></td><td>T</td></tr>
-      </tbody>
-    </table></div>
-    <p>只有这个分支用这些预测器条目，初值全 0。第三秒的准确率（百分比）：</p>
-    <div class="blanks">
-      <div class="blank">1-bit counter：<input class="ans" id="b1a" data-ans="60" aria-label="1-bit"> %</div>
-      <div class="blank">2-bit counter：<input class="ans" id="b1b" data-ans="40" aria-label="2-bit"> %</div>
-      <div class="blank">1 位全局历史 + 1-bit counters：<input class="ans" id="b1c" data-ans="20" aria-label="1-bit history"> %</div>
-      <div class="blank">能做到 100% 的最便宜历史预测器（1-bit counters）需要几位历史：<input class="ans" id="b1d" data-ans="3" aria-label="history bits"></div>
-    </div>
-    <div class="actions"><button data-check>检查</button><span class="result"></span></div>
-    <details class="sol"><summary>解析</summary><div class="body">
-      <p><b>1-bit</b>：每个周期 T→N 和 N→T 各错一次，5 次中错 2 次 → <b>60%</b>。</p>
-      <p><b>2-bit</b> 稳态：每个周期开始时 counter = 1。</p>
-<pre>actual : T  T  T  N  N
-counter: 1  2  3  3  2   → 下周期又从 1 开始
-pred   : N  T  T  T  T
-correct: ✗  ✓  ✓  ✗  ✗   → 2/5 = 40%</pre>
-      <p><b>1 位历史</b>：两个 counter，按上一次结果选。</p>
-<pre>上次=T 后面跟着：T, T, N   (counter 每次被改成刚才的结果)
-上次=N 后面跟着：N, T
-稳态序列（实际 / 用的 ctr / 预测）：
- T  (上次N, ctrN=N) 预测 N ✗
- T  (上次T, ctrT=N) 预测 N ✗   ← ctrT 上次被第 4 个结果改成 N
- T  (上次T, ctrT=T) 预测 T ✓
- N  (上次T, ctrT=T) 预测 T ✗
- N  (上次N, ctrN=T) 预测 T ✗   ← ctrN 上次被第 1 个结果改成 T
-→ 1/5 = 20%</pre>
-      <p><b>最少历史位</b>：2 位时 TT 后面有时是 T、有时是 N，冲突。3 位窗口：TTT→N，TTN→N，TNN→T，NNT→T，NTT→T，全部唯一 → <b>3</b>。</p>
-    </div></details>
-  </div>
-
-  <div class="q" data-q>
-    <div class="qhead"><span class="qid">B2</span><span class="tag">换个 pattern</span></div>
-    <p>分支结果按 <span class="mono">T, T, N, T, N</span> 循环。条件和 B1 相同，求第三秒准确率（%）：</p>
-    <div class="blanks">
-      <div class="blank">1-bit counter：<input class="ans" id="b2a" data-ans="20" aria-label="B2 1-bit"></div>
-      <div class="blank">2-bit counter：<input class="ans" id="b2b" data-ans="60" aria-label="B2 2-bit"></div>
-      <div class="blank">1 位历史 + 1-bit counters：<input class="ans" id="b2c" data-ans="60" aria-label="B2 hist1"></div>
-      <div class="blank">做到 100% 最少要几位历史：<input class="ans" id="b2d" data-ans="4" aria-label="B2 bits"></div>
-    </div>
-    <div class="actions"><button data-check>检查</button><span class="result"></span></div>
-    <details class="sol"><summary>解析</summary><div class="body">
-      <p><b>1-bit</b>：一个周期里结果变化了 4 次（T→N、N→T、T→N、N→T，最后的 N 到下周期开头的 T 也算），所以 5 次只对 1 次 → <b>20%</b>。</p>
-      <p><b>2-bit</b> 稳态：counter 在 2、3 之间来回，一直预测 T，T 占 3/5 → <b>60%</b>。</p>
-<pre>actual : T  T  N  T  N
-counter: 2  3  3  2  3   (→ 下周期从 2 开始)
-pred   : T  T  T  T  T   → 3/5</pre>
-      <p><b>1 位历史</b>：上次=N 时，下一次总是 T（N 后面只跟 T）→ 2 次全对。上次=T 时，后面依次是 T、N、N，ctrT 预测上一次的值 → 稳态里对 1 次。共 3/5 = <b>60%</b>。</p>
-      <p><b>最少历史位</b>：3 位时 TNT 后面有时是 N（第 2–4 个位置），有时是 T（第 4、5、1 个位置），冲突。4 位窗口 TTNT→N，TNTN→T，NTNT→T，TNTT→N，NTTN→T 全部唯一 → <b>4</b>。</p>
-    </div></details>
-  </div>
-
-  <div class="q" data-q>
-    <div class="qhead"><span class="qid">B3</span><span class="tag">Predication 平衡点</span></div>
-    <p>一段 if-then-else 用分支实现，平均执行 6 条指令（含分支）；用 predication 实现要执行 11 条（两条路径都执行，加上设置 predicate 的指令）。预测错误惩罚 30 个周期。假设每条指令 1 个周期。</p>
-    <div class="blanks">
-      <div class="blank">分支的预测错误率高于 <input class="ans" id="b3a" data-ans="16.6667" aria-label="B3 break-even"> % 时，predication 更快。</div>
-    </div>
-    <div class="actions"><button data-check>检查</button><span class="result"></span></div>
-    <details class="sol"><summary>解析</summary><div class="body"><p>6 + 30p = 11 → p = 5/30 = <b>16.67%</b>（相当于准确率 83.33%）。</p></div></details>
+<section class="block">
+  <h2 class="sec">考试范围</h2>
+  <div class="scope">
+    <div><span class="w">Week 1</span><span class="t">性能指标与评估、流水线复习</span></div>
+    <div><span class="w">Week 2</span><span class="t">分支预测与 predication</span></div>
+    <div><span class="w">Week 3</span><span class="t">ILP 与指令调度</span></div>
+    <div><span class="w">Week 4</span><span class="t">ROB</span></div>
+    <div><span class="w">Week 5</span><span class="t">访存顺序</span></div>
+    <div><span class="w">Week 6</span><span class="t">编译器 ILP 与 VLIW</span></div>
+    <div><span class="w">Week 7</span><span class="t">Cache 复习与虚拟内存</span></div>
+    <div><span class="w">Week 8</span><span class="t">高级 Cache</span></div>
   </div>
 </section>
 
-<!-- ============ ILP ============ -->
-<div class="dayhead daybar" id="day2">
-  <span class="when">Day 2 · 10/13 周二</span>
-  <h2>ILP、Tomasulo、ROB</h2>
-  <p>I1 · R1 · R2。ROB 表每张限时 15 分钟，做完再闭卷重做 sample 的 ROB 题。 <a href="notes/#d2">先读 Day 2 笔记 →</a></p>
-</div>
-<section class="topic" id="ilp">
-  <div class="topic-head"><h2>ILP、依赖与重命名</h2><span class="wk">Week 3</span></div>
-  <div class="notes">
-    <h3>要点</h3>
-    <ul>
-      <li><b>RAW</b>（真依赖）：后面的指令读前面写的值。重命名<b>去不掉</b>。</li>
-      <li><b>WAR</b>（反依赖）、<b>WAW</b>（输出依赖）是名字依赖，用寄存器重命名（RAT）就能去掉。</li>
-      <li>理想处理器的 ILP：资源无限、重命名完美、每条 1 周期，只受 RAW 限制。<span class="f">ILP = 指令数 / 周期数</span>。</li>
-      <li>做法：每条指令的周期 = 它所有 RAW 来源中最晚完成周期 + 1。没有依赖的放在第 1 周期。</li>
-      <li>Tomasulo：Issue（按序，需要空 RS） → Dispatch（操作数齐了才执行） → Write result（CDB 广播）。RAT 指向“将产生这个值的 RS/ROB 条目”。</li>
-    </ul>
-  </div>
-
-  <div class="q" data-q>
-    <div class="qhead"><span class="qid">I1</span><span class="tag">数依赖 · 算 ILP</span></div>
-<pre>I1: ADD R1, R2, R3
-I2: MUL R4, R1, R1
-I3: ADD R1, R5, R6
-I4: SUB R7, R1, R4
-I5: ADD R4, R7, R1
-I6: ADD R8, R2, R2</pre>
-    <div class="blanks">
-      <div class="blank">RAW 依赖个数：<input class="ans" id="i1a" data-ans="5" aria-label="RAW"> WAR 个数：<input class="ans" id="i1b" data-ans="2" aria-label="WAR"> WAW 个数：<input class="ans" id="i1c" data-ans="2" aria-label="WAW"></div>
-      <div class="blank">理想处理器（每条 1 周期）执行需要几个周期：<input class="ans" id="i1d" data-ans="4" aria-label="cycles">，ILP = <input class="ans" id="i1e" data-ans="1.5" aria-label="ILP"></div>
-    </div>
-    <div class="actions"><button data-check>检查</button><span class="result"></span></div>
-    <details class="sol"><summary>解析</summary><div class="body">
-      <p>RAW：I1→I2 (R1)，I2→I4 (R4)，I3→I4 (R1)，I3→I5 (R1)，I4→I5 (R7) = <b>5</b>。注意 I4 读的 R1 来自 I3，不是 I1。</p>
-      <p>WAR：I2 读 R1 → I3 写 R1；I4 读 R4 → I5 写 R4 = <b>2</b>。WAW：I1/I3 (R1)，I2/I5 (R4) = <b>2</b>。</p>
-<pre>周期1: I1, I3, I6
-周期2: I2        (等 I1)
-周期3: I4        (等 I2, I3)
-周期4: I5        (等 I4)</pre>
-      <p>6 条 / 4 周期 = <b>1.5</b>。</p>
-    </div></details>
-  </div>
-</section>
-
-<!-- ============ ROB ============ -->
-<section class="topic" id="rob">
-  <div class="topic-head"><h2>ROB 时序表</h2><span class="wk">Week 4 · 对应 sample Q4（分值最大）</span></div>
-  <div class="notes">
-    <h3>规则（和 sample 一样，要背熟）</h3>
-    <ul>
-      <li><b>Issue</b>：按程序顺序，每周期 1 条；需要同时有空 RS 和空 ROB 条目。</li>
-      <li><b>RS 释放</b>：指令开始执行的那个周期释放，同一周期就能 issue 新指令进来。</li>
-      <li><b>ROB 释放</b>：在 commit 的那个周期释放，<b>下一个周期</b>才能被新指令使用。</li>
-      <li><b>Exe</b>：最早在 issue 的下一周期；操作数在周期 X 广播，最早 X+1 开始执行。在广播的同一周期 issue 的指令也能拿到值（sample 里 I6 就是这样）。</li>
-      <li><b>BCast</b>：最早 = Exe + latency。每周期只能广播 1 个，冲突时老指令优先，新的往后排。</li>
-      <li><b>非流水单元</b>：Exe 到 Exe+lat−1 一直被占用，下一条最早 Exe+lat。<b>流水单元</b>：每周期能开始 1 条，冲突时老指令优先。</li>
-      <li><b>Commit</b>：按序，每周期 1 条，最早在 BCast 的下一周期。</li>
-    </ul>
-    <div class="callout">做题顺序：先把每条的 Issue 填出来（检查 RS 和 ROB 够不够），再按依赖填 Exe，接着处理执行单元冲突，然后处理广播冲突，最后按顺序填 Commit。每填一格，都回头看一下有没有因此空出 RS 或 ROB 条目。</div>
-  </div>
-
-  <div class="q" data-q>
-    <div class="qhead"><span class="qid">R1</span><span class="tag">RS 满 + ROB 满</span></div>
-    <p class="rules">单发射乱序处理器，<b>3 个</b>统一 RS，<b>5 个</b> ROB 条目。MUL 单元：5 周期延迟，<b>不流水</b>。另一个单元做其他指令：2 周期延迟，流水。其他规则同上。第一行已给出。</p>
-    <div class="tw"><table>
-      <thead><tr><th>Inst</th><th></th><th>Issue</th><th>Exe</th><th>BCast</th><th>Commit</th></tr></thead>
-      <tbody>
-        <tr><td>I1</td><td class="mono">MUL R1,R2,R3</td><td class="given">1</td><td class="given">2</td><td class="given">7</td><td class="given">8</td></tr>
-        <tr><td>I2</td><td class="mono">ADD R4,R1,R5</td><td><input class="ans" id="r1_2i" data-ans="2" aria-label="I2 issue"></td><td><input class="ans" id="r1_2e" data-ans="8" aria-label="I2 exe"></td><td><input class="ans" id="r1_2b" data-ans="10" aria-label="I2 bcast"></td><td><input class="ans" id="r1_2c" data-ans="11" aria-label="I2 commit"></td></tr>
-        <tr><td>I3</td><td class="mono">MUL R6,R2,R2</td><td><input class="ans" id="r1_3i" data-ans="3" aria-label="I3 issue"></td><td><input class="ans" id="r1_3e" data-ans="7" aria-label="I3 exe"></td><td><input class="ans" id="r1_3b" data-ans="12" aria-label="I3 bcast"></td><td><input class="ans" id="r1_3c" data-ans="13" aria-label="I3 commit"></td></tr>
-        <tr><td>I4</td><td class="mono">ADD R2,R4,R6</td><td><input class="ans" id="r1_4i" data-ans="4" aria-label="I4 issue"></td><td><input class="ans" id="r1_4e" data-ans="13" aria-label="I4 exe"></td><td><input class="ans" id="r1_4b" data-ans="15" aria-label="I4 bcast"></td><td><input class="ans" id="r1_4c" data-ans="16" aria-label="I4 commit"></td></tr>
-        <tr><td>I5</td><td class="mono">ADD R7,R5,R5</td><td><input class="ans" id="r1_5i" data-ans="7" aria-label="I5 issue"></td><td><input class="ans" id="r1_5e" data-ans="9" aria-label="I5 exe"></td><td><input class="ans" id="r1_5b" data-ans="11" aria-label="I5 bcast"></td><td><input class="ans" id="r1_5c" data-ans="17" aria-label="I5 commit"></td></tr>
-        <tr><td>I6</td><td class="mono">MUL R8,R7,R7</td><td><input class="ans" id="r1_6i" data-ans="9" aria-label="I6 issue"></td><td><input class="ans" id="r1_6e" data-ans="12" aria-label="I6 exe"></td><td><input class="ans" id="r1_6b" data-ans="17" aria-label="I6 bcast"></td><td><input class="ans" id="r1_6c" data-ans="18" aria-label="I6 commit"></td></tr>
-        <tr><td>I7</td><td class="mono">ADD R9,R7,R3</td><td><input class="ans" id="r1_7i" data-ans="12" aria-label="I7 issue"></td><td><input class="ans" id="r1_7e" data-ans="14" aria-label="I7 exe"></td><td><input class="ans" id="r1_7b" data-ans="16" aria-label="I7 bcast"></td><td><input class="ans" id="r1_7c" data-ans="19" aria-label="I7 commit"></td></tr>
-      </tbody>
-    </table></div>
-    <div class="actions"><button data-check>检查</button><span class="result"></span></div>
-    <details class="sol"><summary>解析</summary><div class="body">
-      <p><b>I2</b>：等 I1 的 R1（第 7 周期广播）→ Exe 8，BCast 10，Commit 11。</p>
-      <p><b>I3</b>：第 4 周期操作数就齐了，但 MUL 单元第 2–6 周期被 I1 占着 → Exe 7（第 7–11 周期），BCast 12，Commit 13。</p>
-      <p><b>I4</b>：Issue 4，此时 3 个 RS 被 I2、I3、I4 占满。等 I3 的 R6（12）→ Exe 13，BCast 15，Commit 16。</p>
-      <p><b>I5</b>：RS 满，第 5、6 周期不能 issue。第 7 周期 I3 开始执行、释放 RS → Issue 7。第 8 周期 ADD 单元被更老的 I2 用了 → Exe 9，BCast 11。Commit 要排在 I4 后面 → 17。</p>
-      <p><b>I6</b>：第 8 周期 RS 有空（I2 在第 8 周期开始执行），但 ROB 里还有 I1–I5 五条（I1 在第 8 周期 commit，第 9 周期才能复用）→ Issue 9。等 R7（11），MUL 单元第 12 周期才空 → Exe 12，BCast 17，Commit 18。</p>
-      <p><b>I7</b>：ROB 一直满着，直到 I2 在第 11 周期 commit，所以第 12 周期才能 issue。R7 已经好了。第 13 周期 ADD 单元给了更老的 I4 → Exe 14，BCast 16，Commit 19。</p>
-    </div></details>
-  </div>
-
-  <div class="q" data-q>
-    <div class="qhead"><span class="qid">R2</span><span class="tag">广播冲突 + WAR</span></div>
-    <p class="rules"><b>4 个</b> RS，<b>6 个</b> ROB 条目。MUL 单元：4 周期延迟，<b>不流水</b>。另一个单元：<b>3 周期</b>延迟，流水。其他规则同上。</p>
-    <div class="tw"><table>
-      <thead><tr><th>Inst</th><th></th><th>Issue</th><th>Exe</th><th>BCast</th><th>Commit</th></tr></thead>
-      <tbody>
-        <tr><td>I1</td><td class="mono">MUL R1,R2,R3</td><td class="given">1</td><td class="given">2</td><td class="given">6</td><td class="given">7</td></tr>
-        <tr><td>I2</td><td class="mono">ADD R2,R4,R4</td><td><input class="ans" id="r2_2i" data-ans="2" aria-label="I2 issue"></td><td><input class="ans" id="r2_2e" data-ans="3" aria-label="I2 exe"></td><td><input class="ans" id="r2_2b" data-ans="7" aria-label="I2 bcast"></td><td><input class="ans" id="r2_2c" data-ans="8" aria-label="I2 commit"></td></tr>
-        <tr><td>I3</td><td class="mono">ADD R5,R1,R2</td><td><input class="ans" id="r2_3i" data-ans="3" aria-label="I3 issue"></td><td><input class="ans" id="r2_3e" data-ans="8" aria-label="I3 exe"></td><td><input class="ans" id="r2_3b" data-ans="11" aria-label="I3 bcast"></td><td><input class="ans" id="r2_3c" data-ans="12" aria-label="I3 commit"></td></tr>
-        <tr><td>I4</td><td class="mono">ADD R6,R2,R7</td><td><input class="ans" id="r2_4i" data-ans="4" aria-label="I4 issue"></td><td><input class="ans" id="r2_4e" data-ans="9" aria-label="I4 exe"></td><td><input class="ans" id="r2_4b" data-ans="12" aria-label="I4 bcast"></td><td><input class="ans" id="r2_4c" data-ans="13" aria-label="I4 commit"></td></tr>
-        <tr><td>I5</td><td class="mono">MUL R7,R6,R6</td><td><input class="ans" id="r2_5i" data-ans="5" aria-label="I5 issue"></td><td><input class="ans" id="r2_5e" data-ans="13" aria-label="I5 exe"></td><td><input class="ans" id="r2_5b" data-ans="17" aria-label="I5 bcast"></td><td><input class="ans" id="r2_5c" data-ans="18" aria-label="I5 commit"></td></tr>
-        <tr><td>I6</td><td class="mono">ADD R3,R4,R5</td><td><input class="ans" id="r2_6i" data-ans="6" aria-label="I6 issue"></td><td><input class="ans" id="r2_6e" data-ans="12" aria-label="I6 exe"></td><td><input class="ans" id="r2_6b" data-ans="15" aria-label="I6 bcast"></td><td><input class="ans" id="r2_6c" data-ans="19" aria-label="I6 commit"></td></tr>
-        <tr><td>I7</td><td class="mono">ADD R1,R6,R2</td><td><input class="ans" id="r2_7i" data-ans="8" aria-label="I7 issue"></td><td><input class="ans" id="r2_7e" data-ans="13" aria-label="I7 exe"></td><td><input class="ans" id="r2_7b" data-ans="16" aria-label="I7 bcast"></td><td><input class="ans" id="r2_7c" data-ans="20" aria-label="I7 commit"></td></tr>
-      </tbody>
-    </table></div>
-    <div class="actions"><button data-check>检查</button><span class="result"></span></div>
-    <details class="sol"><summary>解析</summary><div class="body">
-      <p><b>I2</b>：没有依赖（它写 R2 是对 I1 的 WAR，重命名后不用管）。Exe 3，第 6 周期算完，但 I1 在第 6 周期广播（更老）→ BCast 7。</p>
-      <p><b>I3</b>：要 R1（6）和 R2（7）→ Exe 8，BCast 11。</p>
-      <p><b>I4</b>：读的是<b>旧</b> R7（I5 后面才写，WAR），只等 R2（7）。第 8 周期 ADD 单元给了更老的 I3 → Exe 9，BCast 12。</p>
-      <p><b>I5</b>：等 R6（12）→ Exe 13，BCast 17。</p>
-      <p><b>I6</b>：等 R5（11）→ Exe 12，BCast 15。Commit 排在 I5 之后 → 19。</p>
-      <p><b>I7</b>：第 7 周期 RS 全满（I3、I4、I5、I6），ROB 也满（I1–I6，I1 在第 7 周期 commit）。第 8 周期两者都有空 → Issue 8。等 R6（12）→ Exe 13（MUL 和 ADD 是不同单元，I5 也在 13 开始，不冲突），BCast 16，Commit 20。</p>
-    </div></details>
-  </div>
-</section>
-
-<!-- ============ MEMORY ORDERING ============ -->
-<div class="dayhead daybar" id="day3">
-  <span class="when">Day 3 · 10/14 周三</span>
-  <h2>访存顺序、编译器 ILP、VLIW</h2>
-  <p>L1 · V1。题量少，剩下的时间把 R1、R2 清空再填一遍。 <a href="notes/#d3">先读 Day 3 笔记 →</a></p>
-</div>
-<section class="topic" id="mem">
-  <div class="topic-head"><h2>访存顺序（LSQ）</h2><span class="wk">Week 5</span></div>
-  <div class="notes">
-    <h3>要点</h3>
-    <ul>
-      <li>Store 在 <b>commit</b> 时才写进 cache/内存（不然没法撤销）。</li>
-      <li>LSQ 按程序顺序保存 load 和 store。load 执行时往前（更老的方向）找<b>地址相同的最近一条 store</b>，找到就 store-to-load forwarding，找不到才去读 cache。</li>
-      <li>如果更老的 store 地址还没算出来，load 可以等（保守），也可以先执行（激进）。激进做法下，store 地址算出来后要检查后面已经执行的 load，地址相同就重新执行该 load 及其之后的指令。</li>
-      <li>RAW 依赖可能通过内存发生，寄存器重命名看不到这种依赖，要靠 LSQ。</li>
-    </ul>
-  </div>
-
-  <div class="q" data-q>
-    <div class="qhead"><span class="qid">L1</span><span class="tag">store-to-load forwarding</span></div>
-    <p>下列指令都在 LSQ 里，所有地址都已算出，store 都还没 commit：</p>
-<pre>I1: SW  -> addr 100
-I2: LW  <- addr 200
-I3: SW  -> addr 104
-I4: LW  <- addr 100
-I5: SW  -> addr 100
-I6: LW  <- addr 100
-I7: LW  <- addr 104</pre>
-    <div class="blanks">
-      <div class="blank">I4 的值来自哪条指令（填编号，例如 1）：<input class="ans" id="l1a" data-ans="1" aria-label="I4 source"></div>
-      <div class="blank">I6 的值来自：<input class="ans" id="l1b" data-ans="5" aria-label="I6 source"></div>
-      <div class="blank">I7 的值来自：<input class="ans" id="l1c" data-ans="3" aria-label="I7 source"></div>
-      <div class="blank">有几个 load 必须去 cache 读：<input class="ans" id="l1d" data-ans="1" aria-label="cache loads"></div>
-    </div>
-    <div class="actions"><button data-check>检查</button><span class="result"></span></div>
-    <details class="sol"><summary>解析</summary><div class="body">
-      <p>每个 load 往前找最近的同地址 store：I4 → I1；I6 → I5（比 I1 新）；I7 → I3。I2 找不到地址 200 的 store，只能读 cache → <b>1</b> 个。</p>
-    </div></details>
-  </div>
-</section>
-
-<!-- ============ COMPILER / VLIW ============ -->
-<section class="topic" id="vliw">
-  <div class="topic-head"><h2>编译器 ILP 与 VLIW</h2><span class="wk">Week 6</span></div>
-  <div class="notes">
-    <h3>要点</h3>
-    <ul>
-      <li><b>Tree height reduction</b>：把 <span class="f">((a+b)+c)+d</span> 改成 <span class="f">(a+b)+(c+d)</span>，依赖链变短（要求运算满足结合律）。</li>
-      <li><b>Instruction scheduling</b>：把不相关的指令挪进 stall 的空位。</li>
-      <li><b>Loop unrolling</b>：减少循环开销指令（ADDI、BNE），还给调度更多可以填空位的指令。代价是代码变大、用更多寄存器。</li>
-      <li>展开后指令数：<span class="f">(迭代数 / k) × (k × 循环体 + 开销)</span>。</li>
-      <li><b>VLIW</b>：编译器把独立指令打包成一个长指令字，硬件不检查依赖。优点是硬件简单、省电；缺点是填不满时要塞 NOP，代码膨胀，编译器无法预知 cache miss 这类延迟，换一代硬件可能要重新编译。</li>
-    </ul>
-  </div>
-
-  <div class="q" data-q>
-    <div class="qhead"><span class="qid">V1</span><span class="tag">展开 + 调度</span></div>
-    <p>单发射按序处理器。紧跟在 LW 后面用它结果的指令要 stall 2 个周期；紧跟在 ADD 后面用它结果的指令要 stall 1 个周期。其他依赖都不 stall。分支预测完美，没有延迟槽。循环跑 1000 次：</p>
-<pre>Loop: LW   R2, 0(R1)
-      ADD  R2, R2, R5
-      SW   R2, 0(R1)
-      ADDI R1, R1, 4
-      BNE  R1, R3, Loop</pre>
-    <div class="blanks">
-      <div class="blank">不做任何优化时，每次迭代几个周期：<input class="ans" id="v1a" data-ans="8" aria-label="orig cycles"></div>
-      <div class="blank">展开 2 次并重新调度后，平均每个<b>原始</b>迭代几个周期：<input class="ans" id="v1b" data-ans="4" aria-label="unrolled cycles"></div>
-      <div class="blank">原循环总共执行几条指令：<input class="ans" id="v1c" data-ans="5000" aria-label="orig IC">；展开 4 次后：<input class="ans" id="v1d" data-ans="3500" aria-label="unroll4 IC"></div>
-    </div>
-    <div class="actions"><button data-check>检查</button><span class="result"></span></div>
-    <details class="sol"><summary>解析</summary><div class="body">
-<pre>原始:                     展开×2 并调度:
-1 LW   R2,0(R1)           1 LW   R2,0(R1)
-2 stall                   2 LW   R6,4(R1)
-3 stall                   3 ADDI R1,R1,8
-4 ADD  R2,R2,R5           4 ADD  R2,R2,R5   (LW@1 +3 ✓)
-5 stall                   5 ADD  R6,R6,R5   (LW@2 +3 ✓)
-6 SW   R2,0(R1)           6 SW   R2,-8(R1)  (ADD@4 +2 ✓)
-7 ADDI R1,R1,4            7 SW   R6,-4(R1)  (ADD@5 +2 ✓)
-8 BNE                     8 BNE</pre>
-      <p>原始 <b>8</b> 周期/迭代；展开后 8 周期做 2 次迭代 = <b>4</b>（加速 2 倍）。ADDI 提前了，所以 SW 的偏移要减 8。</p>
-      <p>指令数：1000×5 = <b>5000</b>；展开 4 次：250 × (4×3 + 2) = <b>3500</b>。</p>
-    </div></details>
-  </div>
-</section>
-
-<!-- ============ CACHE & VM ============ -->
-<div class="dayhead daybar" id="day4">
-  <span class="when">Day 4 · 10/15 周四</span>
-  <h2>Cache、虚拟内存、高级 Cache</h2>
-  <p>C1–C4 · A1。 <a href="notes/#d4">先读 Day 4 笔记 →</a></p>
-</div>
-<section class="topic" id="cache">
-  <div class="topic-head"><h2>Cache 复习与虚拟内存</h2><span class="wk">Week 7</span></div>
-  <div class="notes">
-    <h3>要点</h3>
-    <ul>
-      <li><span class="f">AMAT = hit time + miss rate × miss penalty</span>；两级 cache：<span class="f">AMAT = HT₁ + MR₁ × (HT₂ + MR₂_local × penalty_mem)</span>。</li>
-      <li>地址划分：<span class="f">offset = log₂(block)</span>，<span class="f">#sets = size/(block × ways)</span>，<span class="f">index = log₂(#sets)</span>，<span class="f">tag = addr位数 − index − offset</span>。</li>
-      <li>LRU：每次访问把该块移到“最近使用”一端，替换时踢掉最久没用的。N 路 LRU 每块需要 log₂N 位计数器。</li>
-      <li>Write-back 需要 dirty 位；write-through 一般配 write buffer。Write-allocate：写 miss 时把块调进 cache。</li>
-      <li>页表大小 = <span class="f">2^(VA位数 − page offset 位数) × PTE大小</span>。多级页表只给用到的部分分配空间。</li>
-      <li>TLB reach = <span class="f">TLB条目数 × 页大小</span>。</li>
-    </ul>
-  </div>
-
-  <div class="q" data-q>
-    <div class="qhead"><span class="qid">C1</span><span class="tag">地址划分</span></div>
-    <p>32 KB、4 路组相联 cache，64 B 块，32 位物理地址。</p>
-    <div class="blanks"><div class="blank">offset 位：<input class="ans" id="c1a" data-ans="6" aria-label="offset"> index 位：<input class="ans" id="c1b" data-ans="7" aria-label="index"> tag 位：<input class="ans" id="c1c" data-ans="19" aria-label="tag"></div></div>
-    <div class="actions"><button data-check>检查</button><span class="result"></span></div>
-    <details class="sol"><summary>解析</summary><div class="body"><p>offset = log₂64 = 6；sets = 32768/(64×4) = 128 → index 7；tag = 32−7−6 = 19。</p></div></details>
-  </div>
-
-  <div class="q" data-q>
-    <div class="qhead"><span class="qid">C2</span><span class="tag">AMAT</span></div>
-    <div class="blanks">
-      <div class="blank">单级：hit time 2 周期，miss rate 5%，miss penalty 50 周期，AMAT = <input class="ans" id="c2a" data-ans="4.5" aria-label="AMAT1"></div>
-      <div class="blank">两级：L1 hit 2，L1 miss rate 10%，L2 hit 10，L2 local miss rate 40%，内存 100。AMAT = <input class="ans" id="c2b" data-ans="7" aria-label="AMAT2"></div>
-      <div class="blank">上面 L2 的 global miss rate = <input class="ans" id="c2c" data-ans="4" aria-label="global MR"> %</div>
-    </div>
-    <div class="actions"><button data-check>检查</button><span class="result"></span></div>
-    <details class="sol"><summary>解析</summary><div class="body">
-      <p>2 + 0.05×50 = <b>4.5</b>；2 + 0.1×(10 + 0.4×100) = 2 + 5 = <b>7</b>；global = 0.1 × 0.4 = <b>4%</b>。</p>
-    </div></details>
-  </div>
-
-  <div class="q" data-q>
-    <div class="qhead"><span class="qid">C3</span><span class="tag">LRU 模拟</span></div>
-    <p>4 路组相联 cache 中的一个 set，开始为空，用 LRU 替换。以下块都映射到这个 set，访问顺序为：<span class="mono">A B C D A E B A C</span></p>
-    <div class="blanks">
-      <div class="blank">一共几次 miss：<input class="ans" id="c3a" data-ans="7" aria-label="misses"></div>
-      <div class="blank">访问 E 时被替换的是哪个块（填字母）：<input class="ans" id="c3b" data-ans="B" aria-label="evicted"></div>
-    </div>
-    <div class="actions"><button data-check>检查</button><span class="result"></span></div>
-    <details class="sol"><summary>解析</summary><div class="body">
-<pre>(LRU → MRU)
-A miss [A]        B miss [A B]       C miss [A B C]
-D miss [A B C D]  A hit  [B C D A]
-E miss 踢 B [C D A E]
-B miss 踢 C [D A E B]
-A hit  [D E B A]
-C miss 踢 D [E B A C]     → 7 miss</pre>
-    </div></details>
-  </div>
-
-  <div class="q" data-q>
-    <div class="qhead"><span class="qid">C4</span><span class="tag">VM · TLB · VIPT</span></div>
-    <div class="blanks">
-      <div class="blank">32 位虚拟地址，4 KB 页，PTE 4 B，单级页表大小 = <input class="ans" id="c4a" data-ans="4" aria-label="PT size"> MB</div>
-      <div class="blank">64 条目的 TLB，4 KB 页，TLB reach = <input class="ans" id="c4b" data-ans="256" aria-label="TLB reach"> KB</div>
-      <div class="blank">4 KB 页、4 路组相联的 VIPT cache，要不出现 aliasing，最大容量 = <input class="ans" id="c4c" data-ans="16" aria-label="VIPT max"> KB</div>
-    </div>
-    <div class="actions"><button data-check>检查</button><span class="result"></span></div>
-    <details class="sol"><summary>解析</summary><div class="body">
-      <p>2^(32−12) × 4 B = 2²⁰ × 4 = <b>4 MB</b>。64 × 4 KB = <b>256 KB</b>。</p>
-      <p>VIPT 无 aliasing 要求 index + offset 都落在页内偏移（12 位）里 → 每一路最多 4 KB → 4 × 4 KB = <b>16 KB</b>。想做大就只能增加路数。</p>
-    </div></details>
-  </div>
-</section>
-
-<!-- ============ ADVANCED CACHES ============ -->
-<section class="topic" id="adv">
-  <div class="topic-head"><h2>高级 Cache</h2><span class="wk">Week 8</span></div>
-  <div class="notes">
-    <h3>要点</h3>
-    <ul>
-      <li><b>降 hit time</b>：VIPT（TLB 和 cache 并行查）、way prediction（先猜一路，猜错再查其他路）、小而简单的 L1、replacement 用 NMRU/PLRU 代替真 LRU。</li>
-      <li><b>降 miss rate</b>：3C = Compulsory（第一次访问）、Capacity（无限大全相联也会 miss 的那部分之外，由容量不够引起）、Conflict（全相联不会 miss，组相联会）。更大的块减少 compulsory miss，但可能增加 conflict 和 miss penalty。Prefetch、loop interchange、blocking。</li>
-      <li><b>降 miss penalty</b>：非阻塞 cache（hit-under-miss、miss-under-miss，靠 MSHR 记录未完成的 miss）、多级 cache。</li>
-      <li><b>Local miss rate</b> = 本级 miss 数 / 本级访问数；<b>global</b> = 本级 miss 数 / CPU 总访问数。</li>
-      <li><b>Inclusion</b>：L1 的内容一定在 L2 里，需要特别维护（L2 替换时要 invalidate L1 里对应的块），不会自动成立。</li>
-    </ul>
-  </div>
-
-  <div class="q" data-q>
-    <div class="qhead"><span class="qid">A1</span><span class="tag">Way prediction</span></div>
-    <p>使用 way prediction 的 L1：预测正确时 hit 用 1 周期，预测错误时 hit 用 2 周期。90% 的 hit 预测正确。L1 miss rate 5%，miss penalty 40 周期。</p>
-    <div class="blanks">
-      <div class="blank">平均 hit time = <input class="ans" id="a1a" data-ans="1.1" aria-label="hit time"></div>
-      <div class="blank">AMAT = <input class="ans" id="a1b" data-ans="3.1" aria-label="AMAT"></div>
-    </div>
-    <div class="actions"><button data-check>检查</button><span class="result"></span></div>
-    <details class="sol"><summary>解析</summary><div class="body"><p>0.9×1 + 0.1×2 = <b>1.1</b>；1.1 + 0.05×40 = <b>3.1</b>。</p></div></details>
-  </div>
-</section>
-
-<!-- ============ TRUE / FALSE ============ -->
-<div class="dayhead daybar" id="day5">
-  <span class="when">Day 5 · 10/16 周五</span>
-  <h2>模拟考 + 概念判断</h2>
-  <p>先做下面的判断题，再点「清空所有答案」，从 Day 1 开始限时把整套重做一遍，中间不看解析。 <a href="notes/#d5">先读 Day 5 笔记 →</a></p>
-  <div class="actions"><button class="reset" id="resetAll" type="button">清空所有答案</button><span class="result" id="resetMsg"></span></div>
-</div>
-<section class="topic" id="tf">
-  <div class="topic-head"><h2>概念判断题</h2><span class="wk">全范围 · 填 T 或 F</span></div>
-  <div class="q" data-q>
-    <div class="qhead"><span class="qid">T1</span><span class="tag">15 题</span></div>
-    <div class="blanks">
-      <div class="blank"><input class="ans" id="t1" data-ans="F" aria-label="T1">寄存器重命名可以消除 RAW 依赖。</div>
-      <div class="blank"><input class="ans" id="t2" data-ans="T" aria-label="T2">对循环次数很多的循环分支，2-bit counter 比 1-bit counter 更准确。</div>
-      <div class="blank"><input class="ans" id="t3" data-ans="T" aria-label="T3">RAS（return address stack）用来预测函数返回指令的目标地址。</div>
-      <div class="blank"><input class="ans" id="t4" data-ans="T" aria-label="T4">在有 ROB 的处理器中，异常要等出错指令到 commit 时才处理。</div>
-      <div class="blank"><input class="ans" id="t5" data-ans="F" aria-label="T5">ROB 允许指令乱序 commit。</div>
-      <div class="blank"><input class="ans" id="t6" data-ans="F" aria-label="T6">load 总是可以在更老的 store 之前执行，不需要任何检查。</div>
-      <div class="blank"><input class="ans" id="t7" data-ans="T" aria-label="T7">Store 指令要到 commit 时才写入 cache。</div>
-      <div class="blank"><input class="ans" id="t8" data-ans="T" aria-label="T8">VLIW 处理器靠编译器而不是硬件来找出可以并行的指令。</div>
-      <div class="blank"><input class="ans" id="t9" data-ans="T" aria-label="T9">Loop unrolling 减少了执行的指令数，但会增加代码大小和寄存器需求。</div>
-      <div class="blank"><input class="ans" id="t10" data-ans="F" aria-label="T10">块越大，miss rate 总是越低。</div>
-      <div class="blank"><input class="ans" id="t11" data-ans="T" aria-label="T11">全相联 cache 没有 conflict miss。</div>
-      <div class="blank"><input class="ans" id="t12" data-ans="T" aria-label="T12">VIPT cache 可以让 TLB 查询和 cache 索引同时进行。</div>
-      <div class="blank"><input class="ans" id="t13" data-ans="T" aria-label="T13">非阻塞 cache 需要 MSHR 来记录未完成的 miss。</div>
-      <div class="blank"><input class="ans" id="t14" data-ans="F" aria-label="T14">多级 cache 的 inclusion 属性会自动成立，不需要额外维护。</div>
-      <div class="blank"><input class="ans" id="t15" data-ans="T" aria-label="T15">对 speedup 取几何平均，换哪台机器当参照，排名结论都一样。</div>
-    </div>
-    <div class="actions"><button data-check>检查</button><span class="result"></span></div>
-    <details class="sol"><summary>解析</summary><div class="body">
-      <p>1 F：重命名只消除 WAR/WAW。2 T：每次退出循环 2-bit 只错 1 次，1-bit 错 2 次。5 F：commit 一定按序。6 F：要检查地址，冲突就重新执行。10 F：块太大时块数变少，conflict miss 增加，miss penalty 也变大。14 F：L2 替换块时要把 L1 里对应的块也 invalidate。</p>
-    </div></details>
-  </div>
-</section>
-
-<footer>
-  <p>每天做完回到<a href="notes/" style="color:var(--accent)">学习页</a>把当天勾掉。考前要能在 15 分钟内填完一张 ROB 表。</p>
-</footer>
+<footer><p>Sample test 的分值分布：Q2 Amdahl 8 分，Q3 分支预测 15 分，Q4 ROB 25 分。ROB 和分支预测要优先练熟。</p></footer>
 </div>
 
 <script>
 (function(){
-  const qs=[...document.querySelectorAll('[data-q]')];
-  const total=document.querySelectorAll('input.ans').length;
-  document.getElementById('st').textContent=total;
-  const solved=new Set();
-  function norm(v){return v.replace(/\[.*$/,'').trim();}
-  function correct(inp){
-    const want=inp.dataset.ans, got=norm(inp.value);
-    if(!got) return false;
-    const wn=parseFloat(want);
-    if(!isNaN(wn) && /^-?\d/.test(want)){
-      const gn=parseFloat(got.replace(/%$/,''));
-      if(isNaN(gn)) return false;
-      return Math.abs(gn-wn) <= 0.0051 + Math.abs(wn)*1e-6;
-    }
-    return got.toUpperCase()===want.toUpperCase();
-  }
-  qs.forEach(q=>{
-    const btn=q.querySelector('[data-check]'), res=q.querySelector('.result');
-    const inputs=[...q.querySelectorAll('input.ans')];
-    btn.addEventListener('click',()=>{
-      let ok=0;
-      inputs.forEach(i=>{
-        const c=correct(i);
-        i.classList.toggle('ok',c); i.classList.toggle('no',!c);
-        if(c){ok++;solved.add(i.id);} else solved.delete(i.id);
-      });
-      res.textContent=ok===inputs.length?`全对 ${ok}/${inputs.length}`:`${ok}/${inputs.length} 正确，红框的再想想`;
-      res.className='result '+(ok===inputs.length?'allok':'some');
-      document.getElementById('sc').textContent=solved.size;
-    });
-    inputs.forEach(i=>i.addEventListener('input',()=>i.classList.remove('ok','no')));
+  const plan={
+    1:['Day 1 · 10/12 周一','指标、流水线、分支预测','Amdahl · Iron Law · 功耗 · hazard · 2-bit counter · 历史预测器 · predication'],
+    2:['Day 2 · 10/13 周二','ILP、Tomasulo、ROB','依赖与重命名 · RS/RAT/CDB · ROB 时序表。今天做完再做一遍 Sample Test。'],
+    3:['Day 3 · 10/14 周三','访存顺序、编译器 ILP、VLIW','LSQ · store-to-load forwarding · 循环展开 · 调度 · VLIW 优缺点'],
+    4:['Day 4 · 10/15 周四','Cache、虚拟内存、高级 Cache','AMAT · 地址划分 · LRU · TLB · VIPT · 3C · MSHR'],
+    5:['Day 5 · 10/16 周五','模拟考 + 查漏','判断题 · 整套限时模拟 · 闭卷重做 Sample Test · 背公式速查']
+  };
+  const done=n=>{try{return localStorage.getItem('cs6290-day'+n)==='1';}catch(e){return false;}};
+  document.querySelectorAll('#planRows tr').forEach(tr=>{
+    const n=tr.dataset.day, pill=tr.querySelector('.pill');
+    if(done(n)){pill.textContent='已完成';pill.classList.add('done');}
   });
-  const rb=document.getElementById('resetAll'), rm=document.getElementById('resetMsg');
-  rb.addEventListener('click',()=>{
-    if(rb.dataset.armed!=='1'){rb.dataset.armed='1';rb.textContent='再点一次确认清空';return;}
-    document.querySelectorAll('input.ans').forEach(i=>{i.value='';i.classList.remove('ok','no');});
-    document.querySelectorAll('.result').forEach(r=>{if(r!==rm){r.textContent='';r.className='result';}});
-    document.querySelectorAll('details.sol').forEach(d=>d.open=false);
-    solved.clear();document.getElementById('sc').textContent='0';
-    rb.dataset.armed='';rb.textContent='清空所有答案';rm.textContent='已清空，可以从 Day 1 开始计时';
-  });
+  // Pick today's day (10/12 = Day 1 … 10/16 = Day 5); otherwise the first unfinished day.
+  const now=new Date(), y=now.getFullYear();
+  const start=new Date(y,9,12), diff=Math.floor((new Date(y,now.getMonth(),now.getDate())-start)/86400000);
+  let n=null, label='今天';
+  if(diff>=0&&diff<=4) n=diff+1;
+  if(n===null){for(let i=1;i<=5;i++){if(!done(i)){n=i;break;}} label='下一步';}
+  if(n===null){n=5;label='全部完成';}
+  const p=plan[n];
+  document.getElementById('todayWhen').textContent=label+' · '+p[0];
+  document.getElementById('todayTitle').textContent=p[1];
+  document.getElementById('todayDesc').textContent=p[2];
+  const s=document.getElementById('todayStudy'), q=document.getElementById('todayQ');
+  s.href='notes/#d'+n; s.textContent='读 Day '+n+' 笔记';
+  q.href='questions/#day'+n; q.textContent='做 Day '+n+' 的题';
+  const row=document.querySelector('#planRows tr[data-day="'+n+'"]'); if(row) row.classList.add('now');
 })();
 </script>
 </body>
