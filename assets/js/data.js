@@ -4,6 +4,7 @@ export const homeContent = {
     name: "Yusi Cheng",
     intro: "VR, robotics, digital product, and community operations.",
     links: [
+      { label: "Budget Calculator", href: "/budget/" },
       { label: "View Projects", href: "#embodied-interaction", variant: "primary" },
       {
         label: "LinkedIn",
