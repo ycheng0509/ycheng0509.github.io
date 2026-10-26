@@ -3,11 +3,11 @@
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="color-scheme" content="light dark">
 <meta http-equiv="Content-Security-Policy" content="default-src 'self'; connect-src 'none'; img-src 'self' data:; style-src 'self' 'unsafe-inline'; script-src 'self'; object-src 'none'; base-uri 'none'; form-action 'none'">
 <meta name="description" content="固定账单先留好，剩下的分给生活。简单的每月预算。">
-<title>每月预算 · YC</title><link rel="stylesheet" href="./styles.css?v=4"></head>
+<title>每月预算 · YC</title><link rel="stylesheet" href="./styles.css?v=5"></head>
 <body><main>
 <nav><a href="/">YC / TOOLS</a><button id="theme" type="button" aria-label="切换深浅主题">切换主题</button></nav>
 <header><p class="eyebrow">MONTHLY BUDGET</p><h1 id="page-title">每月预算</h1><p class="intro" id="page-intro">固定的先留好，剩下的按你的节奏安排。</p></header>
-<div class="view-tabs" role="tablist" aria-label="预算与历史"><button id="budget-tab" role="tab" aria-selected="true" aria-controls="budget-view" type="button">每月预算</button><button id="history-tab" role="tab" aria-selected="false" aria-controls="history-view" type="button">历史报表</button></div>
+<div class="view-tabs" role="tablist" aria-label="预算与历史"><button id="budget-tab" role="tab" aria-selected="true" aria-controls="budget-view" type="button">每月预算</button><button id="history-tab" role="tab" aria-selected="false" aria-controls="history-view" type="button">历史报表</button><a class="report-link" href="./analysis/">分析报告 ↗</a></div>
 <div id="budget-view" role="tabpanel" aria-labelledby="budget-tab">
 <section class="overview" aria-label="月度预算概览">
 <div class="metric"><label for="target">月预算上限 <span>USD</span></label><div class="target-input"><span>$</span><input id="target" type="number" min="0" max="1000000" step="50" value="9500" inputmode="decimal"></div></div>
@@ -17,7 +17,7 @@
 <p id="message" class="message" aria-live="polite">调整会自动保存在此浏览器，不上传。</p>
 <div class="columns">
 <section class="panel fixed-panel"><div class="section-heading"><div><p class="eyebrow">01 / SET ASIDE</p><h2>固定支出</h2></div><span class="tag">已锁定</span></div><div id="fixed-list"></div><div class="fixed-total"><span>每月固定预留</span><strong id="fixed-bottom">$5,038.53</strong></div><p class="footnote">宠物保险通常在10月账单年付，不计入每月预算。</p></section>
-<section class="panel flexible-panel"><div class="section-heading"><div><p class="eyebrow">02 / EVERYDAY LIFE</p><h2>日常预算</h2></div><button id="distribute" type="button">按目前比例分配</button></div><p class="section-note">工作餐按自付计算。一键分配先留餐饮 $1,300、日用品 $900，其余按两卡消费比例安排；金额可手动调整。</p><div id="flex-list"></div><div class="allocation-footer"><span>日常已安排 <strong id="flex-total">—</strong></span><button id="reset" type="button" class="text-button">恢复 $9,500 计划</button></div></section>
+<section class="panel flexible-panel"><div class="section-heading"><div><p class="eyebrow">02 / EVERYDAY LIFE</p><h2>日常预算</h2></div><button id="distribute" type="button">按目前比例分配</button></div><p class="section-note">工作餐按自付计算。一键分配优先保留餐饮、日用品和必要储备，其余按双卡比例安排；金额可手动调整。 <a href="./analysis/">查看分析与预算依据 →</a></p><div id="flex-list"></div><div class="allocation-footer"><span>日常已安排 <strong id="flex-total">—</strong></span><button id="reset" type="button" class="text-button">恢复 $9,500 计划</button></div></section>
 </div>
 <section class="bottom-summary" aria-live="polite"><div><span>本月已安排</span><strong id="assigned">$9,500</strong></div><div><span id="balance-label">未分配</span><strong id="balance">$0</strong></div><div class="usage"><div class="track" role="progressbar" aria-label="已安排预算占上限" aria-valuemin="0" aria-valuemax="100" id="usage-track"><span id="fixed-segment"></span><span id="flex-segment"></span></div><div class="legend"><span><i class="fixed-key"></i>固定</span><span><i class="flex-key"></i>日常</span><span id="usage-label">100% 已安排</span></div></div></section>
 <p id="warning" class="warning" role="alert" hidden></p>
@@ -32,4 +32,4 @@
 <details class="history-source"><summary>月度明细与数据范围</summary><div class="history-table-wrap"><table><thead><tr><th>期间</th><th>Robinhood净额</th><th>Chase净额</th><th>新增消费</th><th>退款/调整</th><th>净消费</th></tr></thead><tbody id="history-table"></tbody></table></div><p>来源：Robinhood六份账单580条消费/退款，加Chase CSV的121条消费、退款与年费记录。两卡9笔Chase还款与6笔Robinhood还款均排除。自然月按入账日拼接；账单周期只适用于Robinhood月结单。</p><p>共同完整自然月为5–9月；3月仅Chase、4月Robinhood不完整。Robinhood截至10/21，Chase CSV最新记录10/20。分类按商户或CSV推定，综合卖场可能含非食品。私人转账、银行直付及未匹配课程不补造进图表。</p><p>10月保费仍保留在历史实际消费中；移除的是未来每月预留，并非历史已付金额。</p></details>
 </section>
 <footer><p>水电仍待确认；手机暂按最近一笔 $14 预留，需以套餐账单核准。工作餐不假设公司报销。医疗额度是储备，不是必要治疗上限。</p><span>只做 budgeting · 不含收入、税务或账户连接</span></footer>
-</main><script type="module" src="./app.mjs?v=4"></script></body></html>
+</main><script type="module" src="./app.mjs?v=5"></script></body></html>

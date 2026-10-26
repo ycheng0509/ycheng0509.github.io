@@ -1,4 +1,4 @@
-import {HISTORY} from './history-data.mjs?v=4';
+import {HISTORY} from './history-data.mjs?v=5';
 const $=id=>document.getElementById(id),usd=(c,d=2)=>new Intl.NumberFormat('en-US',{style:'currency',currency:'USD',minimumFractionDigits:d,maximumFractionDigits:d}).format(c/100),NS='http://www.w3.org/2000/svg';
 export function initHistory(){
  let mode='calendar',selected='all',provider='combined';

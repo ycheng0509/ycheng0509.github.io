@@ -1,0 +1,1 @@
+if(matchMedia('(prefers-color-scheme: dark)').matches)document.documentElement.dataset.theme='dark';document.getElementById('theme').addEventListener('click',()=>{document.documentElement.dataset.theme=document.documentElement.dataset.theme==='dark'?'light':'dark';});

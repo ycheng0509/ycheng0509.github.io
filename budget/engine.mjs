@@ -25,11 +25,13 @@ export const FLEX = Object.freeze([
   },
   {
     "name": "宠物用品与医疗储备",
-    "weight": 869.198
+    "weight": 869.198,
+    "reserved": 500
   },
   {
     "name": "本人医疗与药房",
-    "weight": 145.086
+    "weight": 145.086,
+    "reserved": 150
   },
   {
     "name": "购物与家居",
@@ -45,11 +47,13 @@ export const FLEX = Object.freeze([
   },
   {
     "name": "其他订阅与学习",
-    "weight": 92.172
+    "weight": 92.172,
+    "reserved": 60
   },
   {
     "name": "水电与其他机动",
-    "weight": 111.378
+    "weight": 111.378,
+    "reserved": 100
   }
 ]);
 export const fixedCents = FIXED.reduce((s,r)=>s+Math.round(r.amount*100),0);
