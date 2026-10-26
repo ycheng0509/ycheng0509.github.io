@@ -4,24 +4,61 @@ export const FIXED = Object.freeze([
   {name:'Tesla FSD',amount:108.28,note:'每月订阅'},
   {name:'AT&T 网费',amount:110,note:'固定月费'},
   {name:'汽车保险',amount:376.47,note:'续保预留 · 暂按历史均值'},
-  {name:'租客保险',amount:21.91,note:'按近期每月扣款'}
+  {name:'租客保险',amount:21.91,note:'按近期每月扣款'},
+  {name:'手机费预留',amount:14,note:'暂按最近一笔 US Mobile 扣款'},
+  {name:'信用卡年费',amount:7.92,note:'$95 年费按12个月预留'}
 ]);
 export const FLEX = Object.freeze([
-  {name:'超市与日用品',weight:1104.465},
-  {name:'餐饮与饮品',weight:1218.125},
-  {name:'充电、打车与停车',weight:305.265},
-  {name:'宠物用品与医疗储备',weight:760.3666666667},
-  {name:'本人医疗与药房',weight:126.4533333333},
-  {name:'购物与家居',weight:924.0433333333},
-  {name:'兴趣、运动与娱乐',weight:463.6933333333},
-  {name:'旅行储备',weight:378.6583333333},
-  {name:'其他订阅与学习',weight:59.3266666667},
-  {name:'水电、手机与其他机动',weight:128.1966666667}
+  {
+    "name": "超市与日用品",
+    "weight": 1064.718,
+    "reserved": 900
+  },
+  {
+    "name": "餐饮与自付工作餐",
+    "weight": 1552.014,
+    "reserved": 1300
+  },
+  {
+    "name": "充电、打车与停车",
+    "weight": 312.622
+  },
+  {
+    "name": "宠物用品与医疗储备",
+    "weight": 869.198
+  },
+  {
+    "name": "本人医疗与药房",
+    "weight": 145.086
+  },
+  {
+    "name": "购物与家居",
+    "weight": 2843.918
+  },
+  {
+    "name": "兴趣、运动与娱乐",
+    "weight": 427.188
+  },
+  {
+    "name": "旅行储备",
+    "weight": 654.212
+  },
+  {
+    "name": "其他订阅与学习",
+    "weight": 92.172
+  },
+  {
+    "name": "水电与其他机动",
+    "weight": 111.378
+  }
 ]);
 export const fixedCents = FIXED.reduce((s,r)=>s+Math.round(r.amount*100),0);
 export function splitBudget(target){
- const available=Math.max(0,Math.round(target*100)-fixedCents),weights=FLEX.reduce((s,r)=>s+r.weight,0);
- const raw=FLEX.map(r=>available*r.weight/weights),cents=raw.map(Math.floor);
+ const available=Math.max(0,Math.round(target*100)-fixedCents),reserved=FLEX.map(r=>Math.round((r.reserved||0)*100)),reserveTotal=reserved.reduce((s,v)=>s+v,0);
+ const cents=Array(FLEX.length).fill(0);let raw;
+ if(available<reserveTotal){raw=reserved.map(v=>available*v/reserveTotal);}
+ else{const remaining=available-reserveTotal,weights=FLEX.reduce((s,r)=>s+(r.reserved?0:r.weight),0);raw=FLEX.map((r,i)=>reserved[i]+(r.reserved?0:remaining*r.weight/weights));}
+ for(let i=0;i<raw.length;i++)cents[i]=Math.floor(raw[i]);
  const rest=available-cents.reduce((s,v)=>s+v,0),order=raw.map((v,i)=>({i,f:v-Math.floor(v)})).sort((a,b)=>b.f-a.f);
  for(let n=0;n<rest;n++)cents[order[n].i]++;
  return cents;

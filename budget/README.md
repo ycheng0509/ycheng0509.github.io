@@ -1,11 +1,11 @@
-# Monthly budget and spending history
+# Monthly budgeting and two-card history
 
 Static GitHub Pages application at /budget/. No build step or external dependencies.
 
-Budget view: fixed monthly expenses are read-only. Pet insurance has no monthly reserve; a single reminder says it is generally charged annually in the October statement. Ordinary categories remain editable and can be allocated proportionally within a monthly cap. Changes stay in browser-local storage. The v3 key migrates valid v2 daily amounts without deleting previous data, so removing the insurance reserve can leave an explicitly unallocated amount until the user redistributes it.
+Budget: fixed obligations and confirmed annual reserves are read-only. Pet insurance has a single October annual-payment reminder, with no monthly reserve. Phone service is provisionally budgeted at the most recent US Mobile charge, not a claim about the contract. Card annual fee is reserved over 12 months. One-click allocation keeps groceries at $900 and dining (including self-paid workplace meals) at $1,300, then distributes the remaining available budget using both cards' May-September proportions. These are editable planning choices, not extracted minimum costs or medical care limits.
 
-History view: monthly and statement-period net spending, category drill-down, and a monthly summary table. Only aggregated data from the provided Robinhood statements is published. No transaction references, merchants, account identifiers, statements, tax returns, income figures or private profile are bundled.
+On upgrade from v3/v2, preserve the user's target and rebuild the daily allocation for the updated source scope. Prior storage keys remain untouched. Thereafter v4 manual adjustments are retained.
 
-History is not complete household spending. It excludes direct-bank rent, loans, FSD, internet, other-card transactions and unmatched course fees. Calendar months use posting dates; April and October are marked partial and excluded from the complete-month average. Gross charges minus refunds reconcile to net spending. Already-paid October pet insurance remains in actual history even though the forward-looking monthly reserve was removed.
+History: default to combined Robinhood + Chase 3333, with per-card filtering and stacked monthly bars. Common complete months are May-September. Chase CSV has posting dates but no statement-cycle cutoffs, so statement mode is only enabled for Robinhood. March/April combined coverage and October ending dates are explicitly incomplete. Repayments are excluded, refunds reduce spending, and original October pet insurance remains an actual historical expense.
 
-Source aggregation is built from the locally reconciled ledger. history-data.mjs includes integer cents, period completeness, and grouped category totals. Raw input files remain outside the repository.
+Only monthly/category aggregates are published. Statements, CSV transaction descriptions, bank identifiers, tax returns, income figures and private profiles stay out of the repository. Direct-bank expenses and other small cards are not included in the credit-card chart.

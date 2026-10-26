@@ -3,7 +3,7 @@
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="color-scheme" content="light dark">
 <meta http-equiv="Content-Security-Policy" content="default-src 'self'; connect-src 'none'; img-src 'self' data:; style-src 'self' 'unsafe-inline'; script-src 'self'; object-src 'none'; base-uri 'none'; form-action 'none'">
 <meta name="description" content="固定账单先留好，剩下的分给生活。简单的每月预算。">
-<title>每月预算 · YC</title><link rel="stylesheet" href="./styles.css?v=3"></head>
+<title>每月预算 · YC</title><link rel="stylesheet" href="./styles.css?v=4"></head>
 <body><main>
 <nav><a href="/">YC / TOOLS</a><button id="theme" type="button" aria-label="切换深浅主题">切换主题</button></nav>
 <header><p class="eyebrow">MONTHLY BUDGET</p><h1 id="page-title">每月预算</h1><p class="intro" id="page-intro">固定的先留好，剩下的按你的节奏安排。</p></header>
@@ -11,24 +11,25 @@
 <div id="budget-view" role="tabpanel" aria-labelledby="budget-tab">
 <section class="overview" aria-label="月度预算概览">
 <div class="metric"><label for="target">月预算上限 <span>USD</span></label><div class="target-input"><span>$</span><input id="target" type="number" min="0" max="1000000" step="50" value="9500" inputmode="decimal"></div></div>
-<div class="metric"><span class="metric-label">固定账单与续保预留</span><strong id="fixed-total">$5,016.61</strong><small>已锁定，不参与比例调整</small></div>
-<div class="metric accent"><span class="metric-label">剩余可安排</span><strong id="available">$4,483.39</strong><small>分配给下面的日常类别</small></div>
+<div class="metric"><span class="metric-label">固定账单与续保预留</span><strong id="fixed-total">$5,038.53</strong><small>已锁定，不参与比例调整</small></div>
+<div class="metric accent"><span class="metric-label">剩余可安排</span><strong id="available">$4,461.47</strong><small>分配给下面的日常类别</small></div>
 </section>
 <p id="message" class="message" aria-live="polite">调整会自动保存在此浏览器，不上传。</p>
 <div class="columns">
-<section class="panel fixed-panel"><div class="section-heading"><div><p class="eyebrow">01 / SET ASIDE</p><h2>固定支出</h2></div><span class="tag">已锁定</span></div><div id="fixed-list"></div><div class="fixed-total"><span>每月固定预留</span><strong id="fixed-bottom">$5,016.61</strong></div><p class="footnote">宠物保险通常在10月账单年付，不计入每月预算。</p></section>
-<section class="panel flexible-panel"><div class="section-heading"><div><p class="eyebrow">02 / EVERYDAY LIFE</p><h2>日常预算</h2></div><button id="distribute" type="button">按目前比例分配</button></div><p class="section-note">修改下面金额即可。比例分配只调整日常预算，固定账单保持不变。</p><div id="flex-list"></div><div class="allocation-footer"><span>日常已安排 <strong id="flex-total">—</strong></span><button id="reset" type="button" class="text-button">恢复 $9,500 计划</button></div></section>
+<section class="panel fixed-panel"><div class="section-heading"><div><p class="eyebrow">01 / SET ASIDE</p><h2>固定支出</h2></div><span class="tag">已锁定</span></div><div id="fixed-list"></div><div class="fixed-total"><span>每月固定预留</span><strong id="fixed-bottom">$5,038.53</strong></div><p class="footnote">宠物保险通常在10月账单年付，不计入每月预算。</p></section>
+<section class="panel flexible-panel"><div class="section-heading"><div><p class="eyebrow">02 / EVERYDAY LIFE</p><h2>日常预算</h2></div><button id="distribute" type="button">按目前比例分配</button></div><p class="section-note">工作餐按自付计算。一键分配先留餐饮 $1,300、日用品 $900，其余按两卡消费比例安排；金额可手动调整。</p><div id="flex-list"></div><div class="allocation-footer"><span>日常已安排 <strong id="flex-total">—</strong></span><button id="reset" type="button" class="text-button">恢复 $9,500 计划</button></div></section>
 </div>
 <section class="bottom-summary" aria-live="polite"><div><span>本月已安排</span><strong id="assigned">$9,500</strong></div><div><span id="balance-label">未分配</span><strong id="balance">$0</strong></div><div class="usage"><div class="track" role="progressbar" aria-label="已安排预算占上限" aria-valuemin="0" aria-valuemax="100" id="usage-track"><span id="fixed-segment"></span><span id="flex-segment"></span></div><div class="legend"><span><i class="fixed-key"></i>固定</span><span><i class="flex-key"></i>日常</span><span id="usage-label">100% 已安排</span></div></div></section>
 <p id="warning" class="warning" role="alert" hidden></p>
 </div>
 <section id="history-view" role="tabpanel" aria-labelledby="history-tab" hidden>
-<div class="history-scope">仅 Robinhood 信用卡净消费，已扣退款、排除还款；不含房租等银行直付及其他信用卡消费。</div>
-<div class="history-metrics"><div><span>样本净消费</span><strong id="history-total">—</strong><small>2026年4月下旬至10月21日</small></div><div><span id="history-average-label">完整自然月均</span><strong id="history-average">—</strong><small id="history-average-note">—</small></div><div><span>10月宠物年保费</span><strong>$4,034.54</strong><small>保留真实支出，不从历史中删除</small></div></div>
-<section class="history-chart-section"><div class="section-heading"><div><p class="eyebrow">SPENDING OVER TIME</p><h2>每月消费趋势</h2></div><div class="period-switch" role="group" aria-label="历史统计口径"><button id="calendar-mode" aria-pressed="true" type="button">自然月</button><button id="statement-mode" aria-pressed="false" type="button">账单周期</button></div></div><div id="history-chart" class="history-chart"></div><p class="chart-note">浅色柱为不完整月份，不参与完整月均计算。点击月份可查看分类。</p></section>
+<div class="history-scope">Robinhood + Chase 3333 两张主卡净消费，已扣退款、排除还款；不含房租等银行直付及其他零星卡片。</div>
+<div class="history-filter"><label for="history-card">卡片范围</label><select id="history-card"><option value="combined">两张主卡合计</option><option value="robinhood">Robinhood</option><option value="chase">Chase 3333</option></select><span id="history-scope-note"></span></div>
+<div class="history-metrics"><div><span>样本净消费</span><strong id="history-total">—</strong><small><span id="history-period">2026年3月至10月</span></small></div><div><span id="history-average-label">完整自然月均</span><strong id="history-average">—</strong><small id="history-average-note">—</small></div><div id="history-pet-metric"><span>10月宠物年保费</span><strong>$4,034.54</strong><small>Robinhood已付保费，保留在真实历史中</small></div></div>
+<section class="history-chart-section"><div class="section-heading"><div><p class="eyebrow">SPENDING OVER TIME</p><h2>每月消费趋势</h2></div><div class="period-switch" role="group" aria-label="历史统计口径"><button id="calendar-mode" aria-pressed="true" type="button">自然月</button><button id="statement-mode" aria-pressed="false" type="button">账单周期</button></div></div><div id="history-chart" class="history-chart"></div><div class="history-card-legend" id="history-card-legend"><span><i class="rh-key"></i>Robinhood</span><span><i class="chase-key"></i>Chase 3333</span></div><p class="chart-note">浅色柱为不完整月份，不参与完整月均计算。点击月份可查看分类。</p></section>
 <p id="history-comparison" class="history-comparison"></p>
 <section class="history-category-section" id="history-detail"><div class="section-heading"><div><p class="eyebrow">WHERE IT WENT</p><h2>支出分类</h2></div><label class="month-filter">查看月份<select id="history-month" aria-label="查看历史分类月份"></select></label></div><p id="history-selected" class="section-note" aria-live="polite"></p><div id="history-categories"></div></section>
-<details class="history-source"><summary>月度明细与数据范围</summary><div class="history-table-wrap"><table><thead><tr><th>期间</th><th>新增消费</th><th>退款/调整</th><th>净消费</th></tr></thead><tbody id="history-table"></tbody></table></div><p>来源：Robinhood 2026年5月至10月六份账单，580条消费及退款记录。自然月按入账日拼接；账单周期跨月，不等于自然月。</p><p>4月仅含4/22–4/30，10月截至10/21。分类按商户推定，综合卖场可能含非食品。私人转账、银行直付及尚未匹配的 $3,980 课程不补造进图表。</p><p>10月保费仍保留在历史实际消费中；移除的是未来每月预留，并非历史已付金额。</p></details>
+<details class="history-source"><summary>月度明细与数据范围</summary><div class="history-table-wrap"><table><thead><tr><th>期间</th><th>Robinhood净额</th><th>Chase净额</th><th>新增消费</th><th>退款/调整</th><th>净消费</th></tr></thead><tbody id="history-table"></tbody></table></div><p>来源：Robinhood六份账单580条消费/退款，加Chase CSV的121条消费、退款与年费记录。两卡9笔Chase还款与6笔Robinhood还款均排除。自然月按入账日拼接；账单周期只适用于Robinhood月结单。</p><p>共同完整自然月为5–9月；3月仅Chase、4月Robinhood不完整。Robinhood截至10/21，Chase CSV最新记录10/20。分类按商户或CSV推定，综合卖场可能含非食品。私人转账、银行直付及未匹配课程不补造进图表。</p><p>10月保费仍保留在历史实际消费中；移除的是未来每月预留，并非历史已付金额。</p></details>
 </section>
-<footer><p>水电与手机金额尚待确认，暂从机动额度安排。医疗额度是储备，不是必要治疗上限。</p><span>只做 budgeting · 不含收入、税务或账户连接</span></footer>
-</main><script type="module" src="./app.mjs?v=3"></script></body></html>
+<footer><p>水电仍待确认；手机暂按最近一笔 $14 预留，需以套餐账单核准。工作餐不假设公司报销。医疗额度是储备，不是必要治疗上限。</p><span>只做 budgeting · 不含收入、税务或账户连接</span></footer>
+</main><script type="module" src="./app.mjs?v=4"></script></body></html>
