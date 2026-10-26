@@ -1,30 +1,23 @@
 <!doctype html>
-<html lang="zh-CN">
-<head>
-<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="color-scheme" content="light dark">
+<html lang="zh-CN"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="color-scheme" content="light dark">
 <meta http-equiv="Content-Security-Policy" content="default-src 'self'; connect-src 'none'; img-src 'self' data:; style-src 'self' 'unsafe-inline'; script-src 'self'; object-src 'none'; base-uri 'none'; form-action 'none'">
-<meta name="description" content="在你的浏览器里规划家庭预算、年度账单储备和现金结余。">
-<title>Budget Studio · 家庭预算计算器</title><link rel="stylesheet" href="./styles.css">
-</head>
-<body>
-<header><a class="brand" href="/">YC<span> / </span>TOOLS</a><div class="header-actions"><span class="privacy-dot">本地计算 · 无账户连接</span><button id="theme" class="quiet" aria-label="切换深浅主题">切换主题</button></div></header>
-<main>
-<section class="intro"><div><p class="eyebrow">A LITTLE CLARITY, EVERY MONTH</p><h1>给生活留空间，<br>也给未来留一点。</h1><p class="lede">从现在的消费结构出发，把每一笔收入、每一项年费，放进同一个计划。</p></div><div class="intro-note"><span class="smallcaps">BUDGET STUDIO</span><p>固定的，先留好。<br>可调整的，慢慢优化。</p><span>USD / 每月家庭预算</span></div></section>
-<div class="toolbar"><div><button id="import" class="primary">导入我的计划</button><input id="file" type="file" accept=".json,application/json" hidden><button id="export">导出计划</button><button id="demo" class="quiet">载入示例</button></div><label class="remember"><input type="checkbox" id="remember">仅在此浏览器记住</label></div>
-<p id="message" role="status" aria-live="polite" class="message">初始为通用示例。导入个人配置后才显示你的收入和消费。</p>
-<section class="summary" aria-live="polite"><article><span>每月计划</span><strong id="plan-total">—</strong><small id="plan-caption">年度预留已包含</small></article><article><span>当前结构月均</span><strong id="baseline-total">—</strong><small>按周期折算，不含内部转账</small></article><article class="highlight"><span id="surplus-label">普通月工资结余</span><strong id="surplus-total">—</strong><small>尚未扣工资预扣以外的补税</small></article><article><span>年度工资结余</span><strong id="annual-total">—</strong><small>全年工资减12个月计划</small></article></section>
-<div class="workspace"><section class="panel budget-panel"><div class="section-head"><div><p class="eyebrow">01 / ALLOCATION</p><h2>把预算分到生活里</h2></div><span id="target-badge" class="pill">目标</span></div>
-<div class="target-control"><label for="target">目标月预算 <span>USD</span></label><input id="target" type="number" min="0" max="100000000" step="50"><input id="target-range" aria-label="调整目标月预算" type="range" min="5000" max="16000" step="50"></div>
-<div class="mode-buttons" role="group" aria-label="分配方式"><button id="fixed-mode" aria-pressed="true">固定账单不变</button><button id="all-mode" aria-pressed="false">全部等比例</button><button id="manual-mode" aria-pressed="false">手动安排</button></div>
-<p id="allocation-note" class="muted"></p><p id="allocation-error" role="alert" class="error" hidden></p>
-<div class="table-wrap"><table><thead><tr><th scope="col">分类</th><th scope="col">当前金额 / 周期</th><th scope="col">固定</th><th scope="col">目标 / 月</th></tr></thead><tbody id="categories"></tbody></table></div><div class="table-footer"><button id="add-category" class="quiet">＋ 添加分类</button><strong id="unallocated"></strong></div>
-<div class="chart-head"><h3>计划占比</h3><span class="muted">按目标金额计算</span></div><div class="allocation-chart"><div class="donut" id="donut" role="img" aria-label="预算分类占比"><div><small>每月总额</small><strong id="donut-total">—</strong></div></div><div id="legend" class="legend"></div></div>
+<meta name="description" content="固定账单先留好，剩下的分给生活。简单的每月预算。">
+<title>每月预算 · YC</title><link rel="stylesheet" href="./styles.css?v=2"></head>
+<body><main>
+<nav><a href="/">YC / TOOLS</a><button id="theme" type="button" aria-label="切换深浅主题">切换主题</button></nav>
+<header><p class="eyebrow">MONTHLY BUDGET</p><h1>每月预算</h1><p class="intro">固定的先留好，剩下的按你的节奏安排。</p></header>
+<section class="overview" aria-label="月度预算概览">
+<div class="metric"><label for="target">月预算上限 <span>USD</span></label><div class="target-input"><span>$</span><input id="target" type="number" min="0" max="1000000" step="50" value="9500" inputmode="decimal"></div></div>
+<div class="metric"><span class="metric-label">固定账单与续保预留</span><strong id="fixed-total">$5,352.82</strong><small>已锁定，不参与比例调整</small></div>
+<div class="metric accent"><span class="metric-label">剩余可安排</span><strong id="available">$4,147.18</strong><small>分配给下面的日常类别</small></div>
 </section>
-<aside class="side-column"><section class="panel"><div class="section-head"><div><p class="eyebrow">02 / INCOME</p><h2>收入节奏</h2></div></div><label for="income-view">结余显示方式</label><select id="income-view"><option value="ordinary">普通发薪月</option><option value="average">全年月均</option></select><div id="incomes"></div><div class="income-totals"><div><span>普通月到手</span><strong id="ordinary-income">—</strong></div><div><span>全年月均到手</span><strong id="average-income">—</strong></div><div><span>额外发薪 / 年</span><strong id="extra-income">—</strong></div></div><p class="muted">填写到手金额。双周通常26次/年，半月24次；已预扣税和退休供款不再扣一次。</p></section>
-<section class="panel"><p class="eyebrow">03 / ANNUAL PLANS</p><h2>课程与年度支出</h2><label for="course-amount">额外课程金额</label><input id="course-amount" type="number" min="0" max="100000000" step="10"><label for="course-frequency">如何计入</label><select id="course-frequency"><option value="none">一次性已付 / 本计划不另加</option><option value="annual">每年追加，按12个月预留</option><option value="monthly">每月追加</option></select><p id="course-note" class="muted"></p><p class="muted">已在分类中计入的课程，不在这里重复添加。年费标记“本期已付”只改变付款提示，不取消下次续费预留。</p></section></aside></div>
-<section class="panel tax-panel"><div class="section-head"><div><p class="eyebrow">04 / CASH RESERVE</p><h2>先留税，再看能存多少</h2></div><span class="pill">规划估算 · 非报税计算</span></div><div class="tax-grid"><div><label for="tax-scenario">税款情景</label><select id="tax-scenario"><option value="custom">自行填写 / 尚未确认</option></select><label for="tax-total">预计全年总税</label><input id="tax-total" type="number" min="0" placeholder="未知请留空"></div><div><label for="tax-withheld">预计全年已预扣税</label><input id="tax-withheld" type="number" min="0" placeholder="未知请留空"><label for="tax-paid">预估税已支付</label><input id="tax-paid" type="number" min="0" placeholder="未知请留空"></div><div><label for="tax-months">剩余税款分几个月留足</label><input id="tax-months" type="number" min="1" max="24" step="1"><div class="tax-result"><span>尚需税款储备</span><strong id="tax-gap">待确认</strong><small id="after-tax">填齐后计算，不将未知税额当作0。</small></div></div></div><p class="muted">总税 − 全年预扣 − 预估税已付。这里是资金预留，不是税率计算或缴税指令；联邦和州仍需分别核对。卖股成交款、资本收益和工资不是同一口径。</p></section>
-<section class="notes-grid"><div><h3>每月比较，用自然月</h3><p>信用卡账单通常跨两个月。分类看实际入账月，还款只看周转；夫妻互转、股票买卖本金都不算生活消费。</p></div><div><h3>年费已付，储备继续</h3><p>年费在计划中按12个月分摊；从储备支付时不再重复计入。必要医疗超过预留时，先调整弹性消费。</p></div><div><h3>你的数字，留在本地</h3><p>不上传文件、不连接银行、不发送分析数据。个人配置与原始账单不应提交到公开网站代码中。</p></div></section>
-<footer><span>BUDGET STUDIO / YC TOOLS</span><span>计划是起点，月底用实际支出校准。</span></footer>
-</main><script type="module" src="./app.mjs"></script>
-</body></html>
+<p id="message" class="message" aria-live="polite">调整会自动保存在此浏览器，不上传。</p>
+<div class="columns">
+<section class="panel fixed-panel"><div class="section-heading"><div><p class="eyebrow">01 / SET ASIDE</p><h2>固定支出</h2></div><span class="tag">已锁定</span></div><div id="fixed-list"></div><div class="fixed-total"><span>每月固定预留</span><strong id="fixed-bottom">$5,352.82</strong></div><p class="footnote">保险本期已付，这里留的是下次续保的钱，不是再付一次。房租按 $3,950 预留；车险周期尚未确认，先按历史均值预留。</p></section>
+<section class="panel flexible-panel"><div class="section-heading"><div><p class="eyebrow">02 / EVERYDAY LIFE</p><h2>日常预算</h2></div><button id="distribute" type="button">按目前比例分配</button></div><p class="section-note">修改下面金额即可。比例分配只调整日常预算，固定账单保持不变。</p><div id="flex-list"></div><div class="allocation-footer"><span>日常已安排 <strong id="flex-total">—</strong></span><button id="reset" type="button" class="text-button">恢复 $9,500 计划</button></div></section>
+</div>
+<section class="bottom-summary" aria-live="polite"><div><span>本月已安排</span><strong id="assigned">$9,500</strong></div><div><span id="balance-label">未分配</span><strong id="balance">$0</strong></div><div class="usage"><div class="track" role="progressbar" aria-label="已安排预算占上限" aria-valuemin="0" aria-valuemax="100" id="usage-track"><span id="fixed-segment"></span><span id="flex-segment"></span></div><div class="legend"><span><i class="fixed-key"></i>固定</span><span><i class="flex-key"></i>日常</span><span id="usage-label">100% 已安排</span></div></div></section>
+<p id="warning" class="warning" role="alert" hidden></p>
+<footer><p>水电与手机金额尚待确认，暂从机动额度安排。医疗额度是储备，不是必要治疗上限。</p><span>只做 budgeting · 不含收入、税务或账户连接</span></footer>
+</main><script type="module" src="./app.mjs?v=2"></script></body></html>
