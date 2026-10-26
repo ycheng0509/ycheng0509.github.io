@@ -1,7 +1,8 @@
-import {FIXED,FLEX,fixedCents,splitBudget,validPlan,summary} from './engine.mjs?v=2';
-const $=id=>document.getElementById(id),KEY='yc-simple-budget-v2',money=(n,digits=2)=>new Intl.NumberFormat('en-US',{style:'currency',currency:'USD',minimumFractionDigits:digits,maximumFractionDigits:digits}).format(n);
+import {initHistory} from './history.mjs?v=3';
+import {FIXED,FLEX,fixedCents,splitBudget,validPlan,summary} from './engine.mjs?v=3';
+const $=id=>document.getElementById(id),KEY='yc-simple-budget-v3',money=(n,digits=2)=>new Intl.NumberFormat('en-US',{style:'currency',currency:'USD',minimumFractionDigits:digits,maximumFractionDigits:digits}).format(n);
 let state={target:9500,amounts:splitBudget(9500)};
-try{const raw=JSON.parse(localStorage.getItem(KEY));if(validPlan(raw))state=raw;}catch{}
+try{const current=localStorage.getItem(KEY),raw=JSON.parse(current||localStorage.getItem('yc-simple-budget-v2'));if(validPlan(raw)){state=raw;if(!current)$('message').textContent='宠物保险月预留已移除；保留原日常金额，可重新按比例分配释放的额度。';}}catch{}
 function save(){try{localStorage.setItem(KEY,JSON.stringify(state));$('message').textContent='已保存到此浏览器，不上传你的修改。';}catch{$('message').textContent='当前浏览器不能保存；本次调整仍可使用。';}}
 function draw(){const s=summary(state.target,state.amounts);$('fixed-total').textContent=money(s.fixed);$('fixed-bottom').textContent=money(s.fixed);$('available').textContent=money(s.available);$('available').classList.toggle('negative',s.available<0);$('flex-total').textContent=money(s.flex);$('assigned').textContent=money(s.assigned);$('balance-label').textContent=s.left<0?'超出预算':s.left>0?'还可安排':'全部安排好';$('balance').textContent=money(Math.abs(s.left));$('balance').classList.toggle('negative',s.left<0);
  const base=Math.max(state.target,s.assigned,1),fixed=Math.max(0,s.fixed/base*100),flex=s.flex/base*100;$('fixed-segment').style.width=fixed+'%';$('flex-segment').style.width=flex+'%';const used=state.target>0?s.assigned/state.target*100:0;$('usage-track').setAttribute('aria-valuenow',String(Math.min(100,Math.round(used))));$('usage-label').textContent=state.target>0?Math.round(used)+'% 已安排':'预算为 $0';
@@ -14,3 +15,10 @@ $('distribute').addEventListener('click',()=>{state.amounts=splitBudget(state.ta
 $('reset').addEventListener('click',()=>{state={target:9500,amounts:splitBudget(9500)};$('target').value=9500;$('target').removeAttribute('aria-invalid');FLEX.forEach((r,i)=>$('amount-'+i).removeAttribute('aria-invalid'));save();draw();});
 if(matchMedia('(prefers-color-scheme: dark)').matches)document.documentElement.dataset.theme='dark';$('theme').addEventListener('click',()=>{document.documentElement.dataset.theme=document.documentElement.dataset.theme==='dark'?'light':'dark';});
 draw();
+
+const historyView=initHistory();
+function showView(name){const isHistory=name==='history';$('budget-view').hidden=isHistory;$('history-view').hidden=!isHistory;$('budget-tab').setAttribute('aria-selected',String(!isHistory));$('history-tab').setAttribute('aria-selected',String(isHistory));$('page-title').textContent=isHistory?'历史支出':'每月预算';$('page-intro').textContent=isHistory?'看清每月变化，也看清钱花在哪里。':'固定的先留好，剩下的按你的节奏安排。';if(isHistory)requestAnimationFrame(historyView.render);}
+$('budget-tab').addEventListener('click',()=>{window.history.replaceState(null,'','#budget');showView('budget');});
+$('history-tab').addEventListener('click',()=>{window.history.replaceState(null,'','#history');showView('history');});
+window.addEventListener('hashchange',()=>showView(location.hash==='#history'?'history':'budget'));
+showView(location.hash==='#history'?'history':'budget');

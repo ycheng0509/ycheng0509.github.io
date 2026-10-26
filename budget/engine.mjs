@@ -4,8 +4,7 @@ export const FIXED = Object.freeze([
   {name:'Tesla FSD',amount:108.28,note:'每月订阅'},
   {name:'AT&T 网费',amount:110,note:'固定月费'},
   {name:'汽车保险',amount:376.47,note:'续保预留 · 暂按历史均值'},
-  {name:'租客保险',amount:21.91,note:'按近期每月扣款'},
-  {name:'宠物保险',amount:336.21,note:'年付已付 · 为下次续保预留'}
+  {name:'租客保险',amount:21.91,note:'按近期每月扣款'}
 ]);
 export const FLEX = Object.freeze([
   {name:'超市与日用品',weight:1104.465},
